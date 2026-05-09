@@ -269,10 +269,14 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
         Q_EMIT deviceAdded(udi);
     }
 
-    if (m_deviceCache.contains(udi) && size == 0) { // we know the optdisc, got removed
-        Q_EMIT deviceRemoved(udi);
-        m_deviceCache.removeAll(udi);
-        DeviceBackend::destroyBackend(udi);
+    if (m_deviceCache.contains(udi)) { // we know the optdisc
+        if (size == 0) { // got removed
+            Q_EMIT deviceRemoved(udi);
+            m_deviceCache.removeAll(udi);
+            DeviceBackend::destroyBackend(udi);
+        } else { // got loaded
+            Q_EMIT deviceAdded(udi);
+        }
     }
 }
 
