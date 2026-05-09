@@ -161,12 +161,14 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         case PROFILE_MODEL_COLUMN_NAME_INDEX:
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Profile name must not be empty."), tr("You have given no name for the profile. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
         case PROFILE_MODEL_COLUMN_ENCODER_SELECTED_INDEX:
             if (value.toInt() == -1) {
                 p_error = Error(tr("Profile encoder is not defined."), tr("You have given no encoder for the profile. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -176,6 +178,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
                                 tr("You have given no filename scheme for the profile. Please set one."),
                                 Error::ERROR,
                                 this);
+                endResetModel();
                 return false;
             }
             break;
@@ -194,12 +197,14 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         case PROFILE_MODEL_COLUMN_SC_FORMAT_INDEX:
             if ((value.toString() != "JPEG") && (value.toString() != "JPG") && (value.toString() != "PNG") && (value.toString() != "TIFF") && (value.toString() != "BMP")) {
                 p_error = Error(tr("The image file format is unknown."), tr("Your given image file format is unknown. Please choose on of these formats: JPG/JPEG, PNG or BMP."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
         case PROFILE_MODEL_COLUMN_SC_NAME_INDEX:
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Cover name must not be empty."), tr("You have given no name for the cover. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -208,12 +213,14 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         case PROFILE_MODEL_COLUMN_PL_FORMAT_INDEX:
             if ((value.toString() != "M3U") && (value.toString() != "PLS") && (value.toString() != "XSPF")) {
                 p_error = Error(tr("The playlist file format is unknown."), tr("Your given playlist file format is unknown. Please choose on of these formats: M3U, PLS or XSPF."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
         case PROFILE_MODEL_COLUMN_PL_NAME_INDEX:
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Playlist name must not be empty."), tr("You have given no name for the playlist. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -228,6 +235,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         case PROFILE_MODEL_COLUMN_INF_NAME_INDEX:
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Info text name must not be empty."), tr("You have given no name for the info text file. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -235,6 +243,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             break;
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Info text file name suffix must not be empty."), tr("You have given no suffix for the info text file. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -243,6 +252,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         case PROFILE_MODEL_COLUMN_HL_FORMAT_INDEX:
             if ((value.toString() != "SFV") && (value.toString() != "MD5")) {
                 p_error = Error(tr("The hashlist file format is unknown."), tr("Your given hashlist file format is unknown. Please choose on of these formats: SFV, MD5."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -250,6 +260,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             break;
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Hashlist name must not be empty."), tr("You have given no name for the hashlist. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -259,6 +270,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             break;
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Cue filename name must not be empty."), tr("You have given no name for the cue sheet. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -268,6 +280,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             break;
             if (value.toString().isEmpty()) {
                 p_error = Error(tr("Filename name must not be empty."), tr("You have given no name for the single audio file. Please set one."), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
             break;
@@ -284,6 +297,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         case PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX:
             break;
         default:
+            endResetModel();
             return false;
         }
 
@@ -300,6 +314,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             }
             if (found) {
                 p_error = Error(tr("Profile name already exists."), tr("Your profile name %1 already exists in the set of profiles. Please choose a unique one.").arg(value.toString()), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
         }
@@ -317,6 +332,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             }
             if (found) {
                 p_error = Error(tr("Profile index already exists."), tr("Your profile index %1 already exists in the set of profiles. Please choose a unique one.").arg(value.toInt()), Error::ERROR, this);
+                endResetModel();
                 return false;
             }
         }
@@ -434,6 +450,7 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
         default:
             break;
         }
+        endResetModel();
         return true;
     }
 

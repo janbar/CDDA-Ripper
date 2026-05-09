@@ -647,8 +647,8 @@ void CDDAModel::splitTitleOfTracks(const QString &divider)
         }
     }
     modified = true;
-    Q_EMIT cddbDataModified();
     endResetModel();
+    Q_EMIT cddbDataModified();
 }
 
 void CDDAModel::capitalizeTracks()
