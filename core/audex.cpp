@@ -7,6 +7,8 @@
 
 #include "audex.h"
 
+#include <QGuiApplication>
+
 /* The heart of audex */
 
 Audex::Audex(QWidget *parent, ProfileModel *profile_model, CDDAModel *cdda_model)
@@ -102,7 +104,7 @@ bool Audex::prepare()
 
     qDebug() << "Using profile with index" << profile_model->currentProfileIndex();
 
-    tmp_dir = new TmpDir("audex", "work");
+    tmp_dir = new TmpDir(QGuiApplication::applicationName(), "work");
     tmp_path = tmp_dir->tmpPath();
     if (tmp_dir->error())
         return false;

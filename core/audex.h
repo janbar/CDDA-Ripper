@@ -12,7 +12,6 @@
 #include <QQueue>
 #include <QString>
 #include <QTimer>
-#include <QStorageInfo>
 
 #include "models/cddamodel.h"
 #include "models/profilemodel.h"
