@@ -1,0 +1,12 @@
+set(backend_sources
+    fakeblock.cpp
+    fakecdrom.cpp
+    fakedevice.cpp
+    fakedeviceinterface.cpp
+    fakegenericinterface.cpp
+    fakemanager.cpp
+    fakeopticaldisc.cpp
+    fakestorage.cpp
+    fakestorageaccess.cpp
+    fakevolume.cpp
+)

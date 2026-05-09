@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/cddaripper-16x16.png</file>
+        <file>icons/cddaripper-32x32.png</file>
+        <file>icons/cddaripper-48x48.png</file>
+        <file>icons/cddaripper-64x64.png</file>
+        <file>icons/cddaripper-128x128.png</file>
+        <file>icons/quit.png</file>
+        <file>icons/cancel.png</file>
+        <file>icons/dialog-apply.png</file>
+        <file>icons/dialog-cancel.png</file>
+        <file>icons/dialog-close.png</file>
+        <file>icons/dialog-no.png</file>
+        <file>icons/dialog-yes.png</file>
+        <file>icons/document-open.png</file>
+        <file>icons/document-save.png</file>
+        <file>icons/emblem-default.png</file>
+        <file>icons/emblem-info.png</file>
+        <file>icons/emblem-danger.png</file>
+        <file>icons/emblem-error.png</file>
+        <file>icons/emblem-synchronizing.png</file>
+        <file>icons/emblem-question.png</file>
+        <file>icons/emblem-downloads.png</file>
+        <file>icons/emblem-list-add.png</file>
+        <file>icons/emblem-list-delete.png</file>
+        <file>icons/emblem-system.png</file>
+        <file>icons/media-eject.png</file>
+        <file>icons/media-import.png</file>
+        <file>icons/media-load.png</file>
+        <file>icons/audio-mp4.png</file>
+        <file>icons/audio-mpeg.png</file>
+        <file>icons/audio-x-flac.png</file>
+        <file>icons/audio-x-generic.png</file>
+        <file>icons/audio-x-vorbis+ogg.png</file>
+        <file>icons/audio-x-wav.png</file>
+        <file>images/nocover.png</file>
+        <file>i18n/cddaripper_en.qm</file>
+        <file>i18n/cddaripper_fr.qm</file>
+    </qresource>
+</RCC>

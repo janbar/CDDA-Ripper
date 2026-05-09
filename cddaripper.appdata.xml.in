@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>@APP_ID@</id>
+  <developer_name>Jean-Luc Barriere</developer_name>
+  <update_contact>jlbarriere68_AT_gmail.com</update_contact>
+  <project_license>GPL-2.0</project_license>
+  <name>@APP_NAME@</name>
+  <name xml:lang="ca">CDDA-Ripper</name>
+  <name xml:lang="ca-valencia">CDDA-Ripper</name>
+  <name xml:lang="cs">CDDA-Ripper</name>
+  <name xml:lang="da">CDDA-Ripper</name>
+  <name xml:lang="de">CDDA-Ripper</name>
+  <name xml:lang="en-GB">CDDA-Ripper</name>
+  <name xml:lang="eo">CDDA-Ripper</name>
+  <name xml:lang="es">CDDA-Ripper</name>
+  <name xml:lang="et">CDDA-Ripper</name>
+  <name xml:lang="eu">CDDA-Ripper</name>
+  <name xml:lang="fi">CDDA-Ripper</name>
+  <name xml:lang="fr">CDDA-Ripper</name>
+  <name xml:lang="gl">CDDA-Ripper</name>
+  <name xml:lang="id">CDDA-Ripper</name>
+  <name xml:lang="it">CDDA-Ripper</name>
+  <name xml:lang="ka">CDDA-Ripper</name>
+  <name xml:lang="ko">CDDA-Ripper</name>
+  <name xml:lang="nl">CDDA-Ripper</name>
+  <name xml:lang="pl">CDDA-Ripper</name>
+  <name xml:lang="pt">CDDA-Ripper</name>
+  <name xml:lang="pt-BR">CDDA-Ripper</name>
+  <name xml:lang="ro">CDDA-Ripper</name>
+  <name xml:lang="ru">CDDA-Ripper</name>
+  <name xml:lang="sk">CDDA-Ripper</name>
+  <name xml:lang="sl">CDDA-Ripper</name>
+  <name xml:lang="sv">CDDA-Ripper</name>
+  <name xml:lang="tr">Audeks</name>
+  <name xml:lang="uk">CDDA-Ripper</name>
+  <name xml:lang="x-test">xxCDDA-Ripperxx</name>
+  <name xml:lang="zh-CN">CDDA-Ripper</name>
+  <name xml:lang="zh-TW">CDDA-Ripper</name>
+  <summary>An easy to use audio CD ripping application</summary>
+  <summary xml:lang="ca">Una aplicació d'extracció dels CD d'ús senzill</summary>
+  <summary xml:lang="ca-valencia">Una aplicació d'extracció dels CD d'ús senzill</summary>
+  <summary xml:lang="da">Et brugervenligt program til at rippe cd'er</summary>
+  <summary xml:lang="de">Eine einfach zu bedienende Anwendung zum Auslesen von Audio-CDs.</summary>
+  <summary xml:lang="en-GB">An easy to use audio CD ripping application</summary>
+  <summary xml:lang="eo">Facile uzebla kopiilo por aŭdio-KD-oj</summary>
+  <summary xml:lang="es">Una aplicación de extracción de CD de sonido fácil de usar</summary>
+  <summary xml:lang="et">Hõlpsasti kasutatav heli-CD-de rippimise rakendus</summary>
+  <summary xml:lang="eu">Audio CDetatik erauzteko aplikazio erraz bat</summary>
+  <summary xml:lang="fi">Helppokäyttöinen CD:n purkusovellus</summary>
+  <summary xml:lang="fr">Une application d'extraction de CD audio facile à utiliser</summary>
+  <summary xml:lang="gl">Unha aplicación de copia de CD de son fácil de usar.</summary>
+  <summary xml:lang="id">Sebuah kemudahan untuk menggunakan aplikasi perabitan CD audio</summary>
+  <summary xml:lang="it">Un'applicazione per l'estrazione dei CD audio semplice da usare</summary>
+  <summary xml:lang="ka">აუდიო დისკიდან სიმღერების გადმოსაწერი აპლიკაცია</summary>
+  <summary xml:lang="ko">쉽게 사용 가능한 오디오 CD 추출 앱</summary>
+  <summary xml:lang="nl">Een gemakkelijk te gebruiken audio-CD toepassing voor rippen</summary>
+  <summary xml:lang="pl">Łatwa w użyciu aplikacja do zgrywania płyt CD</summary>
+  <summary xml:lang="pt">Uma aplicação de extracção de CD's de áudio simples de usar</summary>
+  <summary xml:lang="pt-BR">Um aplicativo fácil de usar para copiar CDs de áudio</summary>
+  <summary xml:lang="ro">Aplicație simplă pentru extragerea discurilor audio</summary>
+  <summary xml:lang="sk">Jednoduchá aplikácia na ripovanie CD</summary>
+  <summary xml:lang="sl">Preprosta aplikacije za pretvorbo zvočnih CD-jev</summary>
+  <summary xml:lang="sv">Ett lättanvänt program för cd-lagring</summary>
+  <summary xml:lang="tr">Kullanımı kolay bir CD dönüştürme uygulaması</summary>
+  <summary xml:lang="uk">Проста у користуванні програма для видобування даних зі звукових компакт-дисків</summary>
+  <summary xml:lang="x-test">xxAn easy to use audio CD ripping applicationxx</summary>
+  <summary xml:lang="zh-CN">一个易于使用的音频 CD 抓取应用程序</summary>
+  <summary xml:lang="zh-TW">簡單易用的音訊 CD 擷取應用程式</summary>
+  <description>
+    <p>
+      The general usage of CDDA-Ripper is self-explanatory. With the first start CDDA-Ripper
+      scans your system for common encoders and creates a common set of profiles
+      automatically for you.
+    </p>
+    <p xml:lang="ca">L'ús general de l'CDDA-Ripper és autoexplicatori. Al primer inici, l'CDDA-Ripper explora el sistema cercant els codificadors usuals i crea automàticament un conjunt normal de perfils.</p>
+    <p xml:lang="ca-valencia">L'ús general d'CDDA-Ripper és autoexplicatori. Al primer inici, CDDA-Ripper explora el sistema buscant els codificadors usuals i crea automàticament un conjunt normal de perfils.</p>
+    <p xml:lang="da">Den generelle brug af CDDA-Ripper er selvforklarende. Ved første start scanner CDDA-Ripper dit system for almindelige indkodere og opretter automatisk et almindeligt sæt profiler til dig.</p>
+    <p xml:lang="de">Die Anwendung von CDDA-Ripper ist selbsterklärend. Beim ersten Start durchsucht CDDA-Ripper Ihr System nach gängigen Kodierern und erstellt automatisch einen gemeinsamen Satz von Profilen für Sie.</p>
+    <p xml:lang="en-GB">The general usage of CDDA-Ripper is self-explanatory. With the first start CDDA-Ripper scans your system for common encoders and creates a common set of profiles automatically for you.</p>
+    <p xml:lang="eo">La ĝenerala uzado de CDDA-Ripper estas memklariga. Je la unua startigo CDDA-Ripper skanas vian sistemon por kutimaj kodiloj kaj aŭtomate kreas komunan aron da profiloj por vi.</p>
+    <p xml:lang="es">El uso general de CDDA-Ripper es autoexplicativo. La primera vez que se inicia CDDA-Ripper busca en el sistema codificadores comunes y crea una conjunto de perfiles comunes de forma automática.</p>
+    <p xml:lang="et">CDDA-Ripperi kasutamine peaks üldiselt olema iseenesest mõistetav. Esmakäivitusel uurib CDDA-Ripperi süsteemis leiduvaid levinud kodeerijaid ja loob sulle automaatselt mitmed üldised profiilid.</p>
+    <p xml:lang="eu">CDDA-Ripper-en erabilera orokorra ulergarria da azalpen osagarririk gabe. Lehen abioan, CDDA-Ripper-ek, zure sistema aztertzen du kodetzaile komunen bila eta ohiko profilen multzo bat sortzen du automatikoki zuretzat.</p>
+    <p xml:lang="fi">CDDA-Ripperin yleisen käytön tulisi olla itsestäänselvää. Ensikäynnistyksellä CDDA-Ripper etsii järjestelmästä koodausohjelmia ja luo automaattisesti yleisen profiilijoukon.</p>
+    <p xml:lang="fr">L'utilisation de base de CDDA-Ripper est extrêmement intuitive. Lors de son premier démarrage, CDDA-Ripper scanne votre système à la recherche des encodeurs les plus utilisés et crée automatiquement une liste de profils génériques.</p>
+    <p xml:lang="gl">O uso xeral de CDDA-Ripper é moi intuitivo. No primeiro inicio CDDA-Ripper examina o sistema en busca de codificadores comúns e crea automaticamente un conxunto común de perfís.</p>
+    <p xml:lang="id">Penggunaan umum CDDA-Ripper adalah cukup jelas. Dengan pemulaian pertama, CDDA-Ripper memindai sistemmu untuk pengenkode pada umumnya dan menciptakan set profil pada umumnya secara otomatis untukmu.</p>
+    <p xml:lang="it">L'uso generale di CDDA-Ripper è autoesplicativo. Al primo avvio CDDA-Ripper ricerca nel sistema i codificatori più comuni, e crea automaticamente un insieme comune di profili.</p>
+    <p xml:lang="ka">CDDA-Ripper-ის ჩვეული გამოყენების არე თვით-ახსნადია. პირველი გაშვებისას CDDA-Ripper-ი თქვენს სისტემას ენკოდერებზე დაასკანერებს და შესაბამის პროფილებს ავტომატურად შეგიქმნით.</p>
+    <p xml:lang="ko">CDDA-Ripper의 일반적인 사용은 어렵지 않습니다. CDDA-Ripper를 처음으로 시작하면 시스템을 검사하여 인코더 설치 여부를 확인하고 적합한 프로필을 생성합니다.</p>
+    <p xml:lang="nl">Het algemene gebruik van CDDA-Ripper verklaart zichzelf. Bij de eerste keer starten van CDDA-Ripper scant uw systeem naar gemeenschappelijke encoders en maakt een gemeenschappelijke set van profielen automatisch voor u aan.</p>
+    <p xml:lang="pl">Ogólne przeznaczenie CDDA-Ripper rozumie się samo przez się. Po pierwszym uruchomieniu, CDDA-Ripper przegląda system w poszukiwaniu powszechnych enkoderów i tworzy powszechne profile gotowe do użytku.</p>
+    <p xml:lang="pt">O uso geral do CDDA-Ripper é relativamente simples. No primeiro arranque, o CDDA-Ripper sonda o seu sistema à procura de codificadores e cria automaticamente um conjunto comum de perfis para si.</p>
+    <p xml:lang="pt-BR">O uso geral do CDDA-Ripper é auto-explicativo. Com a primeira inicialização, o CDDA-Ripper examina seu sistema em busca de codificadores comuns e cria automaticamente um conjunto de perfis para você.</p>
+    <p xml:lang="ro">Utilizarea generală a CDDA-Ripper este intuitivă. La prima pornire, CDDA-Ripper vă scanează sistemul pentru codori comuni și creează automat un set de profile pentru dumneavoastră.</p>
+    <p xml:lang="sl">Splošna uporaba CDDA-Rippera je samoumevna. S prvim zagonom CDDA-Ripper pregleda vaš sistem za skupne enkoderje in samodejno ustvari skupni niz profilov za vas.</p>
+    <p xml:lang="sv">Den allmänna användningen av CDDA-Ripper är självförklarande. När CDDA-Ripper startas för första gången söker det igenom systemet efter vanliga kodare och skapar automatisk en uppsättning av vanliga profiler åt dig.</p>
+    <p xml:lang="tr">Audeks tek kullanım amaçlı bir uygulamadır. İlk çalıştırmada, sisteminizi tarar, yaygın kullanılan kodlayıcıları belirler ve otomatik olarak sizin için profiller oluşturur.</p>
+    <p xml:lang="uk">Загальні принципи користування CDDA-Ripper є доволі очевидними. Під час першого запуску CDDA-Ripper виконує пошук у вашій системі типових засобів кодування і автоматично створює типовий набір профілів.</p>
+    <p xml:lang="x-test">xxThe general usage of CDDA-Ripper is self-explanatory. With the first start CDDA-Ripper scans your system for common encoders and creates a common set of profiles automatically for you.xx</p>
+    <p xml:lang="zh-CN">CDDA-Ripper 的一般用法是不言自明的。 初次启动时，CDDA-Ripper 会扫描您系统中的常见编码器，并自动为您创建一组共同的配置文件。</p>
+  </description>
+  <content_rating type="oars-1.1"/>
+  <url type="homepage">https://github.com/janbar/CDDA-Ripper</url>
+  <provides>
+    <binary>cddaripper</binary>
+  </provides>
+  <launchable type="desktop-id">cddaripper.desktop</launchable>
+</component>

@@ -1,0 +1,7 @@
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+#define CDDARIPPER_VERSION "@PROJECT_VERSION@"
+#define CDDARIPPER_NAME "@PROJECT_NAME@"
+
+#endif

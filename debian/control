@@ -1,0 +1,30 @@
+Source: cddaripper
+Section: misc
+Priority: optional
+Maintainer: janbar <jlbarriere68@gmail.com>
+Build-Depends: cmake, git, flex, bison,
+               debhelper-compat (= 12),
+               qtbase5-dev (>= 5.15),
+               qttools5-dev,
+               qttools5-dev-tools,
+               libqt5dbus5,
+               libqt5svg5,
+               zlib1g-dev,
+               libssl-dev,
+               libdbus-1-dev,
+               libudev-dev,
+               libmusicbrainz5-dev,
+               libcdparanoia-dev
+Standards-Version: 3.9.6
+Homepage: https://github.com/janbar/CDDA-Ripper
+
+Package: cddaripper
+Architecture: any
+Depends: qttranslations5-l10n,
+         libqt5dbus5,
+         libqt5svg5,
+         zlib1g,
+         openssl,
+         ${shlibs:Depends}, ${misc:Depends}
+Recommends: flac, vorbis-tools, lame, faac
+Description: An easy to use audio CD ripping application

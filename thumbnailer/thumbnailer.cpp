@@ -1,0 +1,630 @@
+/*
+ * Copyright (C) 2015 Canonical Ltd.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Authored by: Xavi Garcia <xavi.garcia.mena@canonical.com>
+ *              Michi Henning <michi.henning@canonical.com>
+ *              Jean-Luc Barriere <jlbarriere68@gmail.com>
+ */
+
+#include "thumbnailer.h"
+#include "ratelimiter.h"
+#include "artistinfo.h"
+#include "albuminfo.h"
+#include "diskcachemanager.h"
+#include "netmanager.h"
+
+#include <QImage>
+#include <QNetworkReply>
+#include <QSharedPointer>
+#include <QDebug>
+
+#include <memory>
+#include <ctime>
+#include <atomic>
+#include <bits/stdio.h>
+
+
+#define MAX_BACKLOG 4   // Maximum number of pending requests before the thumbnailer starts queuing them.
+#define MAX_NETWORK_ERROR 2
+
+namespace thumbnailer
+{
+
+  class RequestImpl : public QObject
+  {
+    Q_OBJECT
+  public:
+    RequestImpl(QString const& details,
+            QSize const& requested_size,
+            ThumbnailerImpl& thumbnailer,
+            Job* job,
+            bool trace_client);
+
+    ~RequestImpl();
+
+    void start();
+    QString details() const { return details_; }
+    bool isFinished() const { return finished_; }
+    const QList<QByteArray>& images() const { return images_; }
+    QString errorMessage() const { return error_message_; }
+    bool isValid() const { return is_valid_; }
+    void waitForFinished();
+    void setRequest(Request* request) { public_request_ = request; }
+    void cancel();
+    bool isCancelled() const { return cancelled_; }
+
+  private Q_SLOTS:
+    void callFinished();
+
+  private:
+    void finishWithError(QString const& errorMessage);
+
+    QString details_;
+    QSize requested_size_;
+    ThumbnailerImpl* thumbnailer_;
+    std::unique_ptr<Job> job_;
+    std::function<void()> send_request_;
+
+    RateLimiter::CancelFunc cancel_func_;
+    QString error_message_;
+    bool finished_;
+    bool is_valid_;
+    bool cancelled_; // true if cancel() was called by client
+    bool cancelled_while_waiting_; // true if cancel() succeeded because request was not sent yet
+    bool trace_client_;
+    QList<QByteArray> images_;
+    Request* public_request_;
+  };
+
+  class ThumbnailerImpl : public QObject
+  {
+    Q_OBJECT
+  public:
+    Q_DISABLE_COPY(ThumbnailerImpl)
+    explicit ThumbnailerImpl(const QString& offlineStoragePath,
+            qint64 maxCacheSize);
+    ~ThumbnailerImpl();
+
+    bool isValid() const;
+    void configure(const QString& apiName, const QString& apiKey);
+    const char* apiName();
+    void setTrace(bool trace_client);
+    void clearCache();
+    void reset();
+    
+    QSharedPointer<Request> getAlbumArt(QString const& artist, QString const& album, QSize const& requestedSize, int fetchCount);
+    QSharedPointer<Request> getArtistArt(QString const& artist, QSize const& requestedSize, int fetchCount);
+    QSharedPointer<Request> getThumbnail(QString const& filename, QSize const& requestedSize);
+
+    RateLimiter& limiter();
+    Q_INVOKABLE void pump_limiter();
+
+  public Q_SLOTS:
+    void onNetworkError();      // will provide data only from the cache
+    void onFatalError();        // will reject any future request
+    void onQuotaExceeded();     // will suspend the job scheduler for time
+    void onQuotaTimer();        // will resume the job scheduler
+    void onReply(bool cached);  // will reset the network error count
+
+  private:
+    QSharedPointer<Request> createRequest(QString const& details,
+            QSize const& requested_size,
+            Job* job);
+
+    bool trace_client_;
+    RateLimiter* limiter_;
+    DiskCacheManager* cache_;
+    NetManager* nam_;
+    AbstractAPI* api_;
+    volatile bool valid_;
+
+    volatile bool netFailed_;
+    std::atomic<int> nwerr_;
+    std::atomic<int> fatal_;
+    std::atomic<int> quota_;
+  };
+
+
+  
+  RequestImpl::RequestImpl(QString const& details,
+          QSize const& requested_size,
+          ThumbnailerImpl& thumbnailer,
+          Job* job,
+          bool trace_client)
+  : QObject(nullptr)
+  , details_(details)
+  , requested_size_(requested_size)
+  , thumbnailer_(&thumbnailer)
+  , job_(job)
+  , finished_(false)
+  , is_valid_(false)
+  , cancelled_(false)
+  , cancelled_while_waiting_(false)
+  , trace_client_(trace_client)
+  , public_request_(nullptr)
+  {
+    if (!job_)
+    {
+      finished_ = true;
+      return;
+    }
+    if (!requested_size.isValid())
+    {
+      error_message_ = details_ + ": " + "invalid QSize";
+      qCritical().noquote() << error_message_;
+      finished_ = true;
+      return;
+    }
+  }
+
+  RequestImpl::~RequestImpl()
+  {
+    // If cancel_func_() returns false and we have a pending reply,
+    // the request was sent but the reply has not yet trickled in.
+    // We have to pump the limiter in that case because we'll never
+    // receive the callFinished callback.
+    if (job_  && cancel_func_ && !cancel_func_())
+    {
+      // Delay pumping until we drop back to the event loop. Otherwse,
+      // if the caller destroys a whole bunch of requests at once, we'd
+      // schedule the next request in the queue before the caller gets
+      // a chance to destroy the next request.
+      QMetaObject::invokeMethod(thumbnailer_, "pump_limiter", Qt::QueuedConnection);
+      disconnect();
+    }
+  }
+
+  void RequestImpl::callFinished()
+  {
+    Q_ASSERT(!finished_);
+
+    // If this isn't a fake call from cancel(), pump the limiter.
+    if (!cancelled_ || !cancelled_while_waiting_)
+    {
+      // We depend on calls to pump the limiter exactly once for each request that was sent.
+      // Whenever a (real) DBus call finishes, we inform the limiter, so it can kick off
+      // the next pending job.
+      thumbnailer_->limiter().done();
+    }
+
+    if (cancelled_)
+    {
+      finishWithError("Request cancelled");
+      Q_ASSERT(!job_);
+      return;
+    }
+
+    Q_ASSERT(job_);
+    Q_ASSERT(!finished_);
+
+    switch(job_->error())
+    {
+      case ReplySuccess:
+        // reset the network error count
+        thumbnailer_->onReply(job_->isCached());
+        break; // continue
+
+      case ReplyNetworkError:
+        thumbnailer_->onNetworkError();
+        finishWithError("Thumbnailer: " + job_->errorString());
+        return;
+      case ReplyFatalError:
+        thumbnailer_->onFatalError();
+        finishWithError("Thumbnailer: " + job_->errorString());
+        return;
+      case ReplyQuotaExceeded:
+        thumbnailer_->onQuotaExceeded();
+        // before renew the request all connected signal must be cleared
+        disconnect(job_.get(), SIGNAL(finished()), this, SLOT(callFinished()));
+        public_request_->start(); // reschedule the request
+        return;
+      default:
+        // reset the network error count
+        thumbnailer_->onReply(job_->isCached());
+        finishWithError("Thumbnailer: " + job_->errorString());
+        return;
+    }
+
+    try
+    {
+      for (const QByteArray& raw : job_->images())
+      {
+        QImage img = QImage::fromData(raw); // try make image
+        images_.push_back(raw);
+      }
+      finished_ = true;
+      is_valid_ = true;
+      error_message_ = QLatin1String("");
+      if (trace_client_)
+      {
+        qDebug().noquote() << "Thumbnailer: completed:" << details_;
+      }
+      Q_ASSERT(public_request_);
+      Q_EMIT public_request_->finished();
+      job_.reset();
+    }
+    // LCOV_EXCL_START
+    catch (const std::exception& e)
+    {
+      finishWithError("Thumbnailer: RequestImpl::callFinished(): thumbnailer failed: " +
+              QString::fromStdString(e.what()));
+    }
+    catch (...)
+    {
+      finishWithError(QStringLiteral("Thumbnailer: RequestImpl::callFinished(): unknown exception"));
+    }
+    // LCOV_EXCL_STOP
+  }
+
+  void RequestImpl::finishWithError(QString const& errorMessage)
+  {
+    error_message_ = errorMessage;
+    finished_ = true;
+    is_valid_ = false;
+    images_.clear();
+    if (trace_client_)
+    {
+      if (!cancelled_)
+        qDebug().noquote() << error_message_; // Cancellation is an expected outcome
+      else
+        qDebug().noquote() << "Thumbnailer: cancelled:" << details_;
+    }
+    job_.reset();
+    Q_ASSERT(public_request_);
+    Q_EMIT public_request_->finished();
+  }
+
+  void RequestImpl::start()
+  {
+    // Return immediately if the request was canceled before event is running.
+    if (cancelled_)
+    {
+      return;
+    }
+    // The limiter does not call send_request_ until the request can be sent
+    // without exceeding max_backlog().
+    send_request_ = [this] {
+      connect(job_.get(), SIGNAL(finished()), this, SLOT(callFinished()));
+      job_->start();
+    };
+    cancel_func_ = thumbnailer_->limiter().schedule(send_request_);
+  }
+
+  void RequestImpl::waitForFinished()
+  {
+    if (finished_ || cancelled_)
+    {
+      return;
+    }
+
+    // If we are called before the request made it out of the limiter queue,
+    // we have not sent the request yet and, therefore, don't have a pending
+    // reply. In that case we send the request right here after removing it
+    // from the limiter queue. This guarantees that we always have a reply
+    // to wait on.
+    if (cancel_func_())
+    {
+      Q_ASSERT(!job_);
+      thumbnailer_->limiter().schedule_now(send_request_);
+    }
+  }
+
+  void RequestImpl::cancel()
+  {
+    if (trace_client_)
+    {
+      qDebug().noquote() << "Thumbnailer: cancelling:" << details_;
+    }
+
+    if (finished_ || cancelled_)
+    {
+      if (trace_client_)
+      {
+        qDebug().noquote() << "Thumbnailer: already finished or cancelled:" << details_;
+      }
+      return; // Too late, do nothing.
+    }
+
+    cancelled_ = true;
+    cancelled_while_waiting_ = cancel_func_ && cancel_func_();
+    if (cancelled_while_waiting_)
+    {
+      // We fake the call completion, in order to pump the limiter only from within
+      // the dbus completion callback. We cannot call thumbnailer_.limiter().done() here
+      // because that would schedule the next request in the queue.
+      QMetaObject::invokeMethod(this, "callFinished", Qt::QueuedConnection);
+    }
+  }
+
+  ThumbnailerImpl::ThumbnailerImpl(const QString& offlineStoragePath,
+            qint64 maxCacheSize)
+  : QObject(nullptr)
+  , trace_client_(false)
+  , limiter_(nullptr)
+  , cache_(nullptr)
+  , nam_(nullptr)
+  , api_(nullptr)
+  , valid_(false)
+  , netFailed_(false)
+  , nwerr_(0)
+  , fatal_(0)
+  , quota_(0)
+  {
+    qInfo().noquote() << "installing thumbnails cache in folder \"" + offlineStoragePath + "\"";
+    limiter_ = new RateLimiter(MAX_BACKLOG);
+    cache_ = new DiskCacheManager(offlineStoragePath, maxCacheSize);
+    nam_ = new NetManager();
+    qInfo().noquote() << "thumbnailer is initialized";
+
+    // initialize the random generator
+    srand(static_cast<unsigned>(std::time(nullptr)));
+  }
+
+  ThumbnailerImpl::~ThumbnailerImpl()
+  {
+    delete nam_;
+    delete cache_;
+    delete limiter_;
+  }
+
+  bool ThumbnailerImpl::isValid() const
+  {
+    return valid_;
+  }
+
+  void ThumbnailerImpl::configure(const QString& apiName, const QString &apiKey)
+  {
+    qInfo().noquote() << "thumbnailer: configure API [" + apiName + "]";
+    fatal_.store(0); // reset fatal event count
+    valid_ = false;
+    api_ = nullptr;
+
+    AbstractAPI* api = AbstractAPI::forName(apiName);
+    if (!api || !api->configure(nam_, apiKey))
+      return;
+
+    api_ = api;
+    valid_ = true;
+  }
+
+  const char* ThumbnailerImpl::apiName()
+  {
+    if (api_)
+      return api_->name();
+    return nullptr;
+  }
+
+  void ThumbnailerImpl::setTrace(bool trace_client)
+  {
+    qInfo().noquote() << "thumbnailer: enable trace client";
+    trace_client_ = trace_client;
+  }
+
+  void ThumbnailerImpl::clearCache()
+  {
+    qInfo().noquote() << "thumbnailer: clear cache";
+    cache_->clear();
+  }
+
+  void ThumbnailerImpl::reset()
+  {
+    qInfo().noquote() << "thumbnailer: reset state";
+    nwerr_.store(0);
+    netFailed_ = false;
+    fatal_.store(0);
+    // check the api is configured
+    valid_ = (api_ ? true : false);
+  }
+
+  QSharedPointer<Request> ThumbnailerImpl::getAlbumArt(QString const& artist, QString const& album, QSize const& requestedSize, int fetchCount)
+  {
+    QString details;
+    QTextStream s(&details, QIODevice::WriteOnly);
+    s << "getAlbumArt: (" << requestedSize.width() << "," << requestedSize.height()
+            << ") \"" << artist << "\", \"" << album << "\"";
+    Job* job = new Job(new AlbumInfo(cache_, nam_, api_, artist, album, requestedSize, fetchCount, netFailed_));
+    return createRequest(details, requestedSize, job);
+  }
+
+  QSharedPointer<Request> ThumbnailerImpl::getArtistArt(QString const& artist, QSize const& requestedSize, int fetchCount)
+  {
+    QString details;
+    QTextStream s(&details, QIODevice::WriteOnly);
+    s << "getArtistArt: (" << requestedSize.width() << "," << requestedSize.height()
+            << ") \"" << artist << "\"";
+    Job* job = new Job(new ArtistInfo(cache_, nam_, api_, artist, requestedSize, fetchCount, netFailed_));
+    return createRequest(details, requestedSize, job);
+  }
+
+  QSharedPointer<Request> ThumbnailerImpl::createRequest(QString const& details,
+          QSize const& requested_size,
+          Job* job)
+  {
+    if (trace_client_)
+    {
+      qDebug().noquote() << "Thumbnailer:" << details;
+    }
+    auto request_impl = new RequestImpl(details, requested_size, *this, job, trace_client_);
+    auto request = QSharedPointer<Request>(new Request(request_impl));
+    if (request->isFinished())
+      QMetaObject::invokeMethod(request.data(), "finished", Qt::QueuedConnection);
+    else
+      QMetaObject::invokeMethod(request.data(), "start", Qt::QueuedConnection);
+    return request;
+  }
+
+  RateLimiter& ThumbnailerImpl::limiter()
+  {
+    return *limiter_;
+  }
+
+  void ThumbnailerImpl::pump_limiter()
+  {
+    return limiter_->pump();
+  }
+
+  void ThumbnailerImpl::onNetworkError()
+  {
+    if (nwerr_.fetch_add(1) > MAX_NETWORK_ERROR && !netFailed_)
+    {
+      qWarning().noquote() << "thumbnailer: remote call disabled due to network error";
+      netFailed_ = true;
+    }
+  }
+
+  void ThumbnailerImpl::onFatalError()
+  {
+    if (fatal_.fetch_add(1) >= 0 && valid_)
+    {
+      qWarning().noquote() << "thumbnailer: service disabled due to fatal error";
+      valid_ = false;
+    }
+  }
+
+  void ThumbnailerImpl::onQuotaExceeded()
+  {
+    if (quota_.fetch_add(1) == 0)
+    {
+      qInfo().noquote() << "thumbnailer: service suspended due to exceeded quota limit";
+      limiter_->suspend();
+      QTimer::singleShot(api_->delayOnQuotaExceeded(), this, SLOT(onQuotaTimer()));
+    }
+  }
+
+  void ThumbnailerImpl::onQuotaTimer()
+  {
+    qInfo().noquote() << "thumbnailer: service resumed after timeout";
+    quota_.store(0);
+    limiter_->resume();
+  }
+
+  void ThumbnailerImpl::onReply(bool cached)
+  {
+    // reset the network error counter
+    if (!cached)
+      nwerr_.store(0);
+  }
+
+  Request::Request(RequestImpl* impl)
+  : p_(impl)
+  {
+    impl->setRequest(this);
+  }
+
+  Request::~Request()
+  {
+  }
+
+  void Request::start()
+  {
+    p_->start();
+  }
+
+  QString Request::details() const
+  {
+    return p_->details();
+  }
+
+  bool Request::isFinished() const
+  {
+    return p_->isFinished();
+  }
+
+  const QList<QByteArray>& Request::images() const
+  {
+    return p_->images();
+  }
+
+  QString Request::errorMessage() const
+  {
+    return p_->errorMessage();
+  }
+
+  bool Request::isValid() const
+  {
+    return p_->isValid();
+  }
+
+  void Request::waitForFinished()
+  {
+    p_->waitForFinished();
+  }
+
+  void Request::cancel()
+  {
+    p_->cancel();
+  }
+
+  bool Request::isCancelled() const
+  {
+    return p_->isCancelled();
+  }
+
+  Thumbnailer::Thumbnailer(const QString& offlineStoragePath,
+          qint64 maxCacheSize)
+  : p_(new ThumbnailerImpl(offlineStoragePath, maxCacheSize))
+  {
+  }
+
+  Thumbnailer::~Thumbnailer()
+  {
+  }
+  
+  QSharedPointer<Request> Thumbnailer::getAlbumArt(QString const& artist, QString const& album, QSize const& requestedSize, int fetchCount)
+  {
+    return p_->getAlbumArt(artist, album, requestedSize, fetchCount);
+  }
+
+  QSharedPointer<Request> Thumbnailer::getArtistArt(QString const& artist, QSize const& requestedSize, int fetchCount)
+  {
+    return p_->getArtistArt(artist, requestedSize, fetchCount);
+  }
+
+  bool Thumbnailer::isValid()
+  {
+    return p_->isValid();
+  }
+
+  void Thumbnailer::configure(const QString& apiName, const QString &apiKey)
+  {
+    p_->configure(apiName, apiKey);
+  }
+
+  QString Thumbnailer::apiName()
+  {
+    const char* name = p_->apiName();
+    if (name)
+      return QString(name);
+    return QString();
+  }
+
+  void Thumbnailer::setTrace(bool trace_client)
+  {
+    p_->setTrace(trace_client);
+  }
+
+  void Thumbnailer::clearCache()
+  {
+    p_->clearCache();
+  }
+
+  void Thumbnailer::reset()
+  {
+    p_->reset();
+  }
+
+}
+
+#include "thumbnailer.moc"

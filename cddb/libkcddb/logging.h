@@ -1,0 +1,8 @@
+#ifndef LIBKCDDB_LOGGING_H
+#define LIBKCDDB_LOGGING_H
+
+#include <QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(LIBKCDDB)
+
+#endif
