@@ -13,9 +13,11 @@ and drop the cover of your choice.
 
 You can install CDDA-Ripper on your Ubuntu desktop by the following:
 
+```
 sudo add-apt-repository ppa:jlbarriere68/cddaripper
 sudo apt-get update
 sudo apt-get install cddaripper
+```
 
 ### Prerequisites
 
