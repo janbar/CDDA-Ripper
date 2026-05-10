@@ -38,6 +38,7 @@
 
 #include "preferences.h"
 #include "widgets/cddaheaderwidget.h"
+#include "widgets/waitingspinnerwidget.h"
 
 #include "dialogs/errordialog.h"
 #include "dialogs/extractingprogressdialog.h"
@@ -121,6 +122,8 @@ private:
 
     TmpDir* tbn_tmp_Dir;
     thumbnailer::Thumbnailer* tbn;
+
+    WaitingSpinnerWidget * spinner;
 };
 
 #endif

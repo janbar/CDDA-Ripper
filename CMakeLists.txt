@@ -70,6 +70,7 @@ set(cddaripper_SRCS
     utils/cuesheetwriter.cpp
     utils/tmpdir.cpp
     utils/discidcalculator.cpp
+    widgets/waitingspinnerwidget.cpp
     widgets/cddaheaderwidget.cpp
     widgets/generalsettingswidget.cpp
     widgets/devicewidget.cpp

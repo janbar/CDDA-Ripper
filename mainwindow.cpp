@@ -175,10 +175,15 @@ void MainWindow::audio_disc_removed()
 
 void MainWindow::cddb_lookup_start()
 {
+    spinner->start();
+    action_collection["fetch"]->setEnabled(false);
 }
 
 void MainWindow::cddb_lookup_done(const bool successful)
 {
+    spinner->stop();
+    action_collection["fetch"]->setEnabled(true);
+
     if (!successful) {
         ErrorDialog::show(this,
                           tr("CDDB lookup failed, with the following error:\n%1").arg(cdda_model->lastError().message()),
@@ -452,6 +457,17 @@ void MainWindow::setup_layout()
     connect(cdda_tree_view, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(cdda_context_menu(const QPoint &)));
     connect(cdda_tree_view, SIGNAL(clicked(const QModelIndex &)), SLOT(toggle(const QModelIndex &)));
     connect(cdda_model, SIGNAL(selectionChanged(const int)), this, SLOT(selection_changed(const int)));
+
+    spinner = new WaitingSpinnerWidget(cdda_tree_view, true, true);
+    spinner->setColor(QApplication::palette().color(QPalette::Disabled, QPalette::WindowText));
+    spinner->setInnerRadius(25);
+    spinner->setLineLength(25);
+    spinner->setLineWidth(10);
+    spinner->setRoundness(20.0);
+    spinner->setNumberOfLines(10);
+    spinner->setRevolutionsPerSecond(0.8);
+    spinner->setMinimumTrailOpacity(15.0);
+    spinner->setTrailFadePercentage(70.0);
 
     cdda_header_dock = new QDockWidget(tr("Album Data"), this);
     cdda_header_dock->setObjectName("cdda_header_dock");
