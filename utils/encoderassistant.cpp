@@ -431,7 +431,6 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
     }
 
     case EncoderAssistant::CUSTOM: {
-        arguments.push_back("/bin/sh");
         arguments.push_back(parameters.value(ENCODER_CUSTOM_COMMAND_SCHEME_KEY, ENCODER_CUSTOM_COMMAND_SCHEME).toString());
         return arguments;
     }

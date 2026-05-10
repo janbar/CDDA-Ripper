@@ -15,6 +15,7 @@
 
 #include "utils/cachedimage.h"
 #include "utils/schemeparser.h"
+#include "utils/encoderassistant.h"
 
 class EncoderWrapper : public QObject
 {
@@ -24,6 +25,7 @@ public:
     explicit EncoderWrapper(QObject *parent,
                             const QStringList& command,
                             const QString &encoderName,
+                            EncoderAssistant::Encoder encoderType,
                             const bool deleteFractionFiles = true);
     ~EncoderWrapper() override;
 
@@ -64,6 +66,7 @@ Q_SIGNALS:
 private:
     QStringList encoder_command;
     QString encoder_name;
+    EncoderAssistant::Encoder encoder_type;
     bool delete_fraction_files;
 
     QString encoder;

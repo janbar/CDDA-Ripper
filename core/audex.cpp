@@ -26,6 +26,7 @@ Audex::Audex(QWidget *parent, ProfileModel *profile_model, CDDAModel *cdda_model
     encoder_wrapper = new EncoderWrapper(this,
                                          profile_model->getSelectedEncoderSchemeFromCurrentIndex(),
                                          profile_model->getSelectedEncoderNameAndVersion(),
+                                         profile_model->getSelectedEncoderFromCurrentIndex(),
                                          Preferences::deletePartialFiles());
 
     if (!encoder_wrapper) {

@@ -15,11 +15,12 @@
 #include <QRegularExpressionMatch>
 #endif
 
-EncoderWrapper::EncoderWrapper(QObject *parent, const QStringList& command, const QString &encoderName, const bool deleteFractionFiles)
+EncoderWrapper::EncoderWrapper(QObject *parent, const QStringList& command, const QString &encoderName, EncoderAssistant::Encoder encoderType, const bool deleteFractionFiles)
     : QObject(parent)
 {
     encoder_command = command;
     encoder_name = encoderName;
+    encoder_type = encoderType;
     delete_fraction_files = deleteFractionFiles;
 
     connect(&proc, SIGNAL(readyReadStandardError()), this, SLOT(parseOutput()));
@@ -69,33 +70,47 @@ bool EncoderWrapper::encode(int n,
 
     QString cmd;
     QStringList args;
+
+    if (encoder_type == EncoderAssistant::CUSTOM) {
+          cmd = "sh";
+          args.push_back("-c");
+    }
+
     SchemeParser schemeparser;
     for (const QString& v : encoder_command)
     {
-      if (cmd.isEmpty()) {
-        cmd = v;
-        qDebug() << v;
-      } else {
-          QString tmp = schemeparser.parseCommandScheme(v,
-                                                        input,
-                                                        output,
-                                                        n,
-                                                        cdno,
-                                                        trackoffset,
-                                                        nooftracks,
-                                                        artist,
-                                                        album,
-                                                        tartist,
-                                                        ttitle,
-                                                        date,
-                                                        genre,
-                                                        suffix,
-                                                        cover,
-                                                        tmppath,
-                                                        encoder_name);
-          args.push_back(tmp);
-          qDebug() << tmp;
-      }
+        if (cmd.isEmpty()) {
+            qDebug() << v;
+            cmd = v;
+        } else {
+            QString tmp = schemeparser.parseCommandScheme(v,
+                                                          input,
+                                                          output,
+                                                          n,
+                                                          cdno,
+                                                          trackoffset,
+                                                          nooftracks,
+                                                          artist,
+                                                          album,
+                                                          tartist,
+                                                          ttitle,
+                                                          date,
+                                                          genre,
+                                                          suffix,
+                                                          cover,
+                                                          tmppath,
+                                                          encoder_name);
+
+            // using custom encoder the command is wrapped into a shell script,
+            // therefore few special characters should be escaped or discarded
+            if (encoder_type == EncoderAssistant::CUSTOM) {
+                tmp.replace(QChar('!'), QChar('_')); // discard !
+                tmp.replace(QChar('$'), "\\$"); // escape $
+            }
+
+            args.push_back(tmp);
+            qDebug() << tmp;
+        }
     }
 
     proc.start(cmd, args);
