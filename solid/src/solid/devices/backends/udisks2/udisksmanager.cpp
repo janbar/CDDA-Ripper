@@ -237,9 +237,9 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
 
     if (leftInterfaces.isEmpty()) {
         // remove the device if the last interface is removed
-        Q_EMIT deviceRemoved(udi);
         m_deviceCache.removeAll(udi);
         DeviceBackend::destroyBackend(udi);
+        Q_EMIT deviceRemoved(udi);
     } else {
         /*
          * Changes in the interface composition may change if a device
@@ -271,9 +271,9 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
 
     if (m_deviceCache.contains(udi)) { // we know the optdisc
         if (size == 0) { // got removed
-            Q_EMIT deviceRemoved(udi);
             m_deviceCache.removeAll(udi);
             DeviceBackend::destroyBackend(udi);
+            Q_EMIT deviceRemoved(udi);
         } else { // got loaded
             Q_EMIT deviceAdded(udi);
         }
