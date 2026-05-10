@@ -142,7 +142,11 @@ const QString Parameters::toString(const QChar &sep)
         if (i != p_parameters.cbegin())
             string.append(sep);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         if (value.type() == QVariant::String || value.type() == QVariant::DateTime || value.type() == QVariant::Date || value.type() == QVariant::Time) {
+#else
+        if (value.typeId() == QVariant::String || value.typeId() == QVariant::DateTime || value.typeId() == QVariant::Date || value.typeId() == QVariant::Time) {
+#endif
             QString escaped = value.toString().replace(QChar('\\'), "\\\\").replace(QChar('\''),"\\'");
             string.append(i.key() + "='" + escaped + "'");
         } else {
