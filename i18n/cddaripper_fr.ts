@@ -4,7 +4,7 @@
 <context>
     <name>Audex</name>
     <message>
-        <location filename="../core/audex.cpp" line="+99"/>
+        <location filename="../core/audex.cpp" line="+102"/>
         <source>No profile selected. Operation abort.</source>
         <translation>Aucun profil sélectionné. Opération interrompue.</translation>
     </message>
@@ -557,7 +557,7 @@ complémentaires&#xa0;:</translation>
     <message>
         <location filename="../dialogs/commandwizarddialog.cpp" line="+18"/>
         <source>Command Scheme Wizard</source>
-        <translation></translation>
+        <translation>Assistant de commandes</translation>
     </message>
     <message>
         <location line="+75"/>
@@ -701,12 +701,12 @@ complémentaires&#xa0;:</translation>
     <message>
         <location filename="../widgets/customwidgetUI.ui" line="+29"/>
         <source>Command Scheme:</source>
-        <translation></translation>
+        <translation>Commande :</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Suffix:</source>
-        <translation>Suffixe&#xa0;:</translation>
+        <translation>Suffixe :</translation>
     </message>
 </context>
 <context>
@@ -735,12 +735,12 @@ complémentaires&#xa0;:</translation>
 <context>
     <name>EncoderWrapper</name>
     <message>
-        <location filename="../utils/encoderwrapper.cpp" line="+66"/>
+        <location filename="../utils/encoderwrapper.cpp" line="+67"/>
         <source>Command scheme is empty.</source>
-        <translation></translation>
+        <translation>La commande n&apos;est pas renseignée.</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+54"/>
         <source>Encoding track %1...</source>
         <translation>Encodage de la piste %1...</translation>
     </message>
@@ -826,7 +826,7 @@ complémentaires&#xa0;:</translation>
         <translation>Extraire et encoder</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <location line="+132"/>
         <source>Ripping whole CD as single track</source>
         <translation>Extraction audio d&apos;un CD entier sous la forme d&apos;une piste unique</translation>
@@ -963,7 +963,7 @@ Dans certains cas, il se pourrait que seul ce lecteur rencontre des difficultés
 Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+19"/>
         <source>Encoding protocol</source>
         <translation>Protocole d&apos;encodage</translation>
     </message>
@@ -1696,7 +1696,7 @@ Séparateur&#xa0;:</translation>
     <message>
         <location line="+7"/>
         <source>This setting overrides any parameterized variable settings in the scheme</source>
-        <translation></translation>
+        <translation>Ce paramètre remplace tous les paramètres de variables paramétrées dans le motif.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1762,7 +1762,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour le profil. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Profile encoder is not defined.</source>
         <translation>L&apos;encodeur de profils n&apos;est pas défini.</translation>
     </message>
@@ -1772,7 +1772,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué d&apos;encodeur pour le profil. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Profile filename scheme is not defined.</source>
         <translation>Le schéma de nom de fichier du profil n&apos;est pas défini.</translation>
     </message>
@@ -1782,7 +1782,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas défini de schéma de nom de fichier pour le profil. Merci de le faire.</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <source>The image file format is unknown.</source>
         <translation>Le format de fichier d&apos;image est inconnu.</translation>
     </message>
@@ -1792,7 +1792,7 @@ Séparateur&#xa0;:</translation>
         <translation>Le format de fichier d&apos;image que vous avez indiqué est inconnu. Veuillez choisir un de ces formats&#xa0;: «&#xa0;JPG&#xa0;»&#xa0;/ «&#xa0;JPEG&#xa0;», «&#xa0;PNG&#xa0;» ou «&#xa0;BMP&#xa0;».</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Cover name must not be empty.</source>
         <translation>Le nom de la couverture ne doit pas être vide.</translation>
     </message>
@@ -1802,7 +1802,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour la couverture. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>The playlist file format is unknown.</source>
         <translation>Le format de fichier de la liste de lecture est inconnu.</translation>
     </message>
@@ -1812,7 +1812,7 @@ Séparateur&#xa0;:</translation>
         <translation>Le format de fichier de la liste de lecture que vous avez indiqué est inconnu. Veuillez choisir un de ces formats&#xa0;: «&#xa0;M3U&#xa0;», «&#xa0;PLS&#xa0;» ou «&#xa0;XSPF&#xa0;».</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Playlist name must not be empty.</source>
         <translation>Le nom de la liste de lecture ne doit pas être vide.</translation>
     </message>
@@ -1822,7 +1822,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour la liste de lecture. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>Info text name must not be empty.</source>
         <translation>Le nom du texte d&apos;informations ne doit pas être vide.</translation>
     </message>
@@ -1832,7 +1832,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour le fichier texte d&apos;informations. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Info text file name suffix must not be empty.</source>
         <translation>Le suffixe du nom de fichier texte d&apos;informations ne doit pas être vide.</translation>
     </message>
@@ -1842,7 +1842,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de suffixe pour le fichier texte d&apos;informations. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>The hashlist file format is unknown.</source>
         <translation>Le format de fichier de la liste de hachage est inconnu.</translation>
     </message>
@@ -1852,7 +1852,7 @@ Séparateur&#xa0;:</translation>
         <translation>Le format de fichier de la liste de hachage que vous avez indiqué est inconnu. Veuillez choisir un de ces formats&#xa0;: «&#xa0;SFV&#xa0;», «&#xa0;MD5&#xa0;».</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Hashlist name must not be empty.</source>
         <translation>Le nom de la liste de hachage ne doit pas être vide.</translation>
     </message>
@@ -1862,7 +1862,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour la liste de hachage. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Cue filename name must not be empty.</source>
         <translation>Un nom de fichier de feuille de montage ne doit pas être vide.</translation>
     </message>
@@ -1872,7 +1872,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour la feuille de montage. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Filename name must not be empty.</source>
         <translation>Un nom de nom de fichier ne doit pas être vide.</translation>
     </message>
@@ -1882,7 +1882,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour le fichier audio unique. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+34"/>
         <source>Profile name already exists.</source>
         <translation>Le nom du profil existe déjà.</translation>
     </message>
@@ -1892,7 +1892,7 @@ Séparateur&#xa0;:</translation>
         <translation>Le nom de votre profil %1 existe déjà dans l&apos;ensemble des profils. Veuillez en choisir un unique.</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+18"/>
         <source>Profile index already exists.</source>
         <translation>L&apos;index de profil existe déjà.</translation>
     </message>
@@ -1902,7 +1902,7 @@ Séparateur&#xa0;:</translation>
         <translation>Votre index de profil %1 existe déjà dans l&apos;ensemble des profils. Veuillez en choisir un unique.</translation>
     </message>
     <message>
-        <location line="+123"/>
+        <location line="+125"/>
         <source>Unknown error. No index found in profile model.</source>
         <translation>Erreur inconnue. Aucun index n&apos;a été trouvé dans le modèle de profil.</translation>
     </message>
@@ -2033,7 +2033,8 @@ Séparateur&#xa0;:</translation>
     </message>
     <message>
         <location filename="../utils/parameters.cpp" line="+61"/>
-        <location line="+22"/>
+        <location line="+14"/>
+        <location line="+15"/>
         <location line="+8"/>
         <location line="+19"/>
         <source>Illegal character found at index %1: &apos;%2&apos;</source>
@@ -2048,7 +2049,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>SchemeParser</name>
     <message>
-        <location filename="../utils/schemeparser.cpp" line="+77"/>
+        <location filename="../utils/schemeparser.cpp" line="+75"/>
         <source>Illegal character found at index %1: &apos;%2&apos;</source>
         <translation>Le caractère est invalide à la position  %1: &apos;%2&apos;</translation>
     </message>

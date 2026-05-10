@@ -4,7 +4,7 @@
 <context>
     <name>Audex</name>
     <message>
-        <location filename="../core/audex.cpp" line="+99"/>
+        <location filename="../core/audex.cpp" line="+102"/>
         <source>No profile selected. Operation abort.</source>
         <translation>No profile selected. Operation abort.</translation>
     </message>
@@ -466,7 +466,7 @@ Information:</translation>
     <message>
         <location line="+62"/>
         <source>RIP</source>
-        <translation></translation>
+        <translation>RIP</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -557,7 +557,7 @@ Information:</translation>
     <message>
         <location filename="../dialogs/commandwizarddialog.cpp" line="+18"/>
         <source>Command Scheme Wizard</source>
-        <translation></translation>
+        <translation>Command Scheme Wizard</translation>
     </message>
     <message>
         <location line="+75"/>
@@ -701,7 +701,7 @@ Information:</translation>
     <message>
         <location filename="../widgets/customwidgetUI.ui" line="+29"/>
         <source>Command Scheme:</source>
-        <translation></translation>
+        <translation>Command Scheme:</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -735,12 +735,12 @@ Information:</translation>
 <context>
     <name>EncoderWrapper</name>
     <message>
-        <location filename="../utils/encoderwrapper.cpp" line="+66"/>
+        <location filename="../utils/encoderwrapper.cpp" line="+67"/>
         <source>Command scheme is empty.</source>
-        <translation></translation>
+        <translation>Command scheme is empty.</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+54"/>
         <source>Encoding track %1...</source>
         <translation>Encoding track %1...</translation>
     </message>
@@ -826,7 +826,7 @@ Information:</translation>
         <translation>Rip And Encode</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <location line="+132"/>
         <source>Ripping whole CD as single track</source>
         <translation>Ripping whole CD as single track</translation>
@@ -963,7 +963,7 @@ In some cases, it might be that only this drive has difficulty ripping audio dat
 However, do you want to continue extraction?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+19"/>
         <source>Encoding protocol</source>
         <translation>Encoding protocol</translation>
     </message>
@@ -1297,7 +1297,7 @@ Divider:</translation>
     <message>
         <location line="+8"/>
         <source>Fetch Data</source>
-        <translation></translation>
+        <translation>Fetch Data</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1307,12 +1307,12 @@ Divider:</translation>
     <message>
         <location line="+7"/>
         <source>Preferences</source>
-        <translation></translation>
+        <translation>Preferences</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Split Titles</source>
-        <translation></translation>
+        <translation>Split Titles</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -1347,17 +1347,17 @@ Divider:</translation>
     <message>
         <location line="+5"/>
         <source>Quit</source>
-        <translation></translation>
+        <translation>Quit</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>About</source>
-        <translation></translation>
+        <translation>About</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Album Data</source>
-        <translation></translation>
+        <translation>Album Data</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -1386,12 +1386,12 @@ Divider:</translation>
     <message>
         <location line="+6"/>
         <source>Settings</source>
-        <translation></translation>
+        <translation>Settings</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Tools</source>
-        <translation></translation>
+        <translation>Tools</translation>
     </message>
 </context>
 <context>
@@ -1444,12 +1444,12 @@ Divider:</translation>
     <message>
         <location filename="../preferences.cpp" line="+133"/>
         <source>General Settings</source>
-        <translation></translation>
+        <translation>General Settings</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Device Settings</source>
-        <translation></translation>
+        <translation>Device Settings</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1459,7 +1459,7 @@ Divider:</translation>
     <message>
         <location line="+17"/>
         <source>OK</source>
-        <translation></translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -1696,7 +1696,7 @@ Divider:</translation>
     <message>
         <location line="+7"/>
         <source>This setting overrides any parameterized variable settings in the scheme</source>
-        <translation></translation>
+        <translation>This setting overrides any parameterized variable settings in the scheme</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1762,7 +1762,7 @@ Divider:</translation>
         <translation>You have given no name for the profile. Please set one.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Profile encoder is not defined.</source>
         <translation>Profile encoder is not defined.</translation>
     </message>
@@ -1772,17 +1772,17 @@ Divider:</translation>
         <translation>You have given no encoder for the profile. Please set one.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Profile filename scheme is not defined.</source>
-        <translation></translation>
+        <translation>Profile filename scheme is not defined.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>You have given no filename scheme for the profile. Please set one.</source>
-        <translation></translation>
+        <translation>You have given no filename scheme for the profile. Please set one.</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <source>The image file format is unknown.</source>
         <translation>The image file format is unknown.</translation>
     </message>
@@ -1792,7 +1792,7 @@ Divider:</translation>
         <translation>Your given image file format is unknown. Please choose on of these formats: JPG/JPEG, PNG or BMP.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Cover name must not be empty.</source>
         <translation>Cover name must not be empty.</translation>
     </message>
@@ -1802,7 +1802,7 @@ Divider:</translation>
         <translation>You have given no name for the cover. Please set one.</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>The playlist file format is unknown.</source>
         <translation>The playlist file format is unknown.</translation>
     </message>
@@ -1812,7 +1812,7 @@ Divider:</translation>
         <translation>Your given playlist file format is unknown. Please choose on of these formats: M3U, PLS or XSPF.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>Playlist name must not be empty.</source>
         <translation>Playlist name must not be empty.</translation>
     </message>
@@ -1822,7 +1822,7 @@ Divider:</translation>
         <translation>You have given no name for the playlist. Please set one.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>Info text name must not be empty.</source>
         <translation>Info text name must not be empty.</translation>
     </message>
@@ -1832,7 +1832,7 @@ Divider:</translation>
         <translation>You have given no name for the info text file. Please set one.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Info text file name suffix must not be empty.</source>
         <translation>Info text file name suffix must not be empty.</translation>
     </message>
@@ -1842,7 +1842,7 @@ Divider:</translation>
         <translation>You have given no suffix for the info text file. Please set one.</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>The hashlist file format is unknown.</source>
         <translation>The hashlist file format is unknown.</translation>
     </message>
@@ -1852,7 +1852,7 @@ Divider:</translation>
         <translation>Your given hashlist file format is unknown. Please choose on of these formats: SFV, MD5.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Hashlist name must not be empty.</source>
         <translation>Hashlist name must not be empty.</translation>
     </message>
@@ -1862,7 +1862,7 @@ Divider:</translation>
         <translation>You have given no name for the hashlist. Please set one.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Cue filename name must not be empty.</source>
         <translation>Cue filename name must not be empty.</translation>
     </message>
@@ -1872,7 +1872,7 @@ Divider:</translation>
         <translation>You have given no name for the cue sheet. Please set one.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Filename name must not be empty.</source>
         <translation>Filename name must not be empty.</translation>
     </message>
@@ -1882,7 +1882,7 @@ Divider:</translation>
         <translation>You have given no name for the single audio file. Please set one.</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+34"/>
         <source>Profile name already exists.</source>
         <translation>Profile name already exists.</translation>
     </message>
@@ -1892,7 +1892,7 @@ Divider:</translation>
         <translation>Your profile name %1 already exists in the set of profiles. Please choose a unique one.</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+18"/>
         <source>Profile index already exists.</source>
         <translation>Profile index already exists.</translation>
     </message>
@@ -1902,7 +1902,7 @@ Divider:</translation>
         <translation>Your profile index %1 already exists in the set of profiles. Please choose a unique one.</translation>
     </message>
     <message>
-        <location line="+123"/>
+        <location line="+125"/>
         <source>Unknown error. No index found in profile model.</source>
         <translation>Unknown error. No index found in profile model.</translation>
     </message>
@@ -1960,7 +1960,7 @@ Divider:</translation>
     <message>
         <location line="+6"/>
         <source>created on </source>
-        <translation></translation>
+        <translation>created on </translation>
     </message>
 </context>
 <context>
@@ -2033,7 +2033,8 @@ Divider:</translation>
     </message>
     <message>
         <location filename="../utils/parameters.cpp" line="+61"/>
-        <location line="+22"/>
+        <location line="+14"/>
+        <location line="+15"/>
         <location line="+8"/>
         <location line="+19"/>
         <source>Illegal character found at index %1: &apos;%2&apos;</source>
@@ -2048,7 +2049,7 @@ Divider:</translation>
 <context>
     <name>SchemeParser</name>
     <message>
-        <location filename="../utils/schemeparser.cpp" line="+77"/>
+        <location filename="../utils/schemeparser.cpp" line="+75"/>
         <source>Illegal character found at index %1: &apos;%2&apos;</source>
         <translation></translation>
     </message>
@@ -2167,7 +2168,7 @@ Divider:</translation>
     <message>
         <location filename="../dialogs/simpleschemewizarddialog.cpp" line="+18"/>
         <source>Scheme Wizard</source>
-        <translation></translation>
+        <translation>Scheme Wizard</translation>
     </message>
     <message>
         <location line="+70"/>

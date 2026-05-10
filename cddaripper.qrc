@@ -36,5 +36,6 @@
         <file>images/nocover.png</file>
         <file>i18n/cddaripper_en.qm</file>
         <file>i18n/cddaripper_fr.qm</file>
+        <file>i18n/cddaripper_de.qm</file>
     </qresource>
 </RCC>
