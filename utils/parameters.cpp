@@ -66,16 +66,23 @@ void Parameters::fromString(const QString &string, const QChar &sep)
 
             if (is_in_value_quote) {
 
-                if (c == QChar('\'') || c == QChar('"')) {
+                if (c == QChar('\'')) {
                     is_in_value_quote = false;
                     is_in_value = false;
                 } else {
+                    if (c == QChar('\\')) {
+                        if (string.size() <= ++i) {
+                            p_error_string = QObject::tr("Illegal character found at index %1: '%2'").arg(i).arg(c);
+                            return;
+                        }
+                        c = string.at(i);
+                    }
                     value.append(c);
                 }
 
             } else {
 
-                if (c == QChar('\'') || c == QChar('"')) {
+                if (c == QChar('\'')) {
                     if (value.isEmpty()) {
                         is_in_value_quote = true;
                         value_is_quoted = true;
@@ -134,11 +141,13 @@ const QString Parameters::toString(const QChar &sep)
         QVariant value = i.value();
         if (i != p_parameters.cbegin())
             string.append(sep);
-        //qt6: if (value.metaType() == QMetaType::QString || value.metaType() == QMetaType::QDateTime || value.metaType() == QMetaType::QDate || value.metaType() == QMetaType::QTime)
-        if (value.type() == QVariant::String || value.type() == QVariant::DateTime || value.type() == QVariant::Date || value.type() == QVariant::Time)
-            string.append(i.key() + "='" + value.toString() + "'");
-        else
+
+        if (value.type() == QVariant::String || value.type() == QVariant::DateTime || value.type() == QVariant::Date || value.type() == QVariant::Time) {
+            QString escaped = value.toString().replace(QChar('\\'), "\\\\").replace(QChar('\''),"\\'");
+            string.append(i.key() + "='" + escaped + "'");
+        } else {
             string.append(i.key() + "=" + value.toString());
+        }
     }
 
     return string;
