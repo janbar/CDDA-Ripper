@@ -23,6 +23,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QTranslator>
+#include <QLibraryInfo>
 #include <QPalette>
 
 #include "goodstyle.h"
@@ -30,67 +31,85 @@
 #include "mainwindow.h"
 #include "utils/tmpdir.h"
 
-void prepareTranslator(QTranslator& translator, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
-void setupApp(QGuiApplication& app, QTranslator& translator);
+void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
+void setupApp(QGuiApplication& app);
 
 int main(int argc, char* argv[])
 {
-    QGuiApplication::setApplicationName("cddaripper");
-    QGuiApplication::setApplicationDisplayName("CDDA-Ripper");
-    QGuiApplication::setOrganizationName("io.github.janbar");
+  QGuiApplication::setApplicationName("cddaripper");
+  QGuiApplication::setApplicationDisplayName("CDDA-Ripper");
+  QGuiApplication::setOrganizationName("io.github.janbar");
 
-    QApplication app(argc, argv);
+  QApplication app(argc, argv);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+  app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 #endif
-    QApplication::setStyle(new GoodStyle);
-    QTranslator translator;
-    setupApp(app, translator);
+  QApplication::setStyle(new GoodStyle);
+  setupApp(app);
 
-//    QPalette darkPalette;
-//    darkPalette.setColor(QPalette::Window, QColor(69,69,69));
-//    darkPalette.setColor(QPalette::WindowText, QColor(190,190,190));
-//    darkPalette.setColor(QPalette::Base, QColor(48,48,48));
-//    darkPalette.setColor(QPalette::AlternateBase, QColor(69,69,69));
-//    darkPalette.setColor(QPalette::ToolTipBase, QColor(48,48,48));
-//    darkPalette.setColor(QPalette::ToolTipText, QColor(220,220,220));
-//    darkPalette.setColor(QPalette::Text, QColor(240,240,240));
-//    darkPalette.setColor(QPalette::Button, QColor(69,69,69));
-//    darkPalette.setColor(QPalette::ButtonText, QColor(190,190,190));
-//    darkPalette.setColor(QPalette::BrightText, Qt::red);
-//    darkPalette.setColor(QPalette::Link, QColor(42, 130, 218));
-//    darkPalette.setColor(QPalette::Highlight, QColor(42, 130, 218));
-//    darkPalette.setColor(QPalette::HighlightedText, Qt::black);
-//    app.setPalette(darkPalette);
+//  QPalette darkPalette;
+//  darkPalette.setColor(QPalette::Window, QColor(69,69,69));
+//  darkPalette.setColor(QPalette::WindowText, QColor(190,190,190));
+//  darkPalette.setColor(QPalette::Base, QColor(48,48,48));
+//  darkPalette.setColor(QPalette::AlternateBase, QColor(69,69,69));
+//  darkPalette.setColor(QPalette::ToolTipBase, QColor(48,48,48));
+//  darkPalette.setColor(QPalette::ToolTipText, QColor(220,220,220));
+//  darkPalette.setColor(QPalette::Text, QColor(240,240,240));
+//  darkPalette.setColor(QPalette::Button, QColor(69,69,69));
+//  darkPalette.setColor(QPalette::ButtonText, QColor(190,190,190));
+//  darkPalette.setColor(QPalette::BrightText, Qt::red);
+//  darkPalette.setColor(QPalette::Link, QColor(42, 130, 218));
+//  darkPalette.setColor(QPalette::Highlight, QColor(42, 130, 218));
+//  darkPalette.setColor(QPalette::HighlightedText, Qt::black);
+//  app.setPalette(darkPalette);
 
-    // init SSL configuration
-    thumbnailer::NetManager::initSSLDefaultConfiguration();
+  // init SSL configuration
+  thumbnailer::NetManager::initSSLDefaultConfiguration();
 
-    auto* window = new MainWindow();
-    window->show();
+  auto* window = new MainWindow();
+  window->show();
 
-    int ret = app.exec();
+  int ret = app.exec();
 
-    TmpDir::purge();
-    return ret;
+  TmpDir::purge();
+  return ret;
 }
 
-void prepareTranslator(QTranslator& translator, const QString& translationPath, const QString& translationPrefix, const QLocale& locale)
+void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale)
 {
+  // load app translations
   QString i18Path(translationPath);
   i18Path.append("/").append(translationPrefix).append("_").append(locale.name().left(2)).append(".qm");
-  if (!translator.load(locale, translationPrefix, QString("_"), translationPath))
-    qWarning("no file found for translations '%s' (using default).", i18Path.toUtf8().constData());
-  else
+  QTranslator * translator = new QTranslator(&app);
+  if (translator->load(locale, translationPrefix, QString("_"), translationPath))
+  {
     qInfo("using file '%s' for translations.", i18Path.toUtf8().constData());
+    app.installTranslator(translator);
+
+    // try to load qt base translations
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QString qt_translationPath(QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+#else
+    QString qt_translationPath(QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+#endif
+    QTranslator * qt_translator = new QTranslator(&app);
+    if (qt_translator->load(locale, "qtbase", "_", qt_translationPath))
+    {
+      qInfo("using file '%s' for translations.", qt_translationPath.toUtf8().constData());
+      app.installTranslator(qt_translator);
+    }
+  }
+  else
+  {
+    qWarning("no file found for translations '%s' (using default).", i18Path.toUtf8().constData());
+  }
 }
 
-void setupApp(QGuiApplication& app, QTranslator& translator)
+void setupApp(QGuiApplication& app)
 {
   QLocale locale = QLocale::system();
   qInfo("User locale setting is %s", std::locale().name().c_str());
   // set translators
-  prepareTranslator(translator, QString(":/i18n"), QString("cddaripper"), locale);
-  app.installTranslator(&translator);
+  prepareTranslator(app, QString(":/i18n"), QString("cddaripper"), locale);
   app.setWindowIcon(QIcon(QPixmap(":/icons/cddaripper-128x128.png")));
 }
