@@ -46,7 +46,7 @@ QMenuBar::item{
   background:transparent;
 }
 QMenuBar::item:selected{
-  background-color:rgba(200,200,200,25%);
+  background-color:rgba(200,200,200,50%);
 }
 QMenuBar::item:pressed{
   background-color:palette(highlight);
@@ -54,12 +54,11 @@ QMenuBar::item:pressed{
 }
 QMenu{
   background-color:palette(base);
-  border-width:1px;
-  border-color:palette(shadow);
+  border-width:1px solid palette(text);
 }
 QMenu::item{
   padding:5px 5px;
-  border:1px solid transparent;
+  border-style:none;
 }
 QMenu::item:disabled{
   color:palette(disabled);

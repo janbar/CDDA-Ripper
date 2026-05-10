@@ -49,18 +49,21 @@ int main(int argc, char* argv[])
 
 //  QPalette darkPalette;
 //  darkPalette.setColor(QPalette::Window, QColor(69,69,69));
-//  darkPalette.setColor(QPalette::WindowText, QColor(190,190,190));
+//  darkPalette.setColor(QPalette::WindowText, QColor(200,200,200));
 //  darkPalette.setColor(QPalette::Base, QColor(48,48,48));
+//  darkPalette.setColor(QPalette::Shadow, QColor(255,255,255));
 //  darkPalette.setColor(QPalette::AlternateBase, QColor(69,69,69));
 //  darkPalette.setColor(QPalette::ToolTipBase, QColor(48,48,48));
 //  darkPalette.setColor(QPalette::ToolTipText, QColor(220,220,220));
-//  darkPalette.setColor(QPalette::Text, QColor(240,240,240));
+//  darkPalette.setColor(QPalette::Text, QColor(220,220,220));
 //  darkPalette.setColor(QPalette::Button, QColor(69,69,69));
-//  darkPalette.setColor(QPalette::ButtonText, QColor(190,190,190));
+//  darkPalette.setColor(QPalette::ButtonText, QColor(240,240,240));
 //  darkPalette.setColor(QPalette::BrightText, Qt::red);
-//  darkPalette.setColor(QPalette::Link, QColor(42, 130, 218));
-//  darkPalette.setColor(QPalette::Highlight, QColor(42, 130, 218));
+//  darkPalette.setColor(QPalette::Link, QColor(128,212,250));
+//  darkPalette.setColor(QPalette::Highlight, QColor(200,200,200));
 //  darkPalette.setColor(QPalette::HighlightedText, Qt::black);
+//  darkPalette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127,127,127));
+//  darkPalette.setColor(QPalette::Disabled, QPalette::Text, QColor(127,127,127));
 //  app.setPalette(darkPalette);
 
   // init SSL configuration
