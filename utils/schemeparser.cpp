@@ -11,17 +11,15 @@
 #include <QStandardPaths>
 #include <QCryptographicHash>
 
-#if QT_VERSION >= 0x060000
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#define IS_TRUE(val) (val.type() == QVariant::Bool && val.toBool())
+#define IS_INT(val) (val.type() == QVariant::Int || val.type() == QVariant::UInt || val.type() == QVariant::LongLong || val.type() == QVariant::ULongLong)
+#define IS_DATETIME(val) (val.type() == QVariant::DateTime || val.type() == QVariant::Date || val.type() == QVariant::Time)
+#else
 #define IS_TRUE(val) (val.typeId() == QMetaType::Bool && val.toBool())
 #define IS_INT(val)                                                                                                                                            \
     (val.typeId() == QMetaType::Int || val.typeId() == QMetaType::UInt || val.typeId() == QMetaType::LongLong || val.typeId() == QMetaType::ULongLong)
 #define IS_DATETIME(val) (val.typeId() == QMetaType::QDateTime || val.typeId() == QMetaType::QDate || val.typeId() == QMetaType::QTime)
-#endif
-
-#if QT_VERSION < 0x060000
-#define IS_TRUE(val) (val.type() == QVariant::Bool && val.toBool())
-#define IS_INT(val) (val.type() == QVariant::Int || val.type() == QVariant::UInt || val.type() == QVariant::LongLong || val.type() == QVariant::ULongLong)
-#define IS_DATETIME(val) (val.type() == QVariant::DateTime || val.type() == QVariant::Date || val.type() == QVariant::Time)
 #endif
 
 SchemeParser::SchemeParser(QObject *parent)
