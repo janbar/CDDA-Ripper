@@ -306,6 +306,7 @@ QTreeView QHeaderView::section, QTableView QHeaderView::section{
   padding:4px 4px;
 }
 QTreeView::item, QTableView::item{
+  height:24px;
   padding:4px 4px;
 }
 QTreeView::item:selected:disabled, QTableView::item:selected:disabled{
