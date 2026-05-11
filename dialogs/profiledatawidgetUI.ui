@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>474</width>
-    <height>520</height>
+    <height>560</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -67,7 +67,6 @@
         <widget class="QComboBox" name="kcombobox_encoder">
          <property name="font">
           <font>
-           <weight>50</weight>
            <bold>false</bold>
           </font>
          </property>
@@ -83,7 +82,6 @@
          </property>
          <property name="font">
           <font>
-           <weight>50</weight>
            <bold>false</bold>
           </font>
          </property>
@@ -112,7 +110,6 @@
              <widget class="QLabel" name="label_scheme">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -125,7 +122,6 @@
              <widget class="QLineEdit" name="qlineedit_scheme">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -135,7 +131,6 @@
              <widget class="QPushButton" name="kpushbutton_scheme">
               <property name="font">
                <font>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -147,7 +142,6 @@
            <widget class="QCheckBox" name="checkBox_fat32compatible">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -160,7 +154,6 @@
            <widget class="QCheckBox" name="checkBox_underscore">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -212,7 +205,6 @@
            <widget class="QPushButton" name="kpushbutton_playlist">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -238,7 +230,6 @@
            <widget class="QCheckBox" name="checkBox_info">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -258,7 +249,6 @@
            <widget class="QPushButton" name="kpushbutton_info">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -271,7 +261,6 @@
            <widget class="QCheckBox" name="checkBox_hashlist">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -284,7 +273,6 @@
            <widget class="QPushButton" name="kpushbutton_hashlist">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -304,7 +292,6 @@
            <widget class="QCheckBox" name="checkBox_cover">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -317,7 +304,6 @@
            <widget class="QPushButton" name="kpushbutton_cover">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -330,7 +316,6 @@
            <widget class="QCheckBox" name="checkBox_playlist">
             <property name="font">
              <font>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
