@@ -4,20 +4,24 @@
 <context>
     <name>AboutWidget</name>
     <message>
-        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;/html&gt;</source>
+        <translation>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>AboutWidgetUI</name>
     <message>
-        <location filename="../dialogs/aboutwidgetUI.ui" line="+14"/>
+        <location filename="../dialogs/aboutwidgetUI.ui" line="+32"/>
         <source>About</source>
         <translation>About</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+89"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
@@ -31,7 +35,7 @@
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover Arts are fetched from &lt;span style=&quot; font-weight:700;&quot;&gt;Deezer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="-67"/>
         <source>Credits</source>
         <translation>Credits</translation>
     </message>

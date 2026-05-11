@@ -14,8 +14,7 @@ AboutWidget::AboutWidget(QWidget *parent)
   ui.label_about->setText(tr(
           "<html>An easy to use audio CD ripping application.<br>"
           "<br><b>Version %1</b>, (c) Jean-Luc Barrière<br>"
-          "<br>CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.<br>"
-          "<br>Qt version %2.%3.%4<br></html>")
+          "<br>CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.</html>")
           .arg(CDDARIPPER_VERSION).arg(QT_VERSION_MAJOR).arg(QT_VERSION_MINOR).arg(QT_VERSION_PATCH));
 
   connect(ui.buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(close()));

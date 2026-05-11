@@ -4,20 +4,24 @@
 <context>
     <name>AboutWidget</name>
     <message>
-        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;br&gt;&lt;br&gt;Version Qt %2.%3.%4&lt;br&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;br&gt;&lt;br&gt;Version Qt %2.%3.%4&lt;br&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>AboutWidgetUI</name>
     <message>
-        <location filename="../dialogs/aboutwidgetUI.ui" line="+14"/>
+        <location filename="../dialogs/aboutwidgetUI.ui" line="+32"/>
         <source>About</source>
         <translation>A propos</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+89"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;Les métadonnées sont récupérées depuis les services &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
@@ -27,7 +31,7 @@
         <translation>&lt;html&gt;Les couvertures sont récupérées depuis les services &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="-67"/>
         <source>Credits</source>
         <translation>Contributions</translation>
     </message>
