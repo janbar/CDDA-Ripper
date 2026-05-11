@@ -155,7 +155,7 @@ QMainWindow::separator:hover,QSplitter::handle:hover{
 QDockWidget::title{
   margin-top:1px;
   padding:5px;
-  background-color:rgba(200,200,200,25%);
+  background-color:rgba(127,127,127,10%);
   border-style:none;
 }
 QDockWidget{
@@ -419,6 +419,7 @@ QSpinBox{
 
 QLineEdit{
   padding:4px 4px;
+  background-color:palette(base);
 }
 QLineEdit:disabled{
   padding:4px 4px;
