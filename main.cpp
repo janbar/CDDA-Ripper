@@ -33,6 +33,7 @@
 
 void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
 void setupApp(QGuiApplication& app);
+void stylePalette(QPalette& palette, const QString& style);
 
 int main(int argc, char* argv[])
 {
@@ -47,24 +48,10 @@ int main(int argc, char* argv[])
   QApplication::setStyle(new GoodStyle);
   setupApp(app);
 
-//  QPalette darkPalette;
-//  darkPalette.setColor(QPalette::Window, QColor(69,69,69));
-//  darkPalette.setColor(QPalette::WindowText, QColor(200,200,200));
-//  darkPalette.setColor(QPalette::Base, QColor(48,48,48));
-//  darkPalette.setColor(QPalette::Shadow, QColor(255,255,255));
-//  darkPalette.setColor(QPalette::AlternateBase, QColor(69,69,69));
-//  darkPalette.setColor(QPalette::ToolTipBase, QColor(48,48,48));
-//  darkPalette.setColor(QPalette::ToolTipText, QColor(220,220,220));
-//  darkPalette.setColor(QPalette::Text, QColor(220,220,220));
-//  darkPalette.setColor(QPalette::Button, QColor(69,69,69));
-//  darkPalette.setColor(QPalette::ButtonText, QColor(240,240,240));
-//  darkPalette.setColor(QPalette::BrightText, Qt::red);
-//  darkPalette.setColor(QPalette::Link, QColor(128,212,250));
-//  darkPalette.setColor(QPalette::Highlight, QColor(200,200,200));
-//  darkPalette.setColor(QPalette::HighlightedText, Qt::black);
-//  darkPalette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127,127,127));
-//  darkPalette.setColor(QPalette::Disabled, QPalette::Text, QColor(127,127,127));
-//  app.setPalette(darkPalette);
+  QSettings settings;
+  QPalette palette = QGuiApplication::palette();
+  stylePalette(palette, settings.value("stylePalette", QString("light")).toString());
+  app.setPalette(palette);
 
   // init SSL configuration
   thumbnailer::NetManager::initSSLDefaultConfiguration();
@@ -115,4 +102,27 @@ void setupApp(QGuiApplication& app)
   // set translators
   prepareTranslator(app, QString(":/i18n"), QString("cddaripper"), locale);
   app.setWindowIcon(QIcon(QPixmap(":/icons/cddaripper-128x128.png")));
+}
+
+void stylePalette(QPalette& palette, const QString& style)
+{
+  if (style == "dark")
+  {
+    palette.setColor(QPalette::Window, QColor(69,69,69));
+    palette.setColor(QPalette::WindowText, QColor(200,200,200));
+    palette.setColor(QPalette::Base, QColor(48,48,48));
+    palette.setColor(QPalette::Shadow, QColor(255,255,255));
+    palette.setColor(QPalette::AlternateBase, QColor(69,69,69));
+    palette.setColor(QPalette::ToolTipBase, QColor(48,48,48));
+    palette.setColor(QPalette::ToolTipText, QColor(220,220,220));
+    palette.setColor(QPalette::Text, QColor(220,220,220));
+    palette.setColor(QPalette::Button, QColor(69,69,69));
+    palette.setColor(QPalette::ButtonText, QColor(240,240,240));
+    palette.setColor(QPalette::BrightText, Qt::red);
+    palette.setColor(QPalette::Link, QColor(128,212,250));
+    palette.setColor(QPalette::Highlight, QColor(200,200,200));
+    palette.setColor(QPalette::HighlightedText, Qt::black);
+    palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127,127,127));
+    palette.setColor(QPalette::Disabled, QPalette::Text, QColor(127,127,127));
+  }
 }

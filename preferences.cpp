@@ -74,6 +74,7 @@ void Preferences::read()
   setGuiWidth(settings.value("guiWidth", 800).toInt());
   setGuiHeight(settings.value("guiHeight", 600).toInt());
   setGuiLayout(settings.value("guiLayout", 0).toInt());
+  setStylePalette(settings.value("stylePalette").toString());
 }
 
 void Preferences::save()
@@ -94,6 +95,7 @@ void Preferences::save()
   settings.setValue("guiWidth", guiWidth());
   settings.setValue("guiHeight", guiHeight());
   settings.setValue("guiLayout", guiLayout());
+  settings.setValue("stylePalette", stylePalette());
   settings.sync();
 }
 
@@ -113,6 +115,7 @@ void Preferences::resetDefaults()
   settings.setValue("guiWidth", 800);
   settings.setValue("guiHeight", 600);
   settings.setValue("guiLayout", 0);
+  settings.setValue("guiLayout", 0);
 }
 
 void Preferences::showDialog(QWidget* parent, ProfileModel* profileModel)
@@ -122,6 +125,7 @@ void Preferences::showDialog(QWidget* parent, ProfileModel* profileModel)
     QTabWidget* tab = new QTabWidget;
 
     generalSettingsWidget * page_gen = new generalSettingsWidget();
+    page_gen->kcfg_styleDark->setChecked((stylePalette() == "dark"));
     page_gen->kcfg_basePath->setText(basePath());
     page_gen->kcfg_cddbLookupAuto->setChecked(cddbLookupAuto());
     page_gen->kcfg_coverLookupAuto->setChecked(coverLookupAuto());
@@ -172,6 +176,7 @@ void Preferences::showDialog(QWidget* parent, ProfileModel* profileModel)
 
     dialog.exec();
 
+    setStylePalette(page_gen->kcfg_styleDark->isChecked() ? "dark" : "light");
     setBasePath(page_gen->kcfg_basePath->text());
     setCddbLookupAuto(page_gen->kcfg_cddbLookupAuto->isChecked());
     setCoverLookupAuto(page_gen->kcfg_coverLookupAuto->isChecked());

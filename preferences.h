@@ -316,6 +316,25 @@ class Preferences : public QObject
       return false;
     }
 
+    static
+    void setStylePalette( const QString & v )
+    {
+      if (!self()->isStylePalettetImmutable())
+        self()->mStylePalette = v;
+    }
+
+    static
+    QString stylePalette()
+    {
+      return self()->mStylePalette;
+    }
+
+    static
+    bool isStylePalettetImmutable()
+    {
+      return false;
+    }
+
     private:
     Preferences(QObject* parent = nullptr);
     friend class PreferencesHelper;
@@ -336,6 +355,7 @@ class Preferences : public QObject
     int mGuiWidth;
     int mGuiHeight;
     int mGuiLayout;
+    QString mStylePalette;
 };
 
 #endif
