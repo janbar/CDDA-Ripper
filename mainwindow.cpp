@@ -8,6 +8,8 @@
 #include "mainwindow.h"
 #include "cddb/kcmcddb.h"
 
+#include "dialogs/aboutwidget.h"
+
 #include <QMenu>
 #include <QWidgetAction>
 
@@ -606,17 +608,6 @@ void MainWindow::onQuit()
 
 void MainWindow::showAbout()
 {
-  QMessageBox::about(this, "", tr(
-          "<html>An easy to use audio CD ripping application.<br>"
-          "<br><b>Version %1</b>, (2023) Jean-Luc Barrière<br>"
-          "<br>CDDA-Ripper was forked from Audex-0.95 in 2023 and reworked outside of the KDE frameworks.<br>"
-          "<br>Qt version %2.%3.%4<br>"
-          "<br><b>Code base:</b>"
-          "<br>Audex-0.95 (Marco Nelles)"
-          "<br>Solid (kde.org)"
-          "<br>Kcddb (kde.org)"
-          "<br>Thumbnailler (Jean-Luc Barrière)"
-          "<br>GoodStyle (Juergen Skrotzky)"
-          "</html>")
-          .arg(CDDARIPPER_VERSION).arg(QT_VERSION_MAJOR).arg(QT_VERSION_MINOR).arg(QT_VERSION_PATCH));
+  AboutWidget * about = new AboutWidget(this);
+  about->show();
 }

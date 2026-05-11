@@ -81,6 +81,7 @@ set(cddaripper_SRCS
     widgets/faacwidget.cpp
     widgets/wavewidget.cpp
     widgets/customwidget.cpp
+    dialogs/aboutwidget.cpp
     dialogs/coverbrowserdialog.cpp
     dialogs/cddaheaderdatadialog.cpp
     dialogs/profiledatadialog.cpp
@@ -109,6 +110,7 @@ qt_wrap_ui(cddaripper_SRCS
     widgets/faacwidgetUI.ui
     widgets/wavewidgetUI.ui
     widgets/customwidgetUI.ui
+    dialogs/aboutwidgetUI.ui
     dialogs/coverbrowserwidgetUI.ui
     dialogs/cddaheaderdatawidgetUI.ui
     dialogs/profiledatawidgetUI.ui
