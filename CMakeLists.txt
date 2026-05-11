@@ -47,7 +47,6 @@ remove_definitions(
 
 set(cddaripper_SRCS
     main.cpp
-    preferences.cpp
     mainwindow.cpp
     goodstyle.cpp
     preferences.cpp
@@ -100,6 +99,59 @@ set(cddaripper_SRCS
     core/audex.cpp
 )
 
+set(cddaripper_HDRS
+    mainwindow.h
+    goodstyle.h
+    preferences.h
+    models/cddamodel.h
+    models/profilemodel.h
+    utils/pid.h
+    utils/coverfetcher.h
+    utils/schemeparser.h
+    utils/playlist.h
+    utils/wavefilewriter.h
+    utils/cddaparanoia.h
+    utils/cddadevices.h
+    utils/encoderwrapper.h
+    utils/cddaextractthread.h
+    utils/encoderassistant.h
+    utils/hashlist.h
+    utils/3rdparty/crc32.h
+    utils/parameters.h
+    utils/cachedimage.h
+    utils/cuesheetwriter.h
+    utils/tmpdir.h
+    utils/discidcalculator.h
+    widgets/waitingspinnerwidget.h
+    widgets/cddaheaderwidget.h
+    widgets/generalsettingswidget.h
+    widgets/devicewidget.h
+    widgets/profilewidget.h
+    widgets/lamewidget.h
+    widgets/oggencwidget.h
+    widgets/flacwidget.h
+    widgets/faacwidget.h
+    widgets/wavewidget.h
+    widgets/customwidget.h
+    dialogs/aboutwidget.h
+    dialogs/coverbrowserdialog.h
+    dialogs/cddaheaderdatadialog.h
+    dialogs/profiledatadialog.h
+    dialogs/profiledatacoverdialog.h
+    dialogs/profiledataplaylistdialog.h
+    dialogs/profiledatainfodialog.h
+    dialogs/profiledatahashlistdialog.h
+    dialogs/profiledatacuesheetdialog.h
+    dialogs/profiledatasinglefiledialog.h
+    dialogs/schemewizarddialog.h
+    dialogs/commandwizarddialog.h
+    dialogs/simpleschemewizarddialog.h
+    dialogs/extractingprogressdialog.h
+    dialogs/protocoldialog.h
+    dialogs/errordialog.h
+    core/audex.h
+)
+
 qt_wrap_ui(cddaripper_SRCS
     widgets/generalsettingswidgetUI.ui
     widgets/devicewidgetUI.ui
@@ -133,7 +185,7 @@ add_subdirectory(cddb)
 add_subdirectory(thumbnailer)
 add_subdirectory(solid)
 
-add_executable(cddaripper ${cddaripper_SRCS})
+add_executable(cddaripper ${cddaripper_SRCS} ${cddaripper_HDRS})
 target_link_libraries(cddaripper
     Qt${QT_VERSION_MAJOR}::Core
     Qt${QT_VERSION_MAJOR}::Widgets
