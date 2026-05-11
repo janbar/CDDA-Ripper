@@ -22,12 +22,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+39"/>
         <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Credits</source>
         <translation>Credits</translation>
     </message>
@@ -1070,7 +1070,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
 <context>
     <name>GeneralSettingsWidgetUI</name>
     <message>
-        <location filename="../widgets/generalsettingswidgetUI.ui" line="+30"/>
+        <location filename="../widgets/generalsettingswidgetUI.ui" line="+17"/>
         <source>Paths</source>
         <translation>Pfade</translation>
     </message>
@@ -1108,6 +1108,21 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <location line="+15"/>
         <source>Number of covers to fetch:</source>
         <translation>Anzahl abzufragender Cover:</translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Theme</source>
+        <translation>Design</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Prefer the dark theme</source>
+        <translation>Ich bevorzuge das dunkle Design</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>The changes will take effect at the next startup:</source>
+        <translation>Die Änderungen werden beim nächsten Start wirksam:</translation>
     </message>
 </context>
 <context>
@@ -1442,7 +1457,7 @@ Trennzeichen:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+133"/>
+        <location filename="../preferences.cpp" line="+137"/>
         <source>General Settings</source>
         <translation>Allgemeine Einstellungen</translation>
     </message>

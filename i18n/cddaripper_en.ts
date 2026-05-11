@@ -22,7 +22,7 @@
         <translation>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+39"/>
         <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
@@ -31,7 +31,7 @@
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover Arts are fetched from &lt;span style=&quot; font-weight:700;&quot;&gt;Deezer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Credits</source>
         <translation>Credits</translation>
     </message>
@@ -1096,7 +1096,7 @@ However, do you want to continue extraction?</translation>
 <context>
     <name>GeneralSettingsWidgetUI</name>
     <message>
-        <location filename="../widgets/generalsettingswidgetUI.ui" line="+30"/>
+        <location filename="../widgets/generalsettingswidgetUI.ui" line="+17"/>
         <source>Paths</source>
         <translation>Paths</translation>
     </message>
@@ -1134,6 +1134,21 @@ However, do you want to continue extraction?</translation>
         <location line="+15"/>
         <source>Number of covers to fetch:</source>
         <translation>Number of covers to fetch:</translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Theme</source>
+        <translation>Theme</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Prefer the dark theme</source>
+        <translation>Prefer the dark theme</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>The changes will take effect at the next startup:</source>
+        <translation>The changes will take effect at the next startup:</translation>
     </message>
 </context>
 <context>
@@ -1476,7 +1491,7 @@ Divider:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+133"/>
+        <location filename="../preferences.cpp" line="+137"/>
         <source>General Settings</source>
         <translation>General Settings</translation>
     </message>

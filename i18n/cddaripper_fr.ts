@@ -22,12 +22,12 @@
         <translation>&lt;html&gt;Les métadonnées sont récupérées depuis les services &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+39"/>
         <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;Les couvertures sont récupérées depuis les services &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+61"/>
         <source>Credits</source>
         <translation>Contributions</translation>
     </message>
@@ -1092,7 +1092,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
 <context>
     <name>GeneralSettingsWidgetUI</name>
     <message>
-        <location filename="../widgets/generalsettingswidgetUI.ui" line="+30"/>
+        <location filename="../widgets/generalsettingswidgetUI.ui" line="+17"/>
         <source>Paths</source>
         <translation>Emplacements</translation>
     </message>
@@ -1130,6 +1130,21 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <location line="+15"/>
         <source>Number of covers to fetch:</source>
         <translation>Nombre de couvertures à extraire&#xa0;:</translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Theme</source>
+        <translation>Thème</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Prefer the dark theme</source>
+        <translation>Préférer le thème sombre</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>The changes will take effect at the next startup:</source>
+        <translation>Les changements prendront effet au prochain démarrage :</translation>
     </message>
 </context>
 <context>
@@ -1468,7 +1483,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+133"/>
+        <location filename="../preferences.cpp" line="+137"/>
         <source>General Settings</source>
         <translation>Paramètres généraux</translation>
     </message>
