@@ -2,6 +2,41 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en">
 <context>
+    <name>AboutWidget</name>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>AboutWidgetUI</name>
+    <message>
+        <location filename="../dialogs/aboutwidgetUI.ui" line="+14"/>
+        <source>About</source>
+        <translation>About</translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover Arts are fetched from &lt;span style=&quot; font-weight:700;&quot;&gt;Deezer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover Arts are fetched from &lt;span style=&quot; font-weight:700;&quot;&gt;Deezer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Credits</source>
+        <translation>Credits</translation>
+    </message>
+</context>
+<context>
     <name>Audex</name>
     <message>
         <location filename="../core/audex.cpp" line="+102"/>
@@ -1187,7 +1222,7 @@ However, do you want to continue extraction?</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="+39"/>
+        <location filename="../mainwindow.cpp" line="+41"/>
         <source>Unable to create ProfileModel object.</source>
         <translation>Unable to create ProfileModel object.</translation>
     </message>
@@ -1223,7 +1258,7 @@ However, do you want to continue extraction?</translation>
         <translation>Single file rip selected but not all audio tracks to rip selected. Do you really want to continue?</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+53"/>
         <source>CDDB lookup failed, with the following error:
 %1</source>
         <translation>CDDB lookup failed, with the following error:
@@ -1355,7 +1390,7 @@ Divider:</translation>
         <translation>About</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+32"/>
         <source>Album Data</source>
         <translation>Album Data</translation>
     </message>
@@ -1365,16 +1400,15 @@ Divider:</translation>
         <translation>Action</translation>
     </message>
     <message>
-        <location line="+101"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (2023) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95 in 2023 and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;br&gt;&lt;b&gt;Code base:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
-        <translation>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (2023) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95 in 2023 and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;br&gt;&lt;b&gt;Code base:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (2023) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95 in 2023 and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;Qt version %2.%3.%4&lt;br&gt;&lt;br&gt;&lt;b&gt;Code base:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Audex</source>
         <translation type="vanished">Audex</translation>
     </message>
     <message>
-        <location line="-92"/>
+        <location line="+9"/>
         <source>CDDB</source>
         <translation>CDDB</translation>
     </message>
