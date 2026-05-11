@@ -609,5 +609,7 @@ void MainWindow::onQuit()
 void MainWindow::showAbout()
 {
   AboutWidget * about = new AboutWidget(this);
-  about->show();
+  about->setWindowModality(Qt::ApplicationModal);
+  about->exec();
+  delete about;
 }
