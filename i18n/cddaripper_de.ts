@@ -5,7 +5,7 @@
     <name>AboutWidget</name>
     <message>
         <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
-        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;/html&gt;</source>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -17,7 +17,7 @@
         <translation>Über</translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+57"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -27,9 +27,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-67"/>
         <source>Credits</source>
-        <translation>Credits</translation>
+        <translation type="vanished">Credits</translation>
     </message>
 </context>
 <context>
@@ -1019,17 +1018,17 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
 <context>
     <name>FAACWidgetUI</name>
     <message>
-        <location filename="../widgets/faacwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/faacwidgetUI.ui" line="+28"/>
         <source>Quality</source>
         <translation>Qualität</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+55"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Highest</source>
         <translation>Höchste</translation>
     </message>
@@ -1042,17 +1041,17 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
 <context>
     <name>FLACWidgetUI</name>
     <message>
-        <location filename="../widgets/flacwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/flacwidgetUI.ui" line="+28"/>
         <source>Compression</source>
         <translation>Kompression</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+52"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Highest</source>
         <translation>Höchste</translation>
     </message>
@@ -1128,12 +1127,12 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
 <context>
     <name>LAMEWidgetUI</name>
     <message>
-        <location filename="../widgets/lamewidgetUI.ui" line="+41"/>
+        <location filename="../widgets/lamewidgetUI.ui" line="+53"/>
         <source>Quality/Bitrate</source>
         <translation>Qualität/Bitrate</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+11"/>
         <source>This preset should provide near transparency to most people on most music.</source>
         <translation>Diese Vorgabe klingt für die meisten Menschen transparent.</translation>
     </message>
@@ -1143,7 +1142,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Mittel (140 ... 185 Kb/s)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>If you have extremely good hearing and similar equipment, this preset will generally provide slightly higher quality than the &quot;standard&quot; mode</source>
         <translation>Wenn Sie ein gutes Gehör und eine entsprechende Anlage haben, wird diese Vorgabe eine hörbar bessere Qualität liefern als der „Standard“-Modus</translation>
     </message>
@@ -1153,7 +1152,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Extrem (220 ... 260 Kb/s)</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+25"/>
         <source>This preset should generally be transparent to most people on most music and is already quite high in quality.</source>
         <translation>Diese Vorgabe klingt für die meisten Menschen transparent und hat bereits eine hohe Qualität.</translation>
     </message>
@@ -1163,7 +1162,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Standard (170 ... 210 Kb/s)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>This preset will usually be overkill for most people and most situations, but if you must have the absolute highest quality with no regard to filesize, this is the way to go.</source>
         <translation>Diese Vorgabe ist für die meisten Leute übertrieben, aber wenn Sie maximale Qualität unabhängig der Dateigröße brauchen, nehmen Sie diese Vorgabe.</translation>
     </message>
@@ -1173,22 +1172,22 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Ultra (320 Kb/s)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Custom</source>
         <translation>Benutzerdefiniert</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+147"/>
         <source>Constant Bitrate</source>
         <translation>Konstante Bitrate</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-249"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Ziel-Bitrate (Kb/s)</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+191"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
@@ -1198,12 +1197,12 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+53"/>
         <source>Embed cover in music file</source>
         <translation>Cover in Musikdatei einbetten</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-136"/>
         <source>Suffix:</source>
         <translation>Erweiterung:</translation>
     </message>
@@ -1412,17 +1411,17 @@ Trennzeichen:</translation>
 <context>
     <name>OPUSENCWidgetUI</name>
     <message>
-        <location filename="../widgets/opusencwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/opusencwidgetUI.ui" line="+28"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Ziel-Bitrate (Kb/s)</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+64"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Highest</source>
         <translation>Höchste</translation>
     </message>
@@ -1440,27 +1439,27 @@ Trennzeichen:</translation>
 <context>
     <name>OggEncWidgetUI</name>
     <message>
-        <location filename="../widgets/oggencwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/oggencwidgetUI.ui" line="+28"/>
         <source>Quality</source>
         <translation>Qualität</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+73"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+16"/>
         <source>Highest</source>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+33"/>
         <source>Target Bitrate ~</source>
         <translation>Ziel-Bitrate ~</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+45"/>
         <location line="+69"/>
         <location line="+79"/>
         <source>kbit/s</source>
@@ -2280,7 +2279,7 @@ Trennzeichen:</translation>
 <context>
     <name>profileWidget</name>
     <message>
-        <location filename="../widgets/profilewidget.cpp" line="+78"/>
+        <location filename="../widgets/profilewidget.cpp" line="+77"/>
         <source>Delete profile</source>
         <translation>Profil löschen</translation>
     </message>

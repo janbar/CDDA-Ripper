@@ -8,9 +8,13 @@
         <translation type="vanished">&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;br&gt;&lt;br&gt;Version Qt %2.%3.%4&lt;br&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Une application simple d&apos;utilisation pour extraire des CD audio.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper est un fork d&apos;Audex-0.95 remanié en dehors des frameworks KDE.&lt;br&gt;&lt;br&gt;&lt;b&gt;Contributions&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -21,7 +25,7 @@
         <translation>A propos</translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+57"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;Les métadonnées sont récupérées depuis les services &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
@@ -31,9 +35,8 @@
         <translation>&lt;html&gt;Les couvertures sont récupérées depuis les services &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="-67"/>
         <source>Credits</source>
-        <translation>Contributions</translation>
+        <translation type="vanished">Contributions</translation>
     </message>
 </context>
 <context>
@@ -1045,17 +1048,17 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
 <context>
     <name>FAACWidgetUI</name>
     <message>
-        <location filename="../widgets/faacwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/faacwidgetUI.ui" line="+28"/>
         <source>Quality</source>
         <translation>Qualité</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+55"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Highest</source>
         <translation>La plus élevée</translation>
     </message>
@@ -1068,17 +1071,17 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
 <context>
     <name>FLACWidgetUI</name>
     <message>
-        <location filename="../widgets/flacwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/flacwidgetUI.ui" line="+28"/>
         <source>Compression</source>
         <translation>Compression</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+52"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Highest</source>
         <translation>La plus élevée</translation>
     </message>
@@ -1154,12 +1157,12 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
 <context>
     <name>LAMEWidgetUI</name>
     <message>
-        <location filename="../widgets/lamewidgetUI.ui" line="+41"/>
+        <location filename="../widgets/lamewidgetUI.ui" line="+53"/>
         <source>Quality/Bitrate</source>
         <translation>Qualité&#xa0;/&#xa0;Débit binaire</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+11"/>
         <source>This preset should provide near transparency to most people on most music.</source>
         <translation>Ce préréglage devrait offrir une quasi-transparence pour la plupart des utilisateurs sur de nombreux genres de musique.</translation>
     </message>
@@ -1169,7 +1172,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Moyen (140...185&#xa0;kbit/s)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>If you have extremely good hearing and similar equipment, this preset will generally provide slightly higher quality than the &quot;standard&quot; mode</source>
         <translation>Si vous avez une ouïe extrêmement fine et l&apos;équipement en conséquence, ce préréglage fournira généralement une qualité légèrement supérieure au mode «&#xa0;standard&#xa0;»</translation>
     </message>
@@ -1179,7 +1182,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Extrême (220 à 260&#xa0;Kbits&#xa0;/ s)</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+25"/>
         <source>This preset should generally be transparent to most people on most music and is already quite high in quality.</source>
         <translation>Ce préréglage devrait généralement être transparent pour la plupart des utilisateurs sur de nombreux genres de musique et constitue déjà une qualité tout à fait satisfaisante.</translation>
     </message>
@@ -1189,7 +1192,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Standard (170...210&#xa0;kbit/s)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>This preset will usually be overkill for most people and most situations, but if you must have the absolute highest quality with no regard to filesize, this is the way to go.</source>
         <translation>Ce préréglage sera habituellement surpuissant pour la plupart des utilisateurs dans la majorité des cas, mais si vous devez avoir la qualité la plus élevée absolue sans tenir compte de la taille du fichier, il vous conviendra parfaitement.</translation>
     </message>
@@ -1199,22 +1202,22 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Très fort (320&#xa0;kbit/s)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Custom</source>
         <translation>Personnalisé</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+147"/>
         <source>Constant Bitrate</source>
         <translation>Débit binaire constant</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-249"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Débit binaire cible (kbit/s)</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+191"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1224,12 +1227,12 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+53"/>
         <source>Embed cover in music file</source>
         <translation>Intégrer la couverture dans le fichier musical</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-136"/>
         <source>Suffix:</source>
         <translation>Suffixe&#xa0;:</translation>
     </message>
@@ -1442,17 +1445,17 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>OPUSENCWidgetUI</name>
     <message>
-        <location filename="../widgets/opusencwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/opusencwidgetUI.ui" line="+28"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Débit binaire cible (kbit/s)</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+64"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Highest</source>
         <translation>La plus élevée</translation>
     </message>
@@ -1470,27 +1473,27 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>OggEncWidgetUI</name>
     <message>
-        <location filename="../widgets/oggencwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/oggencwidgetUI.ui" line="+28"/>
         <source>Quality</source>
         <translation>Qualité</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+73"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+16"/>
         <source>Highest</source>
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+33"/>
         <source>Target Bitrate ~</source>
         <translation>Débit binaire cible ~</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+45"/>
         <location line="+69"/>
         <location line="+79"/>
         <source>kbit/s</source>
@@ -2330,7 +2333,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>profileWidget</name>
     <message>
-        <location filename="../widgets/profilewidget.cpp" line="+78"/>
+        <location filename="../widgets/profilewidget.cpp" line="+77"/>
         <source>Delete profile</source>
         <translation>Supprimer un profil</translation>
     </message>
