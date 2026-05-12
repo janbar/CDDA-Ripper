@@ -28,8 +28,10 @@ const QString EncoderAssistant::name(const EncoderAssistant::Encoder encoder)
         return ENCODER_WAVE_NAME;
     case EncoderAssistant::CUSTOM:
         return ENCODER_CUSTOM_NAME;
+    case EncoderAssistant::OPUSENC:
+        return ENCODER_OPUSENC_NAME;
     default:
-        return "";
+        break;
     }
 
     return "";
@@ -50,8 +52,10 @@ const QString EncoderAssistant::encoderName(const Encoder encoder)
         return ENCODER_WAVE_ENCODER_NAME;
     case EncoderAssistant::CUSTOM:
         return ENCODER_CUSTOM_ENCODER_NAME;
+    case EncoderAssistant::OPUSENC:
+        return ENCODER_OPUSENC_ENCODER_NAME;
     default:
-        return "";
+        break;
     }
 
     return "";
@@ -72,8 +76,10 @@ const QString EncoderAssistant::icon(const EncoderAssistant::Encoder encoder)
         return ENCODER_WAVE_ICON;
     case EncoderAssistant::CUSTOM:
         return ENCODER_CUSTOM_ICON;
+    case EncoderAssistant::OPUSENC:
+        return ENCODER_OPUSENC_ICON;
     default:
-        return "";
+        break;
     }
 
     return "";
@@ -94,8 +100,10 @@ bool EncoderAssistant::available(const EncoderAssistant::Encoder encoder)
         return (QProcess::execute(ENCODER_WAVE_BIN, QStringList() << ENCODER_WAVE_VERSION_PARA) == 0);
     case EncoderAssistant::CUSTOM:
         return true;
+    case EncoderAssistant::OPUSENC:
+        return (QProcess::execute(ENCODER_OPUSENC_BIN, QStringList() << ENCODER_OPUSENC_VERSION_PARA) == 0);
     default:
-        return false;
+        break;
     }
 
     return false;
@@ -110,6 +118,7 @@ bool EncoderAssistant::canEmbedCover(const Encoder encoder, int *maxCoverSize)
         return true;
     case EncoderAssistant::OGGENC:
     case EncoderAssistant::FLAC:
+    case EncoderAssistant::OPUSENC:
         return true;
     case EncoderAssistant::FAAC:
     case EncoderAssistant::WAVE:
@@ -152,6 +161,10 @@ const QString EncoderAssistant::version(const EncoderAssistant::Encoder encoder)
         return "";
     case EncoderAssistant::CUSTOM:
         return "";
+    case EncoderAssistant::OPUSENC:
+        cmd = ENCODER_OPUSENC_BIN;
+        args.push_back(ENCODER_OPUSENC_VERSION_PARA);
+        break;
     default:
         return "";
     }
@@ -178,7 +191,6 @@ const QString EncoderAssistant::version(const EncoderAssistant::Encoder encoder)
         return words[words.count() - 2];
 
     case EncoderAssistant::OGGENC:
-
     case EncoderAssistant::FLAC:
         return words.last();
 
@@ -192,10 +204,15 @@ const QString EncoderAssistant::version(const EncoderAssistant::Encoder encoder)
             return words[words.indexOf("FAAC") + 1];
         return words[1];
 
+    case EncoderAssistant::OPUSENC:
+        if ((words.contains("libopus")) && (words.indexOf("libopus") + 1 < words.count()))
+            return words[words.indexOf("libopus") + 1];
+        if (words.count() < 3)
+            return "";
+        return words[2];
+
     case EncoderAssistant::WAVE:
-
     case EncoderAssistant::CUSTOM:
-
     default:;
     }
 
@@ -209,12 +226,12 @@ long EncoderAssistant::versionNumber(const EncoderAssistant::Encoder encoder)
 
     switch (encoder) {
     case EncoderAssistant::LAME:
-
     case EncoderAssistant::OGGENC:
-
     case EncoderAssistant::FLAC:
+    case EncoderAssistant::FAAC:
+    case EncoderAssistant::OPUSENC:
 
-    case EncoderAssistant::FAAC: {
+    {
         // At present all encoders seem to use 2 or 3 version number items
         // separated by . so we use the same code for all
         // convert to a number for easy version comparison.
@@ -239,10 +256,9 @@ long EncoderAssistant::versionNumber(const EncoderAssistant::Encoder encoder)
     } break;
 
     case EncoderAssistant::WAVE:
-
     case EncoderAssistant::CUSTOM:
-
-    default:;
+    default:
+      break;
     }
     return versionNumber;
 }
@@ -435,7 +451,38 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         return arguments;
     }
 
-    default:;
+    case EncoderAssistant::OPUSENC: {
+        int bitrate = parameters.value(ENCODER_OPUSENC_BITRATE_KEY, ENCODER_OPUSENC_BITRATE).toInt();
+        bool embed_cover = parameters.value(ENCODER_OPUSENC_EMBED_COVER_KEY).toBool();
+        arguments.push_back(ENCODER_OPUSENC_BIN);
+        if (embed_cover) {
+            arguments.push_back(QString::fromUtf8("--picture=\\|\\|\\|\\|${" VAR_COVER_FILE "}"));
+        }
+
+        arguments.push_back("--music");
+
+        arguments.push_back("--bitrate");
+        arguments.push_back(QString("%1").arg(bitrate));
+
+        arguments.push_back("--artist");
+        arguments.push_back(QString::fromUtf8("$" VAR_TRACK_ARTIST ""));
+        arguments.push_back("--title");
+        arguments.push_back(QString::fromUtf8("$" VAR_TRACK_TITLE ""));
+        arguments.push_back("--album");
+        arguments.push_back(QString::fromUtf8("$" VAR_ALBUM_TITLE ""));
+        arguments.push_back("--date");
+        arguments.push_back(QString::fromUtf8("$" VAR_DATE ""));
+        arguments.push_back("--tracknumber");
+        arguments.push_back(QString::fromUtf8("$" VAR_TRACK_NO ""));
+        arguments.push_back("--genre");
+        arguments.push_back(QString::fromUtf8("$" VAR_GENRE ""));
+        arguments.push_back(QString::fromUtf8("$" VAR_INPUT_FILE ""));
+        arguments.push_back(QString::fromUtf8("$" VAR_OUTPUT_FILE ""));
+        return arguments;
+    }
+
+    default:
+        break;
     }
 
     return arguments;
@@ -528,11 +575,31 @@ Parameters EncoderAssistant::stdParameters(const Encoder encoder, const Quality 
 
         break;
 
+    case EncoderAssistant::OPUSENC:
+
+        switch (quality) {
+        case NORMAL:
+            parameters.setValue(ENCODER_OPUSENC_BITRATE_KEY, ENCODER_OPUSENC_BITRATE);
+            parameters.setValue(ENCODER_OPUSENC_EMBED_COVER_KEY, ENCODER_OPUSENC_EMBED_COVER);
+            break;
+
+        case MOBILE:
+            parameters.setValue(ENCODER_OPUSENC_BITRATE_KEY, ENCODER_OPUSENC_BITRATE_M);
+            parameters.setValue(ENCODER_OPUSENC_EMBED_COVER_KEY, ENCODER_OPUSENC_EMBED_COVER_M);
+            break;
+
+        case EXTREME:
+            parameters.setValue(ENCODER_OPUSENC_BITRATE_KEY, ENCODER_OPUSENC_BITRATE_X);
+            parameters.setValue(ENCODER_OPUSENC_EMBED_COVER_KEY, ENCODER_OPUSENC_EMBED_COVER_X);
+            break;
+        }
+
+        break;
+
     case EncoderAssistant::WAVE:
-
     case EncoderAssistant::CUSTOM:
-
-    default:;
+    default:
+        break;
     }
 
     return parameters;
@@ -548,46 +615,51 @@ const QMap<int, QString> EncoderAssistant::encoderList()
     encoders[(int)EncoderAssistant::FAAC] = ENCODER_FAAC_NAME;
     encoders[(int)EncoderAssistant::WAVE] = ENCODER_WAVE_NAME;
     encoders[(int)EncoderAssistant::CUSTOM] = ENCODER_CUSTOM_NAME;
+    encoders[(int)EncoderAssistant::OPUSENC] = ENCODER_OPUSENC_NAME;
 
     return encoders;
 }
 
-const QMap<int, QString> EncoderAssistant::availableEncoderNameList()
+const QList<QPair<int, QString> > EncoderAssistant::availableEncoderNameList()
 {
-    QMap<int, QString> encoders;
+    QList<QPair<int, QString> > encoders;
 
-    if (EncoderAssistant::available(EncoderAssistant::LAME))
-        encoders[(int)EncoderAssistant::LAME] = ENCODER_LAME_NAME;
-    if (EncoderAssistant::available(EncoderAssistant::OGGENC))
-        encoders[(int)EncoderAssistant::OGGENC] = ENCODER_OGGENC_NAME;
     if (EncoderAssistant::available(EncoderAssistant::FLAC))
-        encoders[(int)EncoderAssistant::FLAC] = ENCODER_FLAC_NAME;
+        encoders.push_back(qMakePair((int)EncoderAssistant::FLAC, QString(ENCODER_FLAC_NAME)));
+    if (EncoderAssistant::available(EncoderAssistant::OPUSENC))
+        encoders.push_back(qMakePair((int)EncoderAssistant::OPUSENC, QString(ENCODER_OPUSENC_NAME)));
+    if (EncoderAssistant::available(EncoderAssistant::OGGENC))
+        encoders.push_back(qMakePair((int)EncoderAssistant::OGGENC, QString(ENCODER_OGGENC_NAME)));
     if (EncoderAssistant::available(EncoderAssistant::FAAC))
-        encoders[(int)EncoderAssistant::FAAC] = ENCODER_FAAC_NAME;
+        encoders.push_back(qMakePair((int)EncoderAssistant::FAAC, QString(ENCODER_FAAC_NAME)));
+    if (EncoderAssistant::available(EncoderAssistant::LAME))
+        encoders.push_back(qMakePair((int)EncoderAssistant::LAME, QString(ENCODER_LAME_NAME)));
     if (EncoderAssistant::available(EncoderAssistant::WAVE))
-        encoders[(int)EncoderAssistant::WAVE] = ENCODER_WAVE_NAME;
+        encoders.push_back(qMakePair((int)EncoderAssistant::WAVE, QString(ENCODER_WAVE_NAME)));
     if (EncoderAssistant::available(EncoderAssistant::CUSTOM))
-        encoders[(int)EncoderAssistant::CUSTOM] = ENCODER_CUSTOM_NAME;
+        encoders.push_back(qMakePair((int)EncoderAssistant::CUSTOM, QString(ENCODER_CUSTOM_NAME)));
 
     return encoders;
 }
 
-const QMap<int, QString> EncoderAssistant::availableEncoderNameListWithVersions()
+const QList<QPair<int, QString> > EncoderAssistant::availableEncoderNameListWithVersions()
 {
-    QMap<int, QString> encoders;
+    QList<QPair<int, QString> > encoders;
 
-    if (EncoderAssistant::available(EncoderAssistant::LAME))
-        encoders[(int)EncoderAssistant::LAME] = QString(ENCODER_LAME_NAME) + ' ' + version(LAME);
-    if (EncoderAssistant::available(EncoderAssistant::OGGENC))
-        encoders[(int)EncoderAssistant::OGGENC] = QString(ENCODER_OGGENC_NAME) + ' ' + version(OGGENC);
     if (EncoderAssistant::available(EncoderAssistant::FLAC))
-        encoders[(int)EncoderAssistant::FLAC] = QString(ENCODER_FLAC_NAME) + ' ' + version(FLAC);
+        encoders.push_back(qMakePair((int)EncoderAssistant::FLAC, QString(ENCODER_FLAC_NAME) + ' ' + version(FLAC)));
+    if (EncoderAssistant::available(EncoderAssistant::OPUSENC))
+        encoders.push_back(qMakePair((int)EncoderAssistant::OPUSENC, QString(ENCODER_OPUSENC_NAME) + ' ' + version(OPUSENC)));
+    if (EncoderAssistant::available(EncoderAssistant::OGGENC))
+        encoders.push_back(qMakePair((int)EncoderAssistant::OGGENC, QString(ENCODER_OGGENC_NAME) + ' ' + version(OGGENC)));
     if (EncoderAssistant::available(EncoderAssistant::FAAC))
-        encoders[(int)EncoderAssistant::FAAC] = QString(ENCODER_FAAC_NAME) + ' ' + version(FAAC);
+        encoders.push_back(qMakePair((int)EncoderAssistant::FAAC, QString(ENCODER_FAAC_NAME) + ' ' + version(FAAC)));
+    if (EncoderAssistant::available(EncoderAssistant::LAME))
+        encoders.push_back(qMakePair((int)EncoderAssistant::LAME, QString(ENCODER_LAME_NAME) + ' ' + version(LAME)));
     if (EncoderAssistant::available(EncoderAssistant::WAVE))
-        encoders[(int)EncoderAssistant::WAVE] = QString(ENCODER_WAVE_NAME) + ' ' + version(WAVE);
+        encoders.push_back(qMakePair((int)EncoderAssistant::WAVE, QString(ENCODER_WAVE_NAME) + ' ' + version(WAVE)));
     if (EncoderAssistant::available(EncoderAssistant::CUSTOM))
-        encoders[(int)EncoderAssistant::CUSTOM] = QString(ENCODER_CUSTOM_NAME) + ' ' + version(CUSTOM);
+        encoders.push_back(qMakePair((int)EncoderAssistant::CUSTOM, QString(ENCODER_CUSTOM_NAME) + ' ' + version(CUSTOM)));
 
     return encoders;
 }

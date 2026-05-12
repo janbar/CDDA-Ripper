@@ -23,6 +23,7 @@
 #include "widgets/lamewidget.h"
 #include "widgets/oggencwidget.h"
 #include "widgets/wavewidget.h"
+#include "widgets/opusencwidget.h"
 
 #include "dialogs/errordialog.h"
 #include "dialogs/schemewizarddialog.h"
@@ -91,6 +92,8 @@ private:
     Parameters wave_parameters;
     customWidget *custom_widget;
     Parameters custom_parameters;
+    opusencWidget *opusenc_widget;
+    Parameters opusenc_parameters;
     void set_encoder_widget(const EncoderAssistant::Encoder encoder);
 
     bool pdcd_scale;

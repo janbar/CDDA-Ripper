@@ -35,6 +35,10 @@
 #define ENCODER_OGGENC_MAXBITRATE_KEY "maxbitrate"
 #define ENCODER_OGGENC_MAXBITRATE_VALUE_KEY "maxbitrate_value"
 
+#define ENCODER_OPUSENC_SUFFIX_KEY "suffix"
+#define ENCODER_OPUSENC_BITRATE_KEY "bitrate"
+#define ENCODER_OPUSENC_EMBED_COVER_KEY "embed_cover"
+
 #define ENCODER_FLAC_SUFFIX_KEY "suffix"
 #define ENCODER_FLAC_COMPRESSION_KEY "compression"
 #define ENCODER_FLAC_EMBED_COVER_KEY "embed_cover"
@@ -109,6 +113,25 @@
 #define ENCODER_OGGENC_MAXBITRATE_X false
 #define ENCODER_OGGENC_MAXBITRATE_VALUE_X 256
 
+#define ENCODER_OPUSENC_NAME "Ogg Opus"
+#define ENCODER_OPUSENC_ENCODER_NAME "OPUSENC"
+#define ENCODER_OPUSENC_ICON ":/icons/audio-x-opus+ogg.png"
+#define ENCODER_OPUSENC_BIN "opusenc"
+#define ENCODER_OPUSENC_VERSION_PARA "--version"
+#define ENCODER_OPUSENC_SUFFIX "opus"
+
+/* preset normal quality */
+#define ENCODER_OPUSENC_BITRATE 128
+#define ENCODER_OPUSENC_EMBED_COVER "true"
+
+/* preset mobile quality */
+#define ENCODER_OPUSENC_BITRATE_M 96
+#define ENCODER_OPUSENC_EMBED_COVER_M "true"
+
+/* preset extreme quality */
+#define ENCODER_OPUSENC_BITRATE_X 160
+#define ENCODER_OPUSENC_EMBED_COVER_X "true"
+
 #define ENCODER_FLAC_NAME "FLAC (Lossless)"
 #define ENCODER_FLAC_ENCODER_NAME "FLAC"
 #define ENCODER_FLAC_ICON ":/icons/audio-x-flac.png"
@@ -154,7 +177,7 @@
 
 namespace EncoderAssistant
 {
-enum Encoder { LAME = 0, OGGENC, FLAC, FAAC, WAVE, CUSTOM, NUM };
+enum Encoder { LAME = 0, OGGENC, FLAC, FAAC, WAVE, CUSTOM, OPUSENC, NUM };
 
 const QString name(const Encoder encoder);
 const QString encoderName(const Encoder encoder);
@@ -171,8 +194,8 @@ enum Quality { MOBILE = 0, NORMAL, EXTREME };
 Parameters stdParameters(const Encoder encoder, const Quality quality);
 
 const QMap<int, QString> encoderList();
-const QMap<int, QString> availableEncoderNameList();
-const QMap<int, QString> availableEncoderNameListWithVersions();
+const QList<QPair<int, QString> > availableEncoderNameList();
+const QList<QPair<int, QString> > availableEncoderNameListWithVersions();
 
 };
 

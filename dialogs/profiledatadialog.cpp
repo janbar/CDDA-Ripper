@@ -37,6 +37,7 @@ ProfileDataDialog::ProfileDataDialog(ProfileModel *profileModel, const int profi
         faac_parameters.fromString(profile_model->data(profile_model->index(profile_row, PROFILE_MODEL_COLUMN_ENCODER_FAAC_PARAMETERS_INDEX)).toString());
         wave_parameters.fromString(profile_model->data(profile_model->index(profile_row, PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_INDEX)).toString());
         custom_parameters.fromString(profile_model->data(profile_model->index(profile_row, PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX)).toString());
+        opusenc_parameters.fromString(profile_model->data(profile_model->index(profile_row, PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_INDEX)).toString());
     }
 
     lame_widget = new lameWidget(&lame_parameters, this);
@@ -51,6 +52,8 @@ ProfileDataDialog::ProfileDataDialog(ProfileModel *profileModel, const int profi
     connect(wave_widget, SIGNAL(triggerChanged()), this, SLOT(trigger_changed()));
     custom_widget = new customWidget(&custom_parameters, this);
     connect(custom_widget, SIGNAL(triggerChanged()), this, SLOT(trigger_changed()));
+    opusenc_widget = new opusencWidget(&opusenc_parameters, this);
+    connect(opusenc_widget, SIGNAL(triggerChanged()), this, SLOT(trigger_changed()));
 
     ui.stackedWidget_encoder->addWidget(lame_widget);
     ui.stackedWidget_encoder->addWidget(oggenc_widget);
@@ -58,11 +61,12 @@ ProfileDataDialog::ProfileDataDialog(ProfileModel *profileModel, const int profi
     ui.stackedWidget_encoder->addWidget(faac_widget);
     ui.stackedWidget_encoder->addWidget(wave_widget);
     ui.stackedWidget_encoder->addWidget(custom_widget);
+    ui.stackedWidget_encoder->addWidget(opusenc_widget);
 
-    QMap<int, QString> encoders = EncoderAssistant::availableEncoderNameList();
-    QMap<int, QString>::const_iterator i = encoders.constBegin();
+    auto encoders = EncoderAssistant::availableEncoderNameList();
+    auto i = encoders.constBegin();
     while (i != encoders.constEnd()) {
-        ui.kcombobox_encoder->addItem(i.value(), i.key());
+        ui.kcombobox_encoder->addItem(i->second, i->first);
         ++i;
     }
     connect(ui.kcombobox_encoder, SIGNAL(activated(int)), this, SLOT(set_encoder_by_combobox(int)));
@@ -244,6 +248,7 @@ ProfileDataDialog::~ProfileDataDialog()
     delete faac_widget;
     delete wave_widget;
     delete custom_widget;
+    delete opusenc_widget;
 }
 
 void ProfileDataDialog::slotAccepted()
@@ -308,7 +313,7 @@ void ProfileDataDialog::trigger_changed()
             || ui.checkBox_cuesheet->isChecked() != profile_model->data(profile_model->index(profile_row, PROFILE_MODEL_COLUMN_CUE_INDEX)).toBool()
             || ui.checkBox_singlefile->isChecked() != profile_model->data(profile_model->index(profile_row, PROFILE_MODEL_COLUMN_SF_INDEX)).toBool()
             || lame_widget->isChanged() || oggenc_widget->isChanged() || flac_widget->isChanged() || faac_widget->isChanged() || wave_widget->isChanged()
-            || custom_widget->isChanged());
+            || custom_widget->isChanged() || opusenc_widget->isChanged());
     }
 }
 
@@ -506,6 +511,10 @@ void ProfileDataDialog::set_encoder_widget(const EncoderAssistant::Encoder encod
         ui.stackedWidget_encoder->setCurrentWidget(custom_widget);
         _icon = ENCODER_CUSTOM_ICON;
         break;
+    case EncoderAssistant::OPUSENC:
+        ui.stackedWidget_encoder->setCurrentWidget(opusenc_widget);
+        _icon = ENCODER_OPUSENC_ICON;
+        break;
     case EncoderAssistant::NUM:
         break;
     }
@@ -563,9 +572,18 @@ bool ProfileDataDialog::save()
     }
 
     if (success) {
+        success = opusenc_widget->save();
+        if (!success)
+            error = opusenc_widget->lastError();
+    }
+
+    if (success) {
         success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_NAME_INDEX), ui.qlineedit_name->text());
         if (success)
             success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_ENCODER_SELECTED_INDEX), ui.kcombobox_encoder->itemData(ui.kcombobox_encoder->currentIndex()));
+        if (success)
+            success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_ICON_INDEX),
+                                             EncoderAssistant::icon((EncoderAssistant::Encoder)(ui.kcombobox_encoder->itemData(ui.kcombobox_encoder->currentIndex()).toInt())));
         if (success)
             success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_SCHEME_INDEX), ui.qlineedit_scheme->text());
         if (success)
@@ -628,6 +646,8 @@ bool ProfileDataDialog::save()
             success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_INDEX), wave_parameters.toString());
         if (success)
             success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX), custom_parameters.toString());
+        if (success)
+            success = profile_model->setData(profile_model->index(row, PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_INDEX), opusenc_parameters.toString());
     }
 
     if (!success)

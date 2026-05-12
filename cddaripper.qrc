@@ -33,6 +33,7 @@
         <file>icons/audio-x-generic.png</file>
         <file>icons/audio-x-vorbis+ogg.png</file>
         <file>icons/audio-x-wav.png</file>
+        <file>icons/audio-x-opus+ogg.png</file>
         <file>images/nocover.png</file>
         <file>i18n/cddaripper_en.qm</file>
         <file>i18n/cddaripper_fr.qm</file>

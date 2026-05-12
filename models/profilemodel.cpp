@@ -120,6 +120,8 @@ QVariant ProfileModel::data(const QModelIndex &index, int role) const
             return p_cache.at(index.row())[PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_KEY];
         case PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX:
             return p_cache.at(index.row())[PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY];
+        case PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_INDEX:
+            return p_cache.at(index.row())[PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY];
         }
     }
 
@@ -296,6 +298,8 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             break;
         case PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX:
             break;
+        case PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_INDEX:
+            break;
         default:
             endResetModel();
             return false;
@@ -445,6 +449,9 @@ bool ProfileModel::setData(const QModelIndex &index, const QVariant &value, int 
             break;
         case PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX:
             p_cache[index.row()][PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY] = value;
+            break;
+        case PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_INDEX:
+            p_cache[index.row()][PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY] = value;
             break;
 
         default:
@@ -741,6 +748,38 @@ void ProfileModel::autoCreate()
         }
     }
 
+    if (EncoderAssistant::available(EncoderAssistant::OPUSENC)) {
+        if (!nameExists(EncoderAssistant::name(EncoderAssistant::OPUSENC) + tr(LABEL_MOBILE_QUALITY))) {
+            Profile p = p_new_profile();
+            p[PROFILE_MODEL_NAME_KEY] = EncoderAssistant::name(EncoderAssistant::OPUSENC) + tr(LABEL_MOBILE_QUALITY);
+            p[PROFILE_MODEL_ICON_KEY] = EncoderAssistant::icon(EncoderAssistant::OPUSENC);
+            p[PROFILE_MODEL_ENCODER_SELECTED_KEY] = (int)EncoderAssistant::OPUSENC;
+            p[PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY] = EncoderAssistant::stdParameters(EncoderAssistant::OPUSENC, EncoderAssistant::MOBILE).toString();
+            p_cache.append(p);
+            flag = true;
+        }
+
+        if (!nameExists(EncoderAssistant::name(EncoderAssistant::OPUSENC) + tr(LABEL_NORMAL_QUALITY))) {
+            Profile p = p_new_profile();
+            p[PROFILE_MODEL_NAME_KEY] = EncoderAssistant::name(EncoderAssistant::OPUSENC) + tr(LABEL_NORMAL_QUALITY);
+            p[PROFILE_MODEL_ICON_KEY] = EncoderAssistant::icon(EncoderAssistant::OPUSENC);
+            p[PROFILE_MODEL_ENCODER_SELECTED_KEY] = (int)EncoderAssistant::OPUSENC;
+            p[PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY] = EncoderAssistant::stdParameters(EncoderAssistant::OPUSENC, EncoderAssistant::NORMAL).toString();
+            p_cache.append(p);
+            flag = true;
+        }
+
+        if (!nameExists(EncoderAssistant::name(EncoderAssistant::OPUSENC) + tr(LABEL_EXTREME_QUALITY))) {
+            Profile p = p_new_profile();
+            p[PROFILE_MODEL_NAME_KEY] = EncoderAssistant::name(EncoderAssistant::OPUSENC) + tr(LABEL_EXTREME_QUALITY);
+            p[PROFILE_MODEL_ICON_KEY] = EncoderAssistant::icon(EncoderAssistant::OPUSENC);
+            p[PROFILE_MODEL_ENCODER_SELECTED_KEY] = (int)EncoderAssistant::OPUSENC;
+            p[PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY] = EncoderAssistant::stdParameters(EncoderAssistant::OPUSENC, EncoderAssistant::EXTREME).toString();
+            p_cache.append(p);
+            flag = true;
+        }
+    }
+
     if ((!nameExists(EncoderAssistant::name(EncoderAssistant::WAVE))) && (EncoderAssistant::available(EncoderAssistant::WAVE))) {
         Profile p = p_new_profile();
         p[PROFILE_MODEL_NAME_KEY] = EncoderAssistant::name(EncoderAssistant::WAVE);
@@ -791,7 +830,11 @@ const Parameters ProfileModel::getSelectedEncoderParametersFromCurrentIndex()
     case EncoderAssistant::CUSTOM:
         parameters.fromString(data(index(currentProfileRow(), PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_INDEX)).toString());
         break;
-    case EncoderAssistant::NUM:;
+    case EncoderAssistant::OPUSENC:
+        parameters.fromString(data(index(currentProfileRow(), PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_INDEX)).toString());
+        break;
+    case EncoderAssistant::NUM:
+        break;
     }
 
     return parameters;
@@ -823,8 +866,10 @@ const QString ProfileModel::getSelectedEncoderSuffixFromCurrentIndex()
         return parameters.value(ENCODER_WAVE_SUFFIX_KEY, ENCODER_WAVE_SUFFIX).toString();
     case EncoderAssistant::CUSTOM:
         return parameters.value(ENCODER_CUSTOM_SUFFIX_KEY, ENCODER_CUSTOM_SUFFIX).toString();
+    case EncoderAssistant::OPUSENC:
+        return parameters.value(ENCODER_OPUSENC_SUFFIX_KEY, ENCODER_OPUSENC_SUFFIX).toString();
     case EncoderAssistant::NUM:
-        return "";
+        break;
     }
 
     return "";
@@ -891,6 +936,7 @@ const Profile ProfileModel::p_new_profile()
     p[PROFILE_MODEL_COLUMN_ENCODER_FAAC_PARAMETERS_KEY] = DEFAULT_ENCODER_PARAMETERS;
     p[PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_KEY] = DEFAULT_ENCODER_PARAMETERS;
     p[PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY] = DEFAULT_ENCODER_PARAMETERS;
+    p[PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY] = DEFAULT_ENCODER_PARAMETERS;
 
     return p;
 }
@@ -965,7 +1011,8 @@ void ProfileModel::p_save(QSettings& settings)
 
         settings.setValue(PROFILE_MODEL_PROFILEINDEX_KEY, p_cache[i][PROFILE_MODEL_PROFILEINDEX_KEY]);
         settings.setValue(PROFILE_MODEL_NAME_KEY, p_cache[i][PROFILE_MODEL_NAME_KEY]);
-        settings.setValue(PROFILE_MODEL_ICON_KEY, p_cache[i][PROFILE_MODEL_ICON_KEY]);
+        settings.setValue(PROFILE_MODEL_ICON_KEY,
+                          EncoderAssistant::icon((EncoderAssistant::Encoder)(p_cache[i][PROFILE_MODEL_ENCODER_SELECTED_KEY].toInt())));
 
         settings.setValue(PROFILE_MODEL_ENCODER_SELECTED_KEY, p_cache[i][PROFILE_MODEL_ENCODER_SELECTED_KEY]);
 
@@ -1002,6 +1049,7 @@ void ProfileModel::p_save(QSettings& settings)
         settings.setValue(PROFILE_MODEL_COLUMN_ENCODER_FAAC_PARAMETERS_KEY, p_cache[i][PROFILE_MODEL_COLUMN_ENCODER_FAAC_PARAMETERS_KEY]);
         settings.setValue(PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_KEY, p_cache[i][PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_KEY]);
         settings.setValue(PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY, p_cache[i][PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY]);
+        settings.setValue(PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY, p_cache[i][PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY]);
 
         settings.endGroup();
     }
@@ -1060,6 +1108,7 @@ void ProfileModel::p_load(QSettings& settings)
         p[PROFILE_MODEL_COLUMN_ENCODER_FAAC_PARAMETERS_KEY] = settings.value(PROFILE_MODEL_COLUMN_ENCODER_FAAC_PARAMETERS_KEY, DEFAULT_ENCODER_PARAMETERS);
         p[PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_KEY] = settings.value(PROFILE_MODEL_COLUMN_ENCODER_WAVE_PARAMETERS_KEY, DEFAULT_ENCODER_PARAMETERS);
         p[PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY] = settings.value(PROFILE_MODEL_COLUMN_ENCODER_CUSTOM_PARAMETERS_KEY, DEFAULT_ENCODER_PARAMETERS);
+        p[PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY] = settings.value(PROFILE_MODEL_COLUMN_ENCODER_OPUSENC_PARAMETERS_KEY, DEFAULT_ENCODER_PARAMETERS);
 
         settings.endGroup();
         p_cache.append(p);

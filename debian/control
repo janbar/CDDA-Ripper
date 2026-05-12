@@ -26,5 +26,5 @@ Depends: qttranslations5-l10n,
          zlib1g,
          openssl,
          ${shlibs:Depends}, ${misc:Depends}
-Recommends: flac, vorbis-tools, lame, faac
+Recommends: flac, vorbis-tools, lame, faac, opus-tools
 Description: An easy to use audio CD ripping application

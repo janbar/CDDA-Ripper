@@ -80,6 +80,7 @@ set(cddaripper_SRCS
     widgets/faacwidget.cpp
     widgets/wavewidget.cpp
     widgets/customwidget.cpp
+    widgets/opusencwidget.cpp
     dialogs/aboutwidget.cpp
     dialogs/coverbrowserdialog.cpp
     dialogs/cddaheaderdatadialog.cpp
@@ -133,6 +134,7 @@ set(cddaripper_HDRS
     widgets/faacwidget.h
     widgets/wavewidget.h
     widgets/customwidget.h
+    widgets/opusencwidget.h
     dialogs/aboutwidget.h
     dialogs/coverbrowserdialog.h
     dialogs/cddaheaderdatadialog.h
@@ -162,6 +164,7 @@ qt_wrap_ui(cddaripper_SRCS
     widgets/faacwidgetUI.ui
     widgets/wavewidgetUI.ui
     widgets/customwidgetUI.ui
+    widgets/opusencwidgetUI.ui
     dialogs/aboutwidgetUI.ui
     dialogs/coverbrowserwidgetUI.ui
     dialogs/cddaheaderdatawidgetUI.ui
