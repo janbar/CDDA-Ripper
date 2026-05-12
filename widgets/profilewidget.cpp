@@ -22,7 +22,6 @@ profileWidget::profileWidget(ProfileModel *profileModel, QWidget *parent)
 
     listView->setModel(profile_model);
     listView->setModelColumn(1);
-    listView->setIconSize(QSize(22, 22));
     connect(listView->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)), this, SLOT(_update()));
     connect(listView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(mod_profile(const QModelIndex &)));
     connect(kpushbutton_add, SIGNAL(clicked()), this, SLOT(add_profile()));
