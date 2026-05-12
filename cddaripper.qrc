@@ -40,5 +40,6 @@
         <file>i18n/cddaripper_de.qm</file>
         <file>icons/musicbrainz.png</file>
         <file>icons/deezer.png</file>
+        <file>icons/audio-x-unknown.png</file>
     </qresource>
 </RCC>

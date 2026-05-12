@@ -82,7 +82,7 @@ const QString EncoderAssistant::icon(const EncoderAssistant::Encoder encoder)
         break;
     }
 
-    return "";
+    return ":/icons/audio-x-unknown.png";
 }
 
 bool EncoderAssistant::available(const EncoderAssistant::Encoder encoder)
