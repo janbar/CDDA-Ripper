@@ -11,10 +11,16 @@ AboutWidget::AboutWidget(QWidget *parent)
   ui.label_icon2->setPixmap(QPixmap(":/icons/musicbrainz.png").scaledToWidth(48, Qt::SmoothTransformation));
   ui.label_icon3->setPixmap(QPixmap(":/icons/deezer.png").scaledToWidth(48, Qt::SmoothTransformation));
 
-  ui.label_about->setText(tr(
-          "<html>An easy to use audio CD ripping application.<br>"
-          "<br><b>Version %1</b>, (c) Jean-Luc Barrière<br>"
-          "<br>CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.</html>")
+  ui.text_about1->setText(tr("<html>An easy to use audio CD ripping application."
+          "<br><br><b>Version %1</b>, (c) Jean-Luc Barrière"
+          "<br><br>CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks."
+          "<br><br><b>Credits&thinsp;:</b>"
+          "<br>Audex-0.95 (Marco Nelles)"
+          "<br>Solid (kde.org)"
+          "<br>Kcddb (kde.org)"
+          "<br>Thumbnailler (Jean-Luc Barrière)"
+          "<br>GoodStyle (Juergen Skrotzky)"
+          "</html>")
           .arg(CDDARIPPER_VERSION));
 
   connect(ui.buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(close()));

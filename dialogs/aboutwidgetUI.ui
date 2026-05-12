@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>460</height>
+    <height>465</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -19,20 +19,20 @@
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>460</height>
+    <height>465</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>520</height>
+    <height>465</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>About</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="1" column="0">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_icon1">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -50,65 +50,33 @@
       <string notr="true">icon1</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="label_about">
+   <item row="0" column="1">
+    <widget class="QTextEdit" name="text_about1">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>0</width>
-       <height>72</height>
+       <width>342</width>
+       <height>250</height>
       </size>
      </property>
-     <property name="text">
-      <string notr="true">About</string>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(127,127,127,10%);</string>
      </property>
-     <property name="wordWrap">
+     <property name="readOnly">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="label_title_credits">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Credits</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLabel" name="label_credits">
-     <property name="text">
-      <string notr="true">Audex-0.95 (Marco Nelles)
-Solid (kde.org)
-Kcddb (kde.org)
-Thumbnailler (Jean-Luc Barrière)
-GoodStyle (Juergen Skrotzky)</string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
+   <item row="1" column="1">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -143,7 +111,7 @@ GoodStyle (Juergen Skrotzky)</string>
           <string notr="true">icon2</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -182,7 +150,7 @@ GoodStyle (Juergen Skrotzky)</string>
           <string notr="true">icon3</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -191,38 +159,12 @@ GoodStyle (Juergen Skrotzky)</string>
     </layout>
    </item>
    <item row="7" column="0" colspan="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="1">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="8" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
+      <set>QDialogButtonBox::StandardButton::Close</set>
      </property>
      <property name="centerButtons">
       <bool>true</bool>
