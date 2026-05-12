@@ -269,12 +269,16 @@ void Playlist::p_add_PLS(const QByteArray &playlist)
 void Playlist::p_add_XSPF(const QByteArray &playlist)
 {
     QDomDocument doc;
+#if QT_VERSION < QT_VERSION_CHECK(6, 8, 0)
     QString errorMsg;
     int errorCol;
     int errorRow;
-
     if (!doc.setContent(QString(playlist), &errorMsg, &errorRow, &errorCol))
         return;
+#else
+    if (!doc.setContent(QString(playlist)))
+        return;
+#endif
 
     QDomElement rootElement = doc.firstChildElement("playlist");
     if (rootElement.isNull())
