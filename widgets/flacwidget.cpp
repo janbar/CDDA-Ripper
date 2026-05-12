@@ -71,7 +71,7 @@ void flacWidget::compression_changed_by_spinbox(int compression)
 
 void flacWidget::trigger_changed()
 {
-    changed = (horizontalSlider_compression->value() != parameters->value(ENCODER_FLAC_COMPRESSION_KEY, ENCODER_FLAC_COMPRESSION).toInt() || checkBox_embedcover->isChecked() != parameters->value(ENCODER_LAME_EMBED_COVER_KEY).toBool() ||
+    changed = (horizontalSlider_compression->value() != parameters->value(ENCODER_FLAC_COMPRESSION_KEY, ENCODER_FLAC_COMPRESSION).toInt() || checkBox_embedcover->isChecked() != parameters->value(ENCODER_FLAC_EMBED_COVER_KEY).toBool() ||
                qlineedit_suffix->text() != parameters->value(ENCODER_FLAC_SUFFIX_KEY, ENCODER_FLAC_SUFFIX).toString());
 
     Q_EMIT triggerChanged();
