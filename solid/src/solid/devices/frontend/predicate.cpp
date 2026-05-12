@@ -185,7 +185,11 @@ bool Solid::Predicate::matches(const Device &device) const
             QVariant value = metaProp.isReadable() ? metaProp.read(iface) : QVariant();
             QVariant expected = d->value;
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             if (metaProp.isEnumType() && expected.type() == QVariant::String) {
+#else
+            if (metaProp.isEnumType() && expected.typeId() == QMetaType::QString) {
+#endif
                 QMetaEnum metaEnum = metaProp.enumerator();
                 int value = metaEnum.keysToValue(d->value.toString().toLatin1());
                 if (value >= 0) { // No value found for these keys, resetting expected to invalid
@@ -198,7 +202,7 @@ bool Solid::Predicate::matches(const Device &device) const
                     expected = QVariant();
                 }
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-            } else if (metaProp.isEnumType() && expected.type() == QVariant::Int) {
+            } else if (metaProp.isEnumType() && expected.typeId() == QMetaType::Int) {
                 int expectedValue = expected.toInt();
                 expected = QVariant(metaProp.metaType(), &expectedValue);
 #endif
@@ -271,8 +275,43 @@ QString Solid::Predicate::toString() const
 
         QString value;
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         switch (d->value.type()) {
         case QVariant::StringList: {
+          value = '{';
+
+          const QStringList list = d->value.toStringList();
+
+          QStringList::ConstIterator it = list.begin();
+          QStringList::ConstIterator end = list.end();
+
+          for (; it != end; ++it) {
+            value += '\'' + *it + '\'';
+
+            if (it + 1 != end) {
+              value += ", ";
+            }
+          }
+
+          value += '}';
+          break;
+        }
+        case QVariant::Bool:
+          value = (d->value.toBool() ? "true" : "false");
+          break;
+        case QVariant::Int:
+        case QVariant::UInt:
+        case QVariant::LongLong:
+        case QVariant::ULongLong:
+          value = d->value.toString();
+          break;
+        default:
+          value = '\'' + d->value.toString() + '\'';
+          break;
+        }
+#else
+        switch (d->value.typeId()) {
+        case QMetaType::QStringList: {
             value = '{';
 
             const QStringList list = d->value.toStringList();
@@ -291,19 +330,20 @@ QString Solid::Predicate::toString() const
             value += '}';
             break;
         }
-        case QVariant::Bool:
+        case QMetaType::Bool:
             value = (d->value.toBool() ? "true" : "false");
             break;
-        case QVariant::Int:
-        case QVariant::UInt:
-        case QVariant::LongLong:
-        case QVariant::ULongLong:
+        case QMetaType::Int:
+        case QMetaType::UInt:
+        case QMetaType::LongLong:
+        case QMetaType::ULongLong:
             value = d->value.toString();
             break;
         default:
             value = '\'' + d->value.toString() + '\'';
             break;
         }
+#endif
 
         QString str_operator = "==";
         if (d->compOperator != Equals) {
