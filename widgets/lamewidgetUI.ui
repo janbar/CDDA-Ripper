@@ -33,6 +33,7 @@
      </property>
      <property name="font">
       <font>
+       <weight>50</weight>
        <bold>false</bold>
       </font>
      </property>
@@ -44,6 +45,7 @@
        <widget class="QRadioButton" name="radioButton_medium">
         <property name="font">
          <font>
+          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -59,6 +61,7 @@
        <widget class="QRadioButton" name="radioButton_extreme">
         <property name="font">
          <font>
+          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -87,6 +90,7 @@
        <widget class="QRadioButton" name="radioButton_standard">
         <property name="font">
          <font>
+          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -102,6 +106,7 @@
        <widget class="QRadioButton" name="radioButton_insane">
         <property name="font">
          <font>
+          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -117,6 +122,7 @@
        <widget class="QRadioButton" name="radioButton_custom">
         <property name="font">
          <font>
+          <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
@@ -168,6 +174,9 @@
          </property>
          <property name="tickPosition">
           <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>10</number>
          </property>
         </widget>
        </item>
