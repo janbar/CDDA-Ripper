@@ -29,6 +29,7 @@ sudo apt-get install cddaripper
 ### Prerequisites (optional)
 
 * Ogg Vorbis (ogg files)
+* Ogg Opus (opus files)
 * FLAC (flac files)
 * LAME (mp3 files)
 * FAAC (mp4/aac files)
