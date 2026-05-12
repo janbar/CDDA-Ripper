@@ -1050,7 +1050,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Qualité</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+57"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1073,7 +1073,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Compression</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+54"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1214,7 +1214,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Débit binaire cible (kbit/s)</translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+40"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1440,6 +1440,34 @@ Séparateur&#xa0;:</translation>
     </message>
 </context>
 <context>
+    <name>OPUSENCWidgetUI</name>
+    <message>
+        <location filename="../widgets/opusencwidgetUI.ui" line="+29"/>
+        <source>Target Bitrate (kbit/s)</source>
+        <translation>Débit binaire cible (kbit/s)</translation>
+    </message>
+    <message>
+        <location line="+66"/>
+        <source>Lowest</source>
+        <translation>La plus basse</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Highest</source>
+        <translation>La plus élevée</translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Suffix:</source>
+        <translation>Suffixe :</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Embed cover in music file</source>
+        <translation>Intégrer la couverture dans le fichier musical</translation>
+    </message>
+</context>
+<context>
     <name>OggEncWidgetUI</name>
     <message>
         <location filename="../widgets/oggencwidgetUI.ui" line="+29"/>
@@ -1447,7 +1475,7 @@ Séparateur&#xa0;:</translation>
         <translation>Qualité</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+75"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1576,7 +1604,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>ProfileDataDialog</name>
     <message>
-        <location filename="../dialogs/profiledatadialog.cpp" line="+90"/>
+        <location filename="../dialogs/profiledatadialog.cpp" line="+94"/>
         <source>Modify Profile</source>
         <translation>Modifier un profil</translation>
     </message>
@@ -1723,22 +1751,22 @@ Séparateur&#xa0;:</translation>
         <translation>Encodeur</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+32"/>
         <source>Filenames</source>
         <translation>Noms de fichiers</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+22"/>
         <source>Scheme:</source>
         <translation>Motif&#xa0;:</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+32"/>
         <source>Create FAT32 compatible filenames</source>
         <translation>Créer des noms de fichiers compatibles «&#xa0;FAT32&#xa0;»</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Replace spaces with underscores</source>
         <translation>Remplacer les espaces par des caractères de soulignement</translation>
     </message>
@@ -1758,37 +1786,37 @@ Séparateur&#xa0;:</translation>
         <translation>Suppléments</translation>
     </message>
     <message>
-        <location line="+18"/>
-        <location line="+33"/>
-        <location line="+13"/>
-        <location line="+26"/>
-        <location line="+33"/>
-        <location line="+48"/>
+        <location line="+17"/>
+        <location line="+32"/>
+        <location line="+12"/>
+        <location line="+24"/>
+        <location line="+31"/>
+        <location line="+47"/>
         <source>Settings..</source>
         <translation>Paramètres...</translation>
     </message>
     <message>
-        <location line="-127"/>
+        <location line="-121"/>
         <source>Create info file</source>
         <translation>Créer un fichier d&apos;informations</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+31"/>
         <source>Create hashlist</source>
         <translation>Créer une liste de hachage</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+19"/>
         <source>Create cue sheet</source>
         <translation>Créer une feuille de montage</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Store cover file</source>
         <translation>Enregistrer le fichier de couverture</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+24"/>
         <source>Create playlist</source>
         <translation>Créer une liste de lecture</translation>
     </message>
@@ -1801,7 +1829,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>ProfileModel</name>
     <message>
-        <location filename="../models/profilemodel.cpp" line="+163"/>
+        <location filename="../models/profilemodel.cpp" line="+165"/>
         <source>Profile name must not be empty.</source>
         <translation>Un nom de profil ne doit pas être vide.</translation>
     </message>
@@ -1931,7 +1959,7 @@ Séparateur&#xa0;:</translation>
         <translation>Vous n&apos;avez pas indiqué de nom pour le fichier audio unique. Veuillez en saisir un.</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+36"/>
         <source>Profile name already exists.</source>
         <translation>Le nom du profil existe déjà.</translation>
     </message>
@@ -1951,7 +1979,7 @@ Séparateur&#xa0;:</translation>
         <translation>Votre index de profil %1 existe déjà dans l&apos;ensemble des profils. Veuillez en choisir un unique.</translation>
     </message>
     <message>
-        <location line="+125"/>
+        <location line="+128"/>
         <source>Unknown error. No index found in profile model.</source>
         <translation>Erreur inconnue. Aucun index n&apos;a été trouvé dans le modèle de profil.</translation>
     </message>

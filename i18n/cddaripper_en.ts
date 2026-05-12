@@ -1054,7 +1054,7 @@ However, do you want to continue extraction?</translation>
         <translation>Quality</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+57"/>
         <source>Lowest</source>
         <translation>Lowest</translation>
     </message>
@@ -1077,7 +1077,7 @@ However, do you want to continue extraction?</translation>
         <translation>Compression</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+54"/>
         <source>Lowest</source>
         <translation>Lowest</translation>
     </message>
@@ -1218,7 +1218,7 @@ However, do you want to continue extraction?</translation>
         <translation>Target Bitrate (kbit/s)</translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+40"/>
         <source>Lowest</source>
         <translation>Lowest</translation>
     </message>
@@ -1448,6 +1448,34 @@ Divider:</translation>
     </message>
 </context>
 <context>
+    <name>OPUSENCWidgetUI</name>
+    <message>
+        <location filename="../widgets/opusencwidgetUI.ui" line="+29"/>
+        <source>Target Bitrate (kbit/s)</source>
+        <translation>Target Bitrate (kbit/s)</translation>
+    </message>
+    <message>
+        <location line="+66"/>
+        <source>Lowest</source>
+        <translation>Lowest</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Highest</source>
+        <translation>Highest</translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Suffix:</source>
+        <translation>Suffix:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Embed cover in music file</source>
+        <translation>Embed cover in music file</translation>
+    </message>
+</context>
+<context>
     <name>OggEncWidgetUI</name>
     <message>
         <location filename="../widgets/oggencwidgetUI.ui" line="+29"/>
@@ -1455,7 +1483,7 @@ Divider:</translation>
         <translation>Quality</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+75"/>
         <source>Lowest</source>
         <translation>Lowest</translation>
     </message>
@@ -1580,7 +1608,7 @@ Divider:</translation>
 <context>
     <name>ProfileDataDialog</name>
     <message>
-        <location filename="../dialogs/profiledatadialog.cpp" line="+90"/>
+        <location filename="../dialogs/profiledatadialog.cpp" line="+94"/>
         <source>Modify Profile</source>
         <translation>Modify Profile</translation>
     </message>
@@ -1727,22 +1755,22 @@ Divider:</translation>
         <translation>Encoder</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+32"/>
         <source>Filenames</source>
         <translation>Filenames</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+22"/>
         <source>Scheme:</source>
         <translation>Scheme:</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+32"/>
         <source>Create FAT32 compatible filenames</source>
         <translation>Create FAT32 compatible filenames</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Replace spaces with underscores</source>
         <translation>Replace spaces with underscores</translation>
     </message>
@@ -1762,37 +1790,37 @@ Divider:</translation>
         <translation>Extra</translation>
     </message>
     <message>
-        <location line="+18"/>
-        <location line="+33"/>
-        <location line="+13"/>
-        <location line="+26"/>
-        <location line="+33"/>
-        <location line="+48"/>
+        <location line="+17"/>
+        <location line="+32"/>
+        <location line="+12"/>
+        <location line="+24"/>
+        <location line="+31"/>
+        <location line="+47"/>
         <source>Settings..</source>
         <translation>Settings..</translation>
     </message>
     <message>
-        <location line="-127"/>
+        <location line="-121"/>
         <source>Create info file</source>
         <translation>Create info file</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+31"/>
         <source>Create hashlist</source>
         <translation>Create hashlist</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+19"/>
         <source>Create cue sheet</source>
         <translation>Create cue sheet</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Store cover file</source>
         <translation>Store cover file</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+24"/>
         <source>Create playlist</source>
         <translation>Create playlist</translation>
     </message>
@@ -1805,7 +1833,7 @@ Divider:</translation>
 <context>
     <name>ProfileModel</name>
     <message>
-        <location filename="../models/profilemodel.cpp" line="+163"/>
+        <location filename="../models/profilemodel.cpp" line="+165"/>
         <source>Profile name must not be empty.</source>
         <translation>Profile name must not be empty.</translation>
     </message>
@@ -1935,7 +1963,7 @@ Divider:</translation>
         <translation>You have given no name for the single audio file. Please set one.</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+36"/>
         <source>Profile name already exists.</source>
         <translation>Profile name already exists.</translation>
     </message>
@@ -1955,7 +1983,7 @@ Divider:</translation>
         <translation>Your profile index %1 already exists in the set of profiles. Please choose a unique one.</translation>
     </message>
     <message>
-        <location line="+125"/>
+        <location line="+128"/>
         <source>Unknown error. No index found in profile model.</source>
         <translation>Unknown error. No index found in profile model.</translation>
     </message>
