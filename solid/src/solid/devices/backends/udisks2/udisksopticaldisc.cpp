@@ -38,7 +38,7 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
     /* our position into the path table */
     int pos = 0;
     /* the path table record we're on */
-    int curr_record = 1;
+    //int curr_record = 1;
 
     Solid::OpticalDisc::ContentType result = Solid::OpticalDisc::NoContent;
 
@@ -122,7 +122,7 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
 
         /* update our position */
         pos += 8 + len_di;
-        curr_record++;
+        //curr_record++;
     }
 
     close(fd);
