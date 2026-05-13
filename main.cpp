@@ -67,7 +67,6 @@ int main(int argc, char* argv[])
 
 void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale)
 {
-  // load app translations
   QString i18Path(translationPath);
   i18Path.append("/").append(translationPrefix).append("_").append(locale.name().left(2)).append(".qm");
   QTranslator * translator = new QTranslator(&app);
@@ -75,23 +74,11 @@ void prepareTranslator(QGuiApplication& app, const QString& translationPath, con
   {
     qInfo("using file '%s' for translations.", i18Path.toUtf8().constData());
     app.installTranslator(translator);
-
-    // try to load qt base translations
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QString qt_translationPath(QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-#else
-    QString qt_translationPath(QLibraryInfo::path(QLibraryInfo::TranslationsPath));
-#endif
-    QTranslator * qt_translator = new QTranslator(&app);
-    if (qt_translator->load(locale, "qtbase", "_", qt_translationPath))
-    {
-      qInfo("using file '%s' for translations.", qt_translationPath.toUtf8().constData());
-      app.installTranslator(qt_translator);
-    }
   }
   else
   {
     qWarning("no file found for translations '%s' (using default).", i18Path.toUtf8().constData());
+    delete translator;
   }
 }
 
@@ -101,6 +88,13 @@ void setupApp(QGuiApplication& app)
   qInfo("User locale setting is %s", std::locale().name().c_str());
   // set translators
   prepareTranslator(app, QString(":/i18n"), QString("cddaripper"), locale);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+  QString qt_translationPath(QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+#else
+  QString qt_translationPath(QLibraryInfo::path(QLibraryInfo::TranslationsPath));
+#endif
+  prepareTranslator(app, qt_translationPath, "qtbase", locale);
+
   app.setWindowIcon(QIcon(QPixmap(":/icons/cddaripper-128x128.png")));
 }
 
