@@ -22,11 +22,10 @@
 #include <QCryptographicHash>
 #include <QDebug>
 #include <QByteArray>
-#include <QRegularExpression>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QRegExp>
 #else
-#include <QRegularExpressionMatch>
+#include <QRegularExpression>
 #endif
 
 #include <cstdio>
@@ -131,12 +130,11 @@ namespace KCDDB
                     year = 0;
                 }
 #else
-                QRegularExpression yearRe(QString::fromUtf8("^(\\d{4,4})(-\\d{1,2}-\\d{1,2})?$"));
+                const QRegularExpression yearRe(QString::fromUtf8("^(\\d{4,4})(-\\d{1,2}-\\d{1,2})?$"));
                 int year = 0;
-                QRegularExpressionMatch match = yearRe.match(date);
-                if (match.hasMatch())
+                if (const auto yearMatch = yearRe.match(date); yearMatch.hasMatch())
                 {
-                  QString yearString = match.captured(1);
+                  QString yearString = yearMatch.captured(1);
                   bool ok;
                   year=yearString.toInt(&ok);
                   if (!ok)
@@ -338,7 +336,7 @@ namespace KCDDB
 
   QString MusicBrainzLookup::artistFromCreditList(MusicBrainz5::CArtistCredit * artistCredit )
   {
-	qDebug()/* << k_funcinfo*/;
+    qDebug()/* << k_funcinfo*/;
     QString artistName;
 
     MusicBrainz5::CNameCreditList *ArtistList=artistCredit->NameCreditList();

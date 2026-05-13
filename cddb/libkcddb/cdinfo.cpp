@@ -18,11 +18,11 @@
 #include <QString>
 #include <QChar>
 #include <QMap>
-#include <QRegularExpression>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QRegExp>
+#include <QRegularExpression>
 #else
-#include <QRegularExpressionMatch>
+#include <QRegularExpression>
 #endif
 
 namespace KCDDB
@@ -116,11 +116,11 @@ namespace KCDDB
       {
         //qDebug() << "set: " << type << ", " << d.toString();
         if(type.contains(QRegularExpression( QLatin1String( "^T.*_.*$" )) )){
-		  qCDebug(LIBKCDDB) << "Error: custom cdinfo::set data can not start with T and contain a _";
+          qCDebug(LIBKCDDB) << "Error: custom cdinfo::set data can not start with T and contain a _";
           return;
         }
         if(type.toUpper() == QLatin1String( "DTITLE" )){
-		  qCDebug(LIBKCDDB) << "Error: type: DTITLE is reserved and can not be set.";
+          qCDebug(LIBKCDDB) << "Error: type: DTITLE is reserved and can not be set.";
           return;
         }
 
@@ -222,7 +222,7 @@ namespace KCDDB
     bool ok;
     int track = get(QLatin1String( "tracknumber" )).toInt(&ok);
     if(!ok)
-	  qCDebug(LIBKCDDB) << "Warning toString() on a track that doesn't have track number assigned.";
+      qCDebug(LIBKCDDB) << "Warning toString() on a track that doesn't have track number assigned.";
     QMap<QString, QVariant>::const_iterator i = d->data.constBegin();
     while (i != d->data.constEnd()) {
         if(i.key() != QLatin1String( "COMMENT" ) && i.key() != QLatin1String( "TITLE" ) && i.key() != QLatin1String( "ARTIST" ) && i.key() != QLatin1String( "TRACKNUMBER" )) {
@@ -292,7 +292,7 @@ namespace KCDDB
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QRegExp rev(QLatin1String( "# Revision: (\\d+)" ));
 #else
-    QRegularExpression rev(QLatin1String( "# Revision: (\\d+)" ));
+    const QRegularExpression rev(QLatin1String( "# Revision: (\\d+)" ));
 #endif
     const static QRegularExpression eol(QLatin1String( "[\r\n]" ));
 
@@ -309,10 +309,9 @@ namespace KCDDB
         continue;
       }
 #else
-      QRegularExpressionMatch match = rev.match(line);
-      if (match.hasMatch())
+      if (const auto revMatch = rev.match(line); revMatch.hasMatch())
       {
-        set(QLatin1String( "revision" ), match.captured(1).toUInt());
+        set(QLatin1String( "revision" ), revMatch.captured(1).toUInt());
         continue;
       }
 #endif
@@ -425,7 +424,7 @@ namespace KCDDB
     if ( get(Genre).toString().isEmpty() )
       set(Genre, QLatin1String( "Unknown" ));
 
-	qCDebug(LIBKCDDB) << "Loaded CDInfo for " << get(QLatin1String( "discid" )).toString();
+    qCDebug(LIBKCDDB) << "Loaded CDInfo for " << get(QLatin1String( "discid" )).toString();
 
     return true;
   }
