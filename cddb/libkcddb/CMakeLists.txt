@@ -4,7 +4,7 @@ add_library(KCddb STATIC)
 
 if(MUSICBRAINZ5_FOUND)
     set(musicbrainz_sources
-       musicbrainz/musicbrainzlookup.cpp
+       musicbrainz/musicbrainzlookup.cpp musicbrainz/musicbrainzlookup.h
        musicbrainz/asyncmusicbrainzlookup.cpp musicbrainz/asyncmusicbrainzlookup.h)
 
     if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" OR (WIN32 AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel"))
