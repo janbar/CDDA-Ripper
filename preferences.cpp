@@ -7,7 +7,6 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QDialog>
-#include <qt5/QtWidgets/qfiledialog.h>
 
 #include "widgets/devicewidget.h"
 #include "widgets/generalsettingswidget.h"
