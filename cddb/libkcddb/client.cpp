@@ -87,7 +87,7 @@ namespace KCDDB
 
     if ( trackOffsetList.count() <= 1 )
     {
-	  qCDebug(LIBKCDDB) << "Lookup called with empty offset list";
+      qCDebug(LIBKCDDB) << "Lookup called with empty offset list";
       return NoRecordFound;
     }
 
@@ -95,7 +95,7 @@ namespace KCDDB
     {
       d->cdInfoList = Cache::lookup( trackOffsetList, config() );
 
-	  qCDebug(LIBKCDDB) << "Found " << d->cdInfoList.count() << " hit(s)";
+      qCDebug(LIBKCDDB) << "Found " << d->cdInfoList.count() << " hit(s)";
 
       if ( !d->cdInfoList.isEmpty() )
       {

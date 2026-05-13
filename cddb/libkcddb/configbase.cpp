@@ -1,5 +1,6 @@
 
 #include "configbase.h"
+#include "config-musicbrainz.h"
 
 class ConfigBasePrivate
 {
@@ -17,11 +18,15 @@ class ConfigBasePrivate
 ConfigBase::ConfigBase( )
 {
   d = new ConfigBasePrivate;
+  d->musicBrainzLookupEnabled = false;
+  d->cacheLookupEnabled = false;
 }
 
 void ConfigBase::load()
 {
-  //TODO
+#ifdef HAVE_MUSICBRAINZ5
+  setMusicBrainzLookupEnabled(true);
+#endif
 }
 
 void ConfigBase::setMusicBrainzLookupEnabled( bool v )
