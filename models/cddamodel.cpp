@@ -512,7 +512,7 @@ const QImage CDDAModel::coverImage() const
     return _cover->coverImage();
 }
 
-quint16 CDDAModel::coverChecksum() const
+quint32 CDDAModel::coverChecksum() const
 {
     return _cover->checksum();
 }

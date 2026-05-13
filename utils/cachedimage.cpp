@@ -6,6 +6,7 @@
  */
 
 #include "cachedimage.h"
+#include "3rdparty/crc32.h"
 
 #include <QDebug>
 #include <QMimeDatabase>
@@ -97,9 +98,11 @@ const QImage CachedImage::coverImage() const
     return QImage::fromData(_data);
 }
 
-quint16 CachedImage::checksum() const
+quint32 CachedImage::checksum() const
 {
-    return qChecksum(_data.data(), _data.size());
+    CRC32 checksum;
+    checksum.update(reinterpret_cast<const unsigned char*>(_data.constData()), _data.size());
+    return checksum.result();
 }
 
 const QString CachedImage::supportedMimeTypeList()

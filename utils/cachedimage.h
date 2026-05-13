@@ -38,7 +38,7 @@ public:
     const QByteArray coverRaw() const;
     const QSize size() const;
     const QImage coverImage() const;
-    quint16 checksum() const;
+    quint32 checksum() const;
 
     const QString supportedMimeTypeList();
     const QList<QByteArray> supportedFormats();

@@ -88,7 +88,7 @@ private:
     int cover_size;
     int padding;
 
-    quint16 i_cover_checksum;
+    quint32 i_cover_checksum;
     QImage i_cover;
 
     qreal scale_factor;
