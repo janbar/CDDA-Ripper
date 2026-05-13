@@ -6,7 +6,7 @@
     <message>
         <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -19,12 +19,12 @@
     <message>
         <location line="+57"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;Die Musikdaten werden von &lt;b&gt;MusicBrainz&lt;/b&gt; abgerufen.&lt;/html&gt;</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;Die Kunstwerke werden von &lt;b&gt;Deezer&lt;/b&gt; abgerufen.&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -719,12 +719,12 @@ Information:</translation>
 <context>
     <name>CustomWidgetUI</name>
     <message>
-        <location filename="../widgets/customwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/customwidgetUI.ui" line="+31"/>
         <source>Command Scheme:</source>
         <translation>Befehlseingaben:</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+25"/>
         <source>Suffix:</source>
         <translation>Erweiterung:</translation>
     </message>
@@ -1023,7 +1023,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Qualität</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+40"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
@@ -1033,7 +1033,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+59"/>
         <source>Suffix:</source>
         <translation>Erweiterung:</translation>
     </message>
@@ -1041,12 +1041,12 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
 <context>
     <name>FLACWidgetUI</name>
     <message>
-        <location filename="../widgets/flacwidgetUI.ui" line="+28"/>
+        <location filename="../widgets/flacwidgetUI.ui" line="+94"/>
         <source>Compression</source>
         <translation>Kompression</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+40"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
@@ -1056,12 +1056,12 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="-96"/>
         <source>Suffix:</source>
         <translation>Erweiterung:</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="-15"/>
         <source>Embed cover in music file</source>
         <translation>Cover in Musikdatei einbetten</translation>
     </message>
@@ -1137,32 +1137,29 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Diese Vorgabe klingt für die meisten Menschen transparent.</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Medium (140...185 kbit/s)</source>
-        <translation>Mittel (140 ... 185 Kb/s)</translation>
+        <translation type="vanished">Mittel (140 ... 185 Kb/s)</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>If you have extremely good hearing and similar equipment, this preset will generally provide slightly higher quality than the &quot;standard&quot; mode</source>
         <translation>Wenn Sie ein gutes Gehör und eine entsprechende Anlage haben, wird diese Vorgabe eine hörbar bessere Qualität liefern als der „Standard“-Modus</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Extreme (220...260 kbits/s)</source>
-        <translation>Extrem (220 ... 260 Kb/s)</translation>
+        <translation type="vanished">Extrem (220 ... 260 Kb/s)</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+28"/>
         <source>This preset should generally be transparent to most people on most music and is already quite high in quality.</source>
         <translation>Diese Vorgabe klingt für die meisten Menschen transparent und hat bereits eine hohe Qualität.</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Standard (170...210 kbit/s)</source>
-        <translation>Standard (170 ... 210 Kb/s)</translation>
+        <translation type="vanished">Standard (170 ... 210 Kb/s)</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>This preset will usually be overkill for most people and most situations, but if you must have the absolute highest quality with no regard to filesize, this is the way to go.</source>
         <translation>Diese Vorgabe ist für die meisten Leute übertrieben, aber wenn Sie maximale Qualität unabhängig der Dateigröße brauchen, nehmen Sie diese Vorgabe.</translation>
     </message>
@@ -1177,17 +1174,32 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Benutzerdefiniert</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+144"/>
         <source>Constant Bitrate</source>
         <translation>Konstante Bitrate</translation>
     </message>
     <message>
-        <location line="-249"/>
+        <location line="-246"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Ziel-Bitrate (Kb/s)</translation>
     </message>
     <message>
-        <location line="+191"/>
+        <location line="+32"/>
+        <source>Medium (140-185 kbit/s)</source>
+        <translation>Mittel (140-185 Kb/s)</translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Extreme (220-260 kbits/s)</source>
+        <translation>Extrem (220-260 Kb/s)</translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Standard (170-210 kbit/s)</source>
+        <translation>Standard (170-210 Kb/s)</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
@@ -1197,12 +1209,12 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+50"/>
         <source>Embed cover in music file</source>
         <translation>Cover in Musikdatei einbetten</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-133"/>
         <source>Suffix:</source>
         <translation>Erweiterung:</translation>
     </message>
@@ -1411,12 +1423,12 @@ Trennzeichen:</translation>
 <context>
     <name>OPUSENCWidgetUI</name>
     <message>
-        <location filename="../widgets/opusencwidgetUI.ui" line="+28"/>
+        <location filename="../widgets/opusencwidgetUI.ui" line="+35"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Ziel-Bitrate (Kb/s)</translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+46"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
@@ -1426,12 +1438,12 @@ Trennzeichen:</translation>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+75"/>
         <source>Suffix:</source>
         <translation>Erweiterung:</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="-146"/>
         <source>Embed cover in music file</source>
         <translation>Cover in Musikdatei einbetten</translation>
     </message>
@@ -1444,23 +1456,23 @@ Trennzeichen:</translation>
         <translation>Qualität</translation>
     </message>
     <message>
-        <location line="+73"/>
+        <location line="+115"/>
         <source>Lowest</source>
         <translation>Niedrigste</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+19"/>
         <source>Highest</source>
         <translation>Höchste</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="-93"/>
         <source>Target Bitrate ~</source>
         <translation>Ziel-Bitrate ~</translation>
     </message>
     <message>
-        <location line="+45"/>
-        <location line="+69"/>
+        <location line="-30"/>
+        <location line="+251"/>
         <location line="+79"/>
         <source>kbit/s</source>
         <translation>kBit/sek</translation>
@@ -2002,13 +2014,13 @@ Trennzeichen:</translation>
     <message>
         <location line="+6"/>
         <source>created on </source>
-        <translation type="unfinished"></translation>
+        <translation>created on </translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils/cachedimage.cpp" line="+160"/>
+        <location filename="../utils/cachedimage.cpp" line="+163"/>
         <source>File does not exist.</source>
         <translation>Die Datei existiert nicht.</translation>
     </message>
@@ -2080,12 +2092,12 @@ Trennzeichen:</translation>
         <location line="+8"/>
         <location line="+19"/>
         <source>Illegal character found at index %1: &apos;%2&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültiges Zeichen an Index %1 gefunden: &apos;%2&apos;</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Unclosed quote found</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungeschlossenes Zitat gefunden</translation>
     </message>
 </context>
 <context>
@@ -2093,7 +2105,7 @@ Trennzeichen:</translation>
     <message>
         <location filename="../utils/schemeparser.cpp" line="+75"/>
         <source>Illegal character found at index %1: &apos;%2&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungültiges Zeichen an Index %1 gefunden: &apos;%2&apos;</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -2103,7 +2115,7 @@ Trennzeichen:</translation>
     <message>
         <location line="+132"/>
         <source>Unclosed brace.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht geschlossene Klammer.</translation>
     </message>
 </context>
 <context>

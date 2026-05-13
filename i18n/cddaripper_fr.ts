@@ -737,12 +737,12 @@ complémentaires&#xa0;:</translation>
 <context>
     <name>CustomWidgetUI</name>
     <message>
-        <location filename="../widgets/customwidgetUI.ui" line="+29"/>
+        <location filename="../widgets/customwidgetUI.ui" line="+31"/>
         <source>Command Scheme:</source>
         <translation>Commande :</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+25"/>
         <source>Suffix:</source>
         <translation>Suffixe :</translation>
     </message>
@@ -1053,7 +1053,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Qualité</translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+40"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1063,7 +1063,7 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+59"/>
         <source>Suffix:</source>
         <translation>Suffixe&#xa0;:</translation>
     </message>
@@ -1071,12 +1071,12 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
 <context>
     <name>FLACWidgetUI</name>
     <message>
-        <location filename="../widgets/flacwidgetUI.ui" line="+28"/>
+        <location filename="../widgets/flacwidgetUI.ui" line="+94"/>
         <source>Compression</source>
         <translation>Compression</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+40"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1086,12 +1086,12 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="-96"/>
         <source>Suffix:</source>
         <translation>Suffixe&#xa0;:</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="-15"/>
         <source>Embed cover in music file</source>
         <translation>Intégrer la couverture dans le fichier musical</translation>
     </message>
@@ -1167,32 +1167,29 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Ce préréglage devrait offrir une quasi-transparence pour la plupart des utilisateurs sur de nombreux genres de musique.</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Medium (140...185 kbit/s)</source>
-        <translation>Moyen (140...185&#xa0;kbit/s)</translation>
+        <translation type="vanished">Moyen (140...185&#xa0;kbit/s)</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>If you have extremely good hearing and similar equipment, this preset will generally provide slightly higher quality than the &quot;standard&quot; mode</source>
         <translation>Si vous avez une ouïe extrêmement fine et l&apos;équipement en conséquence, ce préréglage fournira généralement une qualité légèrement supérieure au mode «&#xa0;standard&#xa0;»</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Extreme (220...260 kbits/s)</source>
-        <translation>Extrême (220 à 260&#xa0;Kbits&#xa0;/ s)</translation>
+        <translation type="vanished">Extrême (220 à 260&#xa0;Kbits&#xa0;/ s)</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+28"/>
         <source>This preset should generally be transparent to most people on most music and is already quite high in quality.</source>
         <translation>Ce préréglage devrait généralement être transparent pour la plupart des utilisateurs sur de nombreux genres de musique et constitue déjà une qualité tout à fait satisfaisante.</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Standard (170...210 kbit/s)</source>
-        <translation>Standard (170...210&#xa0;kbit/s)</translation>
+        <translation type="vanished">Standard (170...210&#xa0;kbit/s)</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>This preset will usually be overkill for most people and most situations, but if you must have the absolute highest quality with no regard to filesize, this is the way to go.</source>
         <translation>Ce préréglage sera habituellement surpuissant pour la plupart des utilisateurs dans la majorité des cas, mais si vous devez avoir la qualité la plus élevée absolue sans tenir compte de la taille du fichier, il vous conviendra parfaitement.</translation>
     </message>
@@ -1207,17 +1204,32 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>Personnalisé</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+144"/>
         <source>Constant Bitrate</source>
         <translation>Débit binaire constant</translation>
     </message>
     <message>
-        <location line="-249"/>
+        <location line="-246"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Débit binaire cible (kbit/s)</translation>
     </message>
     <message>
-        <location line="+191"/>
+        <location line="+32"/>
+        <source>Medium (140-185 kbit/s)</source>
+        <translation>Moyen (140-185&#xa0;kbit/s)</translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Extreme (220-260 kbits/s)</source>
+        <translation>Extrême (220-260&#xa0;Kbits&#xa0;/ s)</translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>Standard (170-210 kbit/s)</source>
+        <translation>Standard (170-210&#xa0;kbit/s)</translation>
+    </message>
+    <message>
+        <location line="+116"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1227,12 +1239,12 @@ Voulez-vous vraiment poursuivre l&apos;extraction néanmoins&#xa0;?</translation
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+50"/>
         <source>Embed cover in music file</source>
         <translation>Intégrer la couverture dans le fichier musical</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-133"/>
         <source>Suffix:</source>
         <translation>Suffixe&#xa0;:</translation>
     </message>
@@ -1445,12 +1457,12 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>OPUSENCWidgetUI</name>
     <message>
-        <location filename="../widgets/opusencwidgetUI.ui" line="+28"/>
+        <location filename="../widgets/opusencwidgetUI.ui" line="+35"/>
         <source>Target Bitrate (kbit/s)</source>
         <translation>Débit binaire cible (kbit/s)</translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+46"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
@@ -1460,12 +1472,12 @@ Séparateur&#xa0;:</translation>
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+75"/>
         <source>Suffix:</source>
         <translation>Suffixe :</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="-146"/>
         <source>Embed cover in music file</source>
         <translation>Intégrer la couverture dans le fichier musical</translation>
     </message>
@@ -1478,23 +1490,23 @@ Séparateur&#xa0;:</translation>
         <translation>Qualité</translation>
     </message>
     <message>
-        <location line="+73"/>
+        <location line="+115"/>
         <source>Lowest</source>
         <translation>La plus basse</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+19"/>
         <source>Highest</source>
         <translation>La plus élevée</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="-93"/>
         <source>Target Bitrate ~</source>
         <translation>Débit binaire cible ~</translation>
     </message>
     <message>
-        <location line="+45"/>
-        <location line="+69"/>
+        <location line="-30"/>
+        <location line="+251"/>
         <location line="+79"/>
         <source>kbit/s</source>
         <translation>kbit/s</translation>
@@ -1796,7 +1808,7 @@ Séparateur&#xa0;:</translation>
         <location line="+31"/>
         <location line="+47"/>
         <source>Settings..</source>
-        <translation>Paramètres...</translation>
+        <translation>Paramètres..</translation>
     </message>
     <message>
         <location line="-121"/>
@@ -2046,7 +2058,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../utils/cachedimage.cpp" line="+160"/>
+        <location filename="../utils/cachedimage.cpp" line="+163"/>
         <source>File does not exist.</source>
         <translation>Le fichier n&apos;existe pas.</translation>
     </message>
