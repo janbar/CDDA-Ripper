@@ -162,9 +162,7 @@ void CDDAParanoia::sampleOffset(const int offset)
 
         int toc_offset = 0;
         toc_offset += sample_offset / 588;
-        sample_offset %= 588;
-        if (sample_offset < 0) {
-            sample_offset += 588;
+        if ((sample_offset % 588) < 0) {
             toc_offset--;
         }
 
@@ -292,7 +290,7 @@ int CDDAParanoia::frameOffsetOfTrack(int n)
 
 bool CDDAParanoia::isAudioTrack(int n)
 {
-    if (paranoia_drive)
+    if (n > 0 && n <= numOfTracks())
         return IS_AUDIO(paranoia_drive, n - 1);
     return true;
 }
