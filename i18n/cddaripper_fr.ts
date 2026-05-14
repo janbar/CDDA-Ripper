@@ -719,8 +719,8 @@ complémentaires&#xa0;:</translation>
         <location line="+5"/>
         <source>Found %n Cover(s)</source>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n couverture trouvée</numerusform>
+            <numerusform>%n couvertures trouvées</numerusform>
         </translation>
     </message>
     <message>
