@@ -56,7 +56,7 @@
         <translation>Start ripping and encoding with profile &quot;%1&quot;...</translation>
     </message>
     <message>
-        <location line="+502"/>
+        <location line="+501"/>
         <location line="+60"/>
         <source>Can&apos;t find path &quot;%1&quot;.</source>
         <translation>Cannot find path &quot;%1&quot;.</translation>
@@ -491,12 +491,12 @@ Information:</translation>
     <message>
         <location line="+0"/>
         <location line="+9"/>
-        <location line="+826"/>
+        <location line="+831"/>
         <source>This is an internal error. Check your hardware. If all okay please make bug report.</source>
         <translation>This is an internal error. Check your hardware. If all okay please make bug report.</translation>
     </message>
     <message>
-        <location line="-826"/>
+        <location line="-831"/>
         <source>Unable to create KCDDB object.</source>
         <translation>Unable to create KCDDB object.</translation>
     </message>
@@ -531,7 +531,7 @@ Information:</translation>
         <translation>Title</translation>
     </message>
     <message>
-        <location line="+664"/>
+        <location line="+669"/>
         <source>Unable to create CDDA paranoia object.</source>
         <translation>Unable to create CDDA paranoia object.</translation>
     </message>
@@ -869,12 +869,12 @@ Information:</translation>
     </message>
     <message>
         <location line="+24"/>
-        <location line="+132"/>
+        <location line="+138"/>
         <source>Ripping whole CD as single track</source>
         <translation>Ripping whole CD as single track</translation>
     </message>
     <message>
-        <location line="-131"/>
+        <location line="-137"/>
         <source>Encoding</source>
         <translation>Encoding</translation>
     </message>
@@ -889,7 +889,7 @@ Information:</translation>
         <translation>Encoding Track 0 of %1</translation>
     </message>
     <message>
-        <location line="+105"/>
+        <location line="+110"/>
         <source>Cancel</source>
         <translation>Cancel</translation>
     </message>
@@ -899,7 +899,12 @@ Information:</translation>
         <translation>Do you really want to cancel extraction?</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+6"/>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Ripping Track</source>
         <translation>Ripping Track</translation>
     </message>
@@ -1538,7 +1543,7 @@ Divider:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+137"/>
+        <location filename="../preferences.cpp" line="+136"/>
         <source>General Settings</source>
         <translation>General Settings</translation>
     </message>

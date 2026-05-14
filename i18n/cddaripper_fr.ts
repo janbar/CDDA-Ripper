@@ -52,7 +52,7 @@
         <translation>Début d&apos;extraction audio et d&apos;encodage avec le profil «&#xa0;%1&#xa0;»...</translation>
     </message>
     <message>
-        <location line="+502"/>
+        <location line="+501"/>
         <location line="+60"/>
         <source>Can&apos;t find path &quot;%1&quot;.</source>
         <translation>Impossible de trouver l&apos;emplacement «&#xa0;%1&#xa0;».</translation>
@@ -487,12 +487,12 @@ complémentaires&#xa0;:</translation>
     <message>
         <location line="+0"/>
         <location line="+9"/>
-        <location line="+826"/>
+        <location line="+831"/>
         <source>This is an internal error. Check your hardware. If all okay please make bug report.</source>
         <translation>Il s&apos;agit d&apos;une erreur interne. Veuillez vérifier votre matériel. Si tout est correct, veuillez rédiger un rapport de bogue.</translation>
     </message>
     <message>
-        <location line="-826"/>
+        <location line="-831"/>
         <source>Unable to create KCDDB object.</source>
         <translation>Impossible de créer l&apos;objet «&#xa0;KCDDB&#xa0;».</translation>
     </message>
@@ -527,7 +527,7 @@ complémentaires&#xa0;:</translation>
         <translation>Titre</translation>
     </message>
     <message>
-        <location line="+664"/>
+        <location line="+669"/>
         <source>Unable to create CDDA paranoia object.</source>
         <translation>Impossible de créer l&apos;objet «&#xa0;CDDA paranoia&#xa0;».</translation>
     </message>
@@ -865,12 +865,12 @@ complémentaires&#xa0;:</translation>
     </message>
     <message>
         <location line="+24"/>
-        <location line="+132"/>
+        <location line="+138"/>
         <source>Ripping whole CD as single track</source>
         <translation>Extraction audio d&apos;un CD entier sous la forme d&apos;une piste unique</translation>
     </message>
     <message>
-        <location line="-131"/>
+        <location line="-137"/>
         <source>Encoding</source>
         <translation>Encodage</translation>
     </message>
@@ -885,7 +885,7 @@ complémentaires&#xa0;:</translation>
         <translation>Encodage de la piste&#xa0;0 sur %1</translation>
     </message>
     <message>
-        <location line="+105"/>
+        <location line="+110"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
@@ -895,7 +895,12 @@ complémentaires&#xa0;:</translation>
         <translation>Voulez-vous vraiment annuler l&apos;extraction&#xa0;?</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+6"/>
+        <source>Stop</source>
+        <translation>Stopper</translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Ripping Track</source>
         <translation>Extraction d&apos;une piste</translation>
     </message>
@@ -1530,7 +1535,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+137"/>
+        <location filename="../preferences.cpp" line="+136"/>
         <source>General Settings</source>
         <translation>Paramètres généraux</translation>
     </message>

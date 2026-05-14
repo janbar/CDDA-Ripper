@@ -44,7 +44,7 @@
         <translation>Auslesen und Kodieren mit dem Profil „%1“ wird gestartet ...</translation>
     </message>
     <message>
-        <location line="+502"/>
+        <location line="+501"/>
         <location line="+60"/>
         <source>Can&apos;t find path &quot;%1&quot;.</source>
         <translation>Der Pfad „%1“ kann nicht gefunden werden.</translation>
@@ -479,12 +479,12 @@ Information:</translation>
     <message>
         <location line="+0"/>
         <location line="+9"/>
-        <location line="+826"/>
+        <location line="+831"/>
         <source>This is an internal error. Check your hardware. If all okay please make bug report.</source>
         <translation>Dies ist ein interner Fehler. Überprüfen Sie Ihre Hardware. Sollte alles in Ordnung sein, erstellen Sie bitte einen Fehlerbericht.</translation>
     </message>
     <message>
-        <location line="-826"/>
+        <location line="-831"/>
         <source>Unable to create KCDDB object.</source>
         <translation>Das KCDDB-Objekt kann nicht erstellt werden.</translation>
     </message>
@@ -519,7 +519,7 @@ Information:</translation>
         <translation>Titel</translation>
     </message>
     <message>
-        <location line="+664"/>
+        <location line="+669"/>
         <source>Unable to create CDDA paranoia object.</source>
         <translation>CDDA-Paranoia-Objekt kann nicht erstellt werden.</translation>
     </message>
@@ -847,12 +847,12 @@ Information:</translation>
     </message>
     <message>
         <location line="+24"/>
-        <location line="+132"/>
+        <location line="+138"/>
         <source>Ripping whole CD as single track</source>
         <translation>Die gesamte CD als ein Stück auslesen</translation>
     </message>
     <message>
-        <location line="-131"/>
+        <location line="-137"/>
         <source>Encoding</source>
         <translation>Kodierung</translation>
     </message>
@@ -867,7 +867,7 @@ Information:</translation>
         <translation>Stück 0 von %1 wird kodiert</translation>
     </message>
     <message>
-        <location line="+105"/>
+        <location line="+110"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
@@ -877,7 +877,12 @@ Information:</translation>
         <translation>Möchten Sie das Auslesen wirklich abbrechen?</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+6"/>
+        <source>Stop</source>
+        <translation>Stoppen</translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Ripping Track</source>
         <translation>Stück wird ausgelesen</translation>
     </message>
@@ -1496,7 +1501,7 @@ Trennzeichen:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+137"/>
+        <location filename="../preferences.cpp" line="+136"/>
         <source>General Settings</source>
         <translation>Allgemeine Einstellungen</translation>
     </message>
