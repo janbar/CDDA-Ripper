@@ -1,0 +1,96 @@
+version: 1
+AppDir:
+  path: AppDir
+  app_info:
+    id: cddaripper
+    name: cdda-ripper
+    icon: cddaripper
+    version: latest-ubuntu-jammy
+    exec: usr/bin/cddaripper
+  apt:
+    arch:
+    - amd64
+    allow_unauthenticated: true
+    sources:
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy main restricted
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy universe
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy-updates universe
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy multiverse
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+    - sourceline: deb http://fr.archive.ubuntu.com/ubuntu/ jammy-backports main restricted
+        universe multiverse
+    - sourceline: deb http://security.ubuntu.com/ubuntu jammy-security main restricted
+    - sourceline: deb http://security.ubuntu.com/ubuntu jammy-security universe
+    - sourceline: deb http://security.ubuntu.com/ubuntu jammy-security multiverse
+    include:
+    - dash
+    - libc6:amd64
+    - libbz2-1.0
+    - libexpat1
+    - libfam0
+    - libgcrypt20
+    - liblz4-1
+    - libpciaccess0
+    - libpcre3
+    - libsm6
+    - libsystemd0
+    - libxau6
+    - libxcb-render-util0
+    - libxcb-sync1
+    - libxcb-xinerama0
+    - libxcb-xkb1
+    - libxdamage1
+    - libxdmcp6
+    - libxext6
+    - libxfixes3
+    - libxrender1
+    - libxshmfence1
+    - libxxf86vm1
+    - libqt5core5a
+    - libqt5concurrent5
+    - libqt5gui5
+    - libqt5xml5
+    - libqt5network5
+    - libqt5dbus5
+    - libqt5opengl5
+    - libqt5svg5
+    - libqt5widgets5
+    - libqt5network5
+    - qttranslations5-l10n
+    - qtwayland5
+    - zlib1g
+    - libssl3
+    - libdbus-1-3
+    - libudev1
+    - libmusicbrainz5cc2v5
+    - libcdparanoia0
+    - flac
+    - vorbis-tools
+    - lame
+    - faac
+    - opus-tools
+    exclude:
+    - hicolor-icon-theme
+    - sound-theme-freedesktop
+    - perl
+    - perl-base
+    - kwayland-data
+    - libwacom2
+    - libasound2
+    - breeze
+    - breeze-icon-theme
+    - breeze-cursor-theme
+    - kwin-style-breeze
+    - kde-style-breeze
+    - plasma-integration
+  files:
+    exclude:
+    - usr/share/man
+    - usr/share/doc/*/README.*
+    - usr/share/doc/*/changelog.*
+    - usr/share/doc/*/NEWS.*
+    - usr/share/doc/*/TODO.*
+AppImage:
+  arch: x86_64
+  update-information: gh-releases-zsync|AppImageCrafters|cdda-ripper|latest|*x86_64.AppImage.zsync
