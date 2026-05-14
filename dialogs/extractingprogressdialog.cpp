@@ -12,7 +12,7 @@ ExtractingProgressDialog::ExtractingProgressDialog(ProfileModel *profile_model, 
 {
     setWindowTitle(tr("Rip And Encode"));
     setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint);
-    
+
     mainLayout = new QVBoxLayout;
     setLayout(mainLayout);
 
@@ -59,6 +59,7 @@ ExtractingProgressDialog::ExtractingProgressDialog(ProfileModel *profile_model, 
     connect(audex, SIGNAL(timeout()), this, SLOT(ask_timeout()));
     connect(ui.details_button, SIGNAL(pressed()), this, SLOT(toggle_details()));
 
+    canceled = false;
     finished = false;
 
     progressbar_np_flag = false;
@@ -141,6 +142,10 @@ void ExtractingProgressDialog::cancel()
     if (finished) {
         close();
 
+    } else if (canceled) {
+        qWarning() << "Force a stop by ejecting the media.";
+        cdda_model->eject();
+
     } else {
         if (QMessageBox::warning(
                 this,
@@ -149,8 +154,9 @@ void ExtractingProgressDialog::cancel()
                 QMessageBox::StandardButton::No,
                 QMessageBox::StandardButton::Yes)
             == QMessageBox::StandardButton::Yes) {
-            cancelButton->setEnabled(false);
             audex->cancel();
+            canceled = true;
+            cancelButton->setText(tr("Stop"));
         }
     }
 }

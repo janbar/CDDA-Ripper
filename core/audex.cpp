@@ -571,8 +571,7 @@ void Audex::check_if_thread_still_running()
     if (cdda_extract_thread->isRunning()) {
         // this could happen if the thread is stuck in paranoia_read
         // because of an unreadable cd
-        qDebug() << "Terminate extracting thread.";
-        cdda_extract_thread->requestInterruption();
+        qWarning() << "The extracting thread is still running.";
     }
 }
 

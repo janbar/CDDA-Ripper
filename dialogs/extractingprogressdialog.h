@@ -82,6 +82,7 @@ private:
     ProfileModel *profile_model;
     CDDAModel *cdda_model;
 
+    bool canceled;
     bool finished;
 
     bool progressbar_np_flag;
