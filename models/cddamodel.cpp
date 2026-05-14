@@ -840,7 +840,12 @@ void CDDAModel::lookupCDDB()
 
     cddb->config().reparse();
     cddb->setBlockingMode(false);
-    cddb->lookup(pn->discSignature());
+    KCDDB::Result r = cddb->lookup(pn->discSignature());
+    if (KCDDB::Success != r) {
+        // the request has not started, and the transaction must be
+        // finished inline
+        lookup_cddb_done(r);
+    }
 }
 
 void CDDAModel::eject()
