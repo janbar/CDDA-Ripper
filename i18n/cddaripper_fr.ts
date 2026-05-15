@@ -449,7 +449,7 @@ complémentaires&#xa0;:</translation>
         <location line="-21"/>
         <location line="+21"/>
         <source>Check your artist name and title. Otherwise you can load a custom cover from an image file.</source>
-        <translation>Vérifiez le nom et le titre de l&apos;artiste. Sinon, vous pouvez charger une couverture personnalisée depuis un fichier d&apos;image.</translation>
+        <translation>Vérifiez le nom de l&apos;artiste et le titre. Sinon, vous pouvez charger une couverture personnalisée depuis un fichier d&apos;image.</translation>
     </message>
     <message>
         <location line="+68"/>
