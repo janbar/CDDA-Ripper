@@ -19,6 +19,13 @@ sudo apt-get update
 sudo apt-get install cddaripper
 ```
 
+### Previews
+
+<p align="center">
+  <img src="images/cddaripper_light_preview.png"/>
+  <img src="images/cddaripper_dark_preview.png"/>
+<p>
+
 ### Prerequisites
 
 * cdparanoia
