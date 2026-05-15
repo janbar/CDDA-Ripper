@@ -25,6 +25,7 @@
 
 #include <QDebug>
 #include <QUrlQuery>
+#include <QDateTime>
 
 #define IMAGE_SIZE_SMALL      1
 #define IMAGE_SIZE_MEDIUM     2
@@ -283,7 +284,7 @@ void AlbumInfo::processInfo()
     {
       m_error.status = ReplyNoDataFound;
       m_error.errorCode = 0;
-      m_error.errorString = QStringLiteral(ERRMSG_NOT_FOUND " for album=[%1] artist=[%2] size=%3").arg(m_album).arg(m_artist).arg(m_size);
+      m_error.errorString = QString::fromUtf8(ERRMSG_NOT_FOUND " for album=[%1] artist=[%2] size=%3").arg(m_album).arg(m_artist).arg(m_size);
       fakeImage();
       Q_EMIT finished();
     }
