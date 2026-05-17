@@ -23,6 +23,7 @@ Architecture: any
 Depends: qttranslations5-l10n,
          libqt5dbus5,
          libqt5svg5,
+         libqt5gui5,
          zlib1g,
          openssl,
          ${shlibs:Depends}, ${misc:Depends}
