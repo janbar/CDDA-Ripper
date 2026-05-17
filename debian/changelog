@@ -1,4 +1,8 @@
-cddaripper (1.1) UNRELEASED; urgency=low
+cddaripper (1.2) UNRELEASED; urgency=low
+
+  [ janbar ]
+  * Release 1.2.0
+  * Fix handling of encoder version
 
   [ janbar ]
   * Release 1.1.0
