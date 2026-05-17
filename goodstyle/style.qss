@@ -54,7 +54,6 @@ QMenuBar::item:pressed{
 }
 QMenu{
   background-color:palette(base);
-  border-width:1px solid palette(text);
 }
 QMenu::item{
   padding:5px 5px;
