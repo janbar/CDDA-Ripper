@@ -135,6 +135,7 @@ bool EncoderAssistant::canEmbedCover(const Encoder encoder, int *maxCoverSize)
 
 const QString EncoderAssistant::version(const EncoderAssistant::Encoder encoder)
 {
+    QString str("");
     QProcess process;
     process.setProcessChannelMode(QProcess::SeparateChannels);
     process.setReadChannel(QProcess::StandardError);
@@ -158,65 +159,67 @@ const QString EncoderAssistant::version(const EncoderAssistant::Encoder encoder)
           args.push_back(ENCODER_FAAC_VERSION_PARA);
         break;
     case EncoderAssistant::WAVE:
-        return "";
+        return str;
     case EncoderAssistant::CUSTOM:
-        return "";
+        return str;
     case EncoderAssistant::OPUSENC:
         cmd = ENCODER_OPUSENC_BIN;
         args.push_back(ENCODER_OPUSENC_VERSION_PARA);
         break;
     default:
-        return "";
+        return str;
     }
     process.start(cmd, args);
     if (!process.waitForFinished())
-        return "";
+        return str;
     QByteArray rawoutput = process.readAllStandardError();
     if (rawoutput.size() == 0)
         rawoutput = process.readAllStandardOutput();
     QString output(rawoutput);
     QStringList list = output.trimmed().split('\n');
     if (list.count() == 0)
-        return "";
+        return str;
     QStringList words = list[0].split(' ');
     if (words.count() == 0)
-        return "";
+        return str;
 
     switch (encoder) {
     case EncoderAssistant::LAME:
         if ((words.contains("version")) && (words.indexOf("version") + 1 < words.count()))
-            return words[words.indexOf("version") + 1];
-        if (words.count() < 2)
-            return "";
-        return words[words.count() - 2];
+            str = words[words.indexOf("version") + 1];
+        else if (words.count() > 1)
+          str = words[words.count() - 2];
+        break;
 
     case EncoderAssistant::OGGENC:
     case EncoderAssistant::FLAC:
-        return words.last();
+        str = words.last();
+        break;
 
     case EncoderAssistant::FAAC:
         if (list.count() < 2)
-            return "";
+            break;
         words = list[1].split(' ');
         if (words.count() < 2)
-            return "";
-        if ((words.contains("FAAC")) && (words.indexOf("FAAC") + 1 < words.count()))
-            return words[words.indexOf("FAAC") + 1];
-        return words[1];
+            break;
+        else if ((words.contains("FAAC")) && (words.indexOf("FAAC") + 1 < words.count()))
+            str = words[words.indexOf("FAAC") + 1];
+        else
+            str = words[1];
+        break;
 
     case EncoderAssistant::OPUSENC:
-        if ((words.contains("libopus")) && (words.indexOf("libopus") + 1 < words.count()))
-            return words[words.indexOf("libopus") + 1];
-        if (words.count() < 3)
-            return "";
-        return words[2];
+        if ((words.contains("opus-tools")) && (words.indexOf("opus-tools") + 1 < words.count()))
+            str = words[words.indexOf("opus-tools") + 1];
+        break;
 
     case EncoderAssistant::WAVE:
     case EncoderAssistant::CUSTOM:
-    default:;
+    default:
+      break;
     }
 
-    return "";
+    return str;
 }
 
 long EncoderAssistant::versionNumber(const EncoderAssistant::Encoder encoder)
@@ -301,8 +304,8 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
             arguments.push_back("--preset");
             arguments.push_back("standard");
         }
-        QString v = EncoderAssistant::version(EncoderAssistant::LAME);
-        if ((v.startsWith(QLatin1String("3.95"))) || (v.startsWith(QLatin1String("3.96"))) || (v.startsWith(QLatin1String("3.97"))))
+        long vn = EncoderAssistant::versionNumber(EncoderAssistant::LAME);
+        if (vn >= makeVersionNumber(3, 95, 0))
             arguments.push_back("--vbr-new");
 
         if (embed_cover && with_embed_cover)
@@ -381,8 +384,8 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         bool embed_cover = parameters.value(ENCODER_FLAC_EMBED_COVER_KEY).toBool();
         arguments.push_back(ENCODER_FLAC_BIN);
         if (embed_cover && with_embed_cover) {
-            long versionNumber = EncoderAssistant::versionNumber(EncoderAssistant::FLAC);
-            if (versionNumber >= makeVersionNumber(1, 1, 3))
+            long vn = EncoderAssistant::versionNumber(EncoderAssistant::FLAC);
+            if (vn >= makeVersionNumber(1, 1, 3))
                 arguments.push_back(QString::fromUtf8("--picture=\\|\\|\\|\\|${" VAR_COVER_FILE "}"));
         }
 
@@ -459,7 +462,9 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
             arguments.push_back(QString::fromUtf8("--picture=\\|\\|\\|\\|${" VAR_COVER_FILE "}"));
         }
 
-        arguments.push_back("--music");
+        long vn = EncoderAssistant::versionNumber(EncoderAssistant::OPUSENC);
+        if (vn >= makeVersionNumber(0, 2, 0))
+            arguments.push_back("--music");
 
         arguments.push_back("--bitrate");
         arguments.push_back(QString("%1").arg(bitrate));
@@ -472,8 +477,10 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         arguments.push_back(QString::fromUtf8("$" VAR_ALBUM_TITLE ""));
         arguments.push_back("--date");
         arguments.push_back(QString::fromUtf8("$" VAR_DATE ""));
-        arguments.push_back("--tracknumber");
-        arguments.push_back(QString::fromUtf8("$" VAR_TRACK_NO ""));
+        if (vn > makeVersionNumber(0, 2, 0)) {
+            arguments.push_back("--tracknumber");
+            arguments.push_back(QString::fromUtf8("$" VAR_TRACK_NO ""));
+        }
         arguments.push_back("--genre");
         arguments.push_back(QString::fromUtf8("$" VAR_GENRE ""));
         arguments.push_back(QString::fromUtf8("$" VAR_INPUT_FILE ""));

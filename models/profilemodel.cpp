@@ -878,8 +878,10 @@ const QString ProfileModel::getSelectedEncoderSuffixFromCurrentIndex()
 const QString ProfileModel::getSelectedEncoderNameAndVersion()
 {
     EncoderAssistant::Encoder encoder = getSelectedEncoderFromCurrentIndex();
-
-    return QString("%1 %2").arg(EncoderAssistant::encoderName(encoder), EncoderAssistant::version(encoder));
+    QString n = EncoderAssistant::encoderName(encoder);
+    QString v = EncoderAssistant::version(encoder);
+    qInfo("Found encoder %s version %s", n.toStdString().c_str(), v.toStdString().c_str());
+    return QString("%1 %2").arg(n, v);
 }
 
 Error ProfileModel::lastError() const
