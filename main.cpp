@@ -25,18 +25,27 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QPalette>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <QtGlobal>
+#else
+#include <QtEnvironmentVariables>
+#include <QtSystemDetection>
+#endif
 
 #include "goodstyle.h"
 #include "thumbnailer/netmanager.h"
 #include "mainwindow.h"
 #include "utils/tmpdir.h"
 
+void starter(int argc, char** argv);
 void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
 void setupApp(QGuiApplication& app);
 void stylePalette(QPalette& palette, const QString& style);
 
 int main(int argc, char* argv[])
 {
+  starter(argc, argv);
+
   QGuiApplication::setApplicationName("cddaripper");
   QGuiApplication::setApplicationDisplayName("CDDA-Ripper");
   QGuiApplication::setOrganizationName("io.github.janbar");
@@ -119,4 +128,29 @@ void stylePalette(QPalette& palette, const QString& style)
     palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127,127,127));
     palette.setColor(QPalette::Disabled, QPalette::Text, QColor(127,127,127));
   }
+}
+
+void starter(int argc, char** argv)
+{
+
+#ifdef Q_OS_LINUX
+  if (!qEnvironmentVariableIsSet("QT_QPA_PLATFORM")) {
+    // Enforce XCB on Linux/Gnome, if the user didn't override via QT_QPA_PLATFORM
+    // TODO: Reconsider when Qt/Wayland is reliably working on the supported distributions
+    const bool hasWaylandDisplay = qEnvironmentVariableIsSet("WAYLAND_DISPLAY");
+    const bool isWaylandSessionType = qgetenv("XDG_SESSION_TYPE") == "wayland";
+    const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP").toLower();
+    const QByteArray sessionDesktop = qgetenv("XDG_SESSION_DESKTOP").toLower();
+    const bool isGnome = currentDesktop.contains("gnome") || sessionDesktop.contains("gnome");
+    const bool isWayland = hasWaylandDisplay || isWaylandSessionType;
+    if (isGnome && isWayland) {
+        qInfo() << "Warning: Ignoring WAYLAND_DISPLAY on Gnome."
+                << "Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.";
+        qputenv("QT_QPA_PLATFORM", "xcb");
+    }
+  }
+#endif
+
+  (void)argc;
+  (void)argv;
 }
