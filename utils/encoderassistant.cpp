@@ -263,7 +263,7 @@ long EncoderAssistant::versionNumber(const EncoderAssistant::Encoder encoder)
     return versionNumber;
 }
 
-QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, const Parameters &parameters)
+QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, const Parameters &parameters, bool with_embed_cover)
 {
     QStringList arguments;
 
@@ -305,7 +305,7 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         if ((v.startsWith(QLatin1String("3.95"))) || (v.startsWith(QLatin1String("3.96"))) || (v.startsWith(QLatin1String("3.97"))))
             arguments.push_back("--vbr-new");
 
-        if (embed_cover)
+        if (embed_cover && with_embed_cover)
         {
             arguments.push_back("--ti");
             arguments.push_back(QString::fromUtf8("${" VAR_COVER_FILE "}"));
@@ -380,7 +380,7 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         int compression = parameters.value(ENCODER_FLAC_COMPRESSION_KEY, ENCODER_FLAC_COMPRESSION).toInt();
         bool embed_cover = parameters.value(ENCODER_FLAC_EMBED_COVER_KEY).toBool();
         arguments.push_back(ENCODER_FLAC_BIN);
-        if (embed_cover) {
+        if (embed_cover && with_embed_cover) {
             long versionNumber = EncoderAssistant::versionNumber(EncoderAssistant::FLAC);
             if (versionNumber >= makeVersionNumber(1, 1, 3))
                 arguments.push_back(QString::fromUtf8("--picture=\\|\\|\\|\\|${" VAR_COVER_FILE "}"));
@@ -413,7 +413,7 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         arguments.push_back("-q");
         arguments.push_back(QString("%1").arg(quality));
 
-        if (embed_cover)
+        if (embed_cover && with_embed_cover)
         {
             arguments.push_back("--cover-art");
             arguments.push_back(QString::fromUtf8("${" VAR_COVER_FILE "}"));
@@ -455,7 +455,7 @@ QStringList EncoderAssistant::scheme(const EncoderAssistant::Encoder encoder, co
         int bitrate = parameters.value(ENCODER_OPUSENC_BITRATE_KEY, ENCODER_OPUSENC_BITRATE).toInt();
         bool embed_cover = parameters.value(ENCODER_OPUSENC_EMBED_COVER_KEY).toBool();
         arguments.push_back(ENCODER_OPUSENC_BIN);
-        if (embed_cover) {
+        if (embed_cover && with_embed_cover) {
             arguments.push_back(QString::fromUtf8("--picture=\\|\\|\\|\\|${" VAR_COVER_FILE "}"));
         }
 

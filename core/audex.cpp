@@ -24,7 +24,7 @@ Audex::Audex(QWidget *parent, ProfileModel *profile_model, CDDAModel *cdda_model
     p_single_file = profile_model->data(profile_model->index(profile_model->currentProfileRow(), PROFILE_MODEL_COLUMN_SF_INDEX)).toBool();
 
     encoder_wrapper = new EncoderWrapper(this,
-                                         profile_model->getSelectedEncoderSchemeFromCurrentIndex(),
+                                         profile_model->getSelectedEncoderSchemeFromCurrentIndex(!(cdda_model->isCoverEmpty())),
                                          profile_model->getSelectedEncoderNameAndVersion(),
                                          profile_model->getSelectedEncoderFromCurrentIndex(),
                                          Preferences::deletePartialFiles());

@@ -840,12 +840,12 @@ const Parameters ProfileModel::getSelectedEncoderParametersFromCurrentIndex()
     return parameters;
 }
 
-QStringList ProfileModel::getSelectedEncoderSchemeFromCurrentIndex()
+QStringList ProfileModel::getSelectedEncoderSchemeFromCurrentIndex(bool with_embed_cover)
 {
     EncoderAssistant::Encoder encoder = getSelectedEncoderFromCurrentIndex();
     Parameters parameters = getSelectedEncoderParametersFromCurrentIndex();
 
-    return EncoderAssistant::scheme(encoder, parameters);
+    return EncoderAssistant::scheme(encoder, parameters, with_embed_cover);
 }
 
 const QString ProfileModel::getSelectedEncoderSuffixFromCurrentIndex()

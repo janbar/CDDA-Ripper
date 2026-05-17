@@ -196,7 +196,7 @@ public:
     void autoCreate(); // scans the system for encoders and create standard profiles
     EncoderAssistant::Encoder getSelectedEncoderFromCurrentIndex();
     const Parameters getSelectedEncoderParametersFromCurrentIndex();
-    QStringList getSelectedEncoderSchemeFromCurrentIndex();
+    QStringList getSelectedEncoderSchemeFromCurrentIndex(bool with_embed_cover);
     const QString getSelectedEncoderSuffixFromCurrentIndex();
     const QString getSelectedEncoderNameAndVersion();
     /**END: EncoderAssistant related */

@@ -187,7 +187,7 @@ bool available(const Encoder encoder);
 bool canEmbedCover(const Encoder encoder, int *maxCoverSize = nullptr);
 const QString version(const Encoder encoder);
 long versionNumber(const Encoder encoder);
-QStringList scheme(const Encoder encoder, const Parameters &parameters);
+QStringList scheme(const Encoder encoder, const Parameters &parameters, bool with_embed_cover);
 
 enum Quality { MOBILE = 0, NORMAL, EXTREME };
 
