@@ -206,22 +206,21 @@ set(APP_NAME          "CDDA-Ripper")
 
 set(EXEC              "cddaripper")
 set(ICON_NAME         "${EXEC}")
-set(APP_DESKTOP_ID    "${EXEC}")
-set(DESKTOP_FILE_NAME "cddaripper.desktop")
-set(APPDATA_FILE_NAME "cddaripper.appdata.xml")
+set(DESKTOP_FILE_NAME "${APP_ID}.desktop")
+set(APPDATA_FILE_NAME "${APP_ID}.appdata.xml")
 
 include(GNUInstallDirs)
 set(APPDATA_DIR ${CMAKE_INSTALL_DATADIR}/metainfo)
 set(DESKTOP_DIR ${CMAKE_INSTALL_DATADIR}/applications)
 set(PLUGINS_DIR ${CMAKE_INSTALL_FULL_LIBDIR}/${EXEC})
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${APP_DESKTOP_ID}.desktop "[Desktop Entry]
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME} "[Desktop Entry]
 Name=${APP_NAME}
 Exec=${EXEC}
 Icon=${ICON_NAME}
 Terminal=false
 Type=Application
-Categories=Audio;")
+Categories=Audio;AudioVideo;")
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in
@@ -233,7 +232,7 @@ add_custom_target(
 )
 
 install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_DESKTOP_ID}.desktop
+    FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME}
     DESTINATION ${DESKTOP_DIR}
 )
 
@@ -257,7 +256,7 @@ install(FILES "icons/${ICON_NAME}-512x512.png"
   DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/512x512/apps RENAME "${ICON_NAME}.png")
 
 configure_file(
-    ${APPDATA_FILE_NAME}.in
+    cddaripper.appdata.xml.in
     ${CMAKE_CURRENT_BINARY_DIR}/${APPDATA_FILE_NAME}
 )
 

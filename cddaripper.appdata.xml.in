@@ -4,6 +4,7 @@
   <developer_name>Jean-Luc Barriere</developer_name>
   <update_contact>jlbarriere68_AT_gmail.com</update_contact>
   <project_license>GPL-2.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
   <name>@APP_NAME@</name>
   <name xml:lang="ca">CDDA-Ripper</name>
   <name xml:lang="ca-valencia">CDDA-Ripper</name>
@@ -105,5 +106,5 @@
   <provides>
     <binary>cddaripper</binary>
   </provides>
-  <launchable type="desktop-id">cddaripper.desktop</launchable>
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
 </component>
