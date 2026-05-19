@@ -17,7 +17,6 @@ ExtractingProgressDialog::ExtractingProgressDialog(ProfileModel *profile_model, 
     setLayout(mainLayout);
 
     buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
-    cancelButton = buttonBox->button(QDialogButtonBox::Cancel);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &ExtractingProgressDialog::slotCancel);
 
     QWidget *widget = new QWidget(this);
@@ -156,7 +155,12 @@ void ExtractingProgressDialog::cancel()
             == QMessageBox::StandardButton::Yes) {
             audex->cancel();
             canceled = true;
-            cancelButton->setText(tr("Stop"));
+
+            lock.lock(); // prevent thread competition
+            QPushButton* button = buttonBox->button(QDialogButtonBox::Cancel);
+            if (button)
+                button->setText(tr("Stop"));
+            lock.unlock();
         }
     }
 }
@@ -240,7 +244,9 @@ void ExtractingProgressDialog::show_speed_extract(double speed)
 void ExtractingProgressDialog::conclusion(bool successful)
 {
     // Remove the cancel button
+    lock.lock(); // prevent thread competition
     buttonBox->clear();
+    lock.unlock();
     // Add the new close button
     buttonBox->addButton(QDialogButtonBox::Close);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &ExtractingProgressDialog::slotClose);

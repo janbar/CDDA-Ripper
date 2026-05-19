@@ -16,6 +16,7 @@
 #include <QWidget>
 #include <QKeyEvent>
 #include <QMessageBox>
+#include <QMutex>
 
 #include "core/audex.h"
 #include "models/cddamodel.h"
@@ -69,7 +70,6 @@ private Q_SLOTS:
 private:
     QVBoxLayout *mainLayout;
     QDialogButtonBox *buttonBox;
-    QPushButton *cancelButton;
 
     void calc_overall_progress();
     void open_encoder_protocol_dialog();
@@ -78,6 +78,7 @@ private:
 private:
     Ui::ExtractingProgressWidgetUI ui;
 
+    QMutex lock;
     Audex *audex;
     ProfileModel *profile_model;
     CDDAModel *cdda_model;
