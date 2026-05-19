@@ -7,6 +7,7 @@
 #include <QSettings>
 #include <QStandardPaths>
 #include <QDialog>
+#include <QDialogButtonBox>
 
 #include "widgets/devicewidget.h"
 #include "widgets/generalsettingswidget.h"
@@ -155,18 +156,11 @@ void Preferences::showDialog(QWidget* parent, ProfileModel* profileModel)
       topLayout->addLayout(hLayout, 0);
     }
 
-    // add buttons
-    {
-      QHBoxLayout* hLayout = new QHBoxLayout;
-      hLayout->setAlignment(Qt::AlignHCenter);
-      QPushButton* btn;
-      btn = new QPushButton(QIcon(QPixmap(":/icons/dialog-yes.png")), tr("OK"));
-      btn->setMinimumWidth(80);
-      btn->setMaximumWidth(80);
-      connect(btn, SIGNAL(clicked()), &dialog, SLOT(accept()));
-      hLayout->addWidget(btn);
-      topLayout->addLayout(hLayout, 1);
-    }
+    // add button box
+    QDialogButtonBox * buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+    buttonBox->setCenterButtons(true);
+    connect(buttonBox, SIGNAL(rejected()), &dialog, SLOT(accept()));
+    topLayout->addWidget(buttonBox);
 
     // main grid
     QGridLayout * mainGrid = new QGridLayout;
