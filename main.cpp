@@ -38,9 +38,8 @@
 #include "utils/tmpdir.h"
 
 #define APP_DISPLAY_NAME  "CDDA-Ripper"
-#define APP_ORG_NAME      "io.github.janbar"
-#define APP_EXE_NAME      "cddaripper"
-#define APP_DESKTOP_NAME  (APP_ORG_NAME "." APP_EXE_NAME)
+#define APP_DESKTOP_NAME  "io.github.janbar.cddaripper"
+#define APP_ORG_NAME      "janbar"
 
 void starter(int argc, char** argv);
 void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
@@ -51,10 +50,10 @@ int main(int argc, char* argv[])
 {
   starter(argc, argv);
 
-  QGuiApplication::setApplicationName(APP_EXE_NAME);
+  QGuiApplication::setApplicationName(APP_DESKTOP_NAME);
+  QGuiApplication::setDesktopFileName(APP_DESKTOP_NAME);
   QGuiApplication::setApplicationDisplayName(APP_DISPLAY_NAME);
   QGuiApplication::setOrganizationName(APP_ORG_NAME);
-  QGuiApplication::setDesktopFileName(APP_DESKTOP_NAME);
 
   QApplication app(argc, argv);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
