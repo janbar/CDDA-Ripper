@@ -37,6 +37,10 @@
 #include "mainwindow.h"
 #include "utils/tmpdir.h"
 
+#define APP_NAME          "CDDA-Ripper"
+#define APP_ORG_NAME      "io.github.janbar"
+#define APP_ID            (APP_ORG_NAME ".cddaripper")
+
 void starter(int argc, char** argv);
 void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
 void setupApp(QGuiApplication& app);
@@ -46,9 +50,9 @@ int main(int argc, char* argv[])
 {
   starter(argc, argv);
 
-  QGuiApplication::setApplicationName("cddaripper");
-  QGuiApplication::setApplicationDisplayName("CDDA-Ripper");
-  QGuiApplication::setOrganizationName("io.github.janbar");
+  QGuiApplication::setApplicationName(APP_ID);
+  QGuiApplication::setApplicationDisplayName(APP_NAME);
+  QGuiApplication::setOrganizationName(APP_ORG_NAME);
 
   QApplication app(argc, argv);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
