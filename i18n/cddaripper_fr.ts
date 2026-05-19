@@ -42,17 +42,17 @@
 <context>
     <name>Audex</name>
     <message>
-        <location filename="../core/audex.cpp" line="+102"/>
+        <location filename="../core/audex.cpp" line="+76"/>
         <source>No profile selected. Operation abort.</source>
         <translation>Aucun profil sélectionné. Opération interrompue.</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+71"/>
         <source>Start ripping and encoding with profile &quot;%1&quot;...</source>
         <translation>Début d&apos;extraction audio et d&apos;encodage avec le profil «&#xa0;%1&#xa0;»...</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+496"/>
         <location line="+60"/>
         <source>Can&apos;t find path &quot;%1&quot;.</source>
         <translation>Impossible de trouver l&apos;emplacement «&#xa0;%1&#xa0;».</translation>
@@ -61,12 +61,12 @@
         <location line="-60"/>
         <location line="+60"/>
         <location line="+9"/>
-        <location line="+382"/>
+        <location line="+384"/>
         <source>Please check your path (write access?)</source>
         <translation>Veuillez vérifier votre emplacement (accès en écriture&#xa0;?)</translation>
     </message>
     <message>
-        <location line="-438"/>
+        <location line="-440"/>
         <source>Free space on &quot;%1&quot; is less than 200 MiB.</source>
         <translation>L&apos;espace disponible sur «&#xa0;%1&#xa0;» est inférieur à 200&#xa0;Mio.</translation>
     </message>
@@ -79,24 +79,24 @@
     <message>
         <location line="-67"/>
         <location line="+69"/>
-        <location line="+341"/>
+        <location line="+343"/>
         <source>Warning! File &quot;%1&quot; already exists. Skipping.</source>
         <translation>Avertissement&#xa0;! Le fichier «&#xa0;%1&#xa0;» existe déjà. Ignorer.</translation>
     </message>
     <message>
-        <location line="-362"/>
-        <location line="+382"/>
+        <location line="-364"/>
+        <location line="+384"/>
         <source>Unable to create folder &quot;%1&quot;.</source>
         <translation>Impossible de créer le dossier «&#xa0;%1&#xa0;».</translation>
     </message>
     <message>
-        <location line="-379"/>
-        <location line="+382"/>
+        <location line="-381"/>
+        <location line="+384"/>
         <source>Folder &quot;%1&quot; successfully created.</source>
         <translation>Dossier «&#xa0;%1&#xa0;» créé avec succès.</translation>
     </message>
     <message>
-        <location line="-379"/>
+        <location line="-381"/>
         <source>Folder &quot;%1&quot; already exists.</source>
         <translation>Le dossier «&#xa0;%1&#xa0;» existe déjà.</translation>
     </message>
@@ -106,7 +106,7 @@
         <translation>L&apos;espace disponible sur «&#xa0;%1&#xa0;» est inférieur à 800&#xa0;Mio.</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="-636"/>
         <source>Temporary folder &quot;%1&quot; error.</source>
         <translation>Problème avec le dossier temporaire «&#xa0;%1&#xa0;».</translation>
     </message>
@@ -116,7 +116,7 @@
         <translation>Veuillez vérifier.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+660"/>
         <source>Free space on temporary folder &quot;%1&quot; is less than 800 MiB.</source>
         <translation>L&apos;espace libre sur le dossier temporaire «&#xa0;%1&#xa0;» est inférieur à 800&#xa0;Mio.</translation>
     </message>
@@ -131,7 +131,7 @@
         <translation>Veuillez libérer de l&apos;espace ou définir un autre emplacement.</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+36"/>
         <source>Eject CD tray</source>
         <translation>Éjecter le tiroir du CD</translation>
     </message>
@@ -864,13 +864,13 @@ complémentaires&#xa0;:</translation>
         <translation>Extraire et encoder</translation>
     </message>
     <message>
-        <location line="+24"/>
-        <location line="+138"/>
+        <location line="+23"/>
+        <location line="+143"/>
         <source>Ripping whole CD as single track</source>
         <translation>Extraction audio d&apos;un CD entier sous la forme d&apos;une piste unique</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-142"/>
         <source>Encoding</source>
         <translation>Encodage</translation>
     </message>
@@ -895,12 +895,12 @@ complémentaires&#xa0;:</translation>
         <translation>Voulez-vous vraiment annuler l&apos;extraction&#xa0;?</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+10"/>
         <source>Stop</source>
         <translation>Stopper</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+12"/>
         <source>Ripping Track</source>
         <translation>Extraction d&apos;une piste</translation>
     </message>
@@ -942,7 +942,7 @@ complémentaires&#xa0;:</translation>
         <translation>Vitesse&#xa0;: %1x</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+17"/>
         <source>All jobs successfully done.</source>
         <translation>Toutes les tâches ont été réalisées avec succès.</translation>
     </message>
@@ -1535,7 +1535,7 @@ Séparateur&#xa0;:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+136"/>
+        <location filename="../preferences.cpp" line="+137"/>
         <source>General Settings</source>
         <translation>Paramètres généraux</translation>
     </message>
@@ -1550,9 +1550,8 @@ Séparateur&#xa0;:</translation>
         <translation>Profils</translation>
     </message>
     <message>
-        <location line="+17"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <source>Ok</source>
