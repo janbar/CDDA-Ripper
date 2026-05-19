@@ -23,51 +23,16 @@ Audex::Audex(QWidget *parent, ProfileModel *profile_model, CDDAModel *cdda_model
     p_suffix = profile_model->getSelectedEncoderSuffixFromCurrentIndex();
     p_single_file = profile_model->data(profile_model->index(profile_model->currentProfileRow(), PROFILE_MODEL_COLUMN_SF_INDEX)).toBool();
 
-    encoder_wrapper = new EncoderWrapper(this,
-                                         profile_model->getSelectedEncoderSchemeFromCurrentIndex(!(cdda_model->isCoverEmpty())),
-                                         profile_model->getSelectedEncoderNameAndVersion(),
-                                         profile_model->getSelectedEncoderFromCurrentIndex(),
-                                         Preferences::deletePartialFiles());
+    encoder_wrapper = nullptr;
+    cdda_extract_thread = nullptr;
+    jobs = nullptr;
+    wave_file_writer = nullptr;
+    tmp_dir = nullptr;
 
-    if (!encoder_wrapper) {
-        qDebug() << "PANIC ERROR. Could not load object EncoderWrapper. Low mem?";
-        return;
-    }
-
-    cdda_extract_thread = new CDDAExtractThread(this, cdda_model->paranoia());
-    if (!cdda_extract_thread) {
-        qDebug() << "PANIC ERROR. Could not load object CDDAExtractThread. Low mem?";
-        return;
-    }
-    cdda_extract_thread->setSampleOffset(Preferences::sampleOffset());
-
-    jobs = new AudexJobs();
-    connect(jobs, SIGNAL(newJobAvailable()), this, SLOT(start_encode()));
-
-    wave_file_writer = new WaveFileWriter();
-
+    timer_extract = nullptr;
     last_measuring_point_sector = -1;
-    timer_extract = new QTimer(this);
-    connect(timer_extract, SIGNAL(timeout()), this, SLOT(calculate_speed_extract()));
-    timer_extract->start(4000);
-
+    timer_encode = nullptr;
     last_measuring_point_encoder_percent = -1;
-    timer_encode = new QTimer(this);
-    connect(timer_encode, SIGNAL(timeout()), this, SLOT(calculate_speed_encode()));
-    timer_encode->start(2000);
-
-    connect(encoder_wrapper, SIGNAL(progress(int)), this, SLOT(progress_encode(int)));
-    connect(encoder_wrapper, SIGNAL(finished()), this, SLOT(finish_encode()));
-    connect(encoder_wrapper, SIGNAL(info(const QString &)), this, SLOT(slot_info(const QString &)));
-    connect(encoder_wrapper, SIGNAL(warning(const QString &)), this, SLOT(slot_warning(const QString &)));
-    connect(encoder_wrapper, SIGNAL(error(const QString &, const QString &)), this, SLOT(slot_error(const QString &, const QString &)));
-
-    connect(cdda_extract_thread, SIGNAL(progress(int, int, int)), this, SLOT(progress_extract(int, int, int)));
-    connect(cdda_extract_thread, SIGNAL(output(const QByteArray &)), this, SLOT(write_to_wave(const QByteArray &)));
-    connect(cdda_extract_thread, SIGNAL(finished()), this, SLOT(finish_extract()));
-    connect(cdda_extract_thread, SIGNAL(info(const QString &)), this, SLOT(slot_info(const QString &)));
-    connect(cdda_extract_thread, SIGNAL(warning(const QString &)), this, SLOT(slot_warning(const QString &)));
-    connect(cdda_extract_thread, SIGNAL(error(const QString &, const QString &)), this, SLOT(slot_error(const QString &, const QString &)));
 
     process_counter = 0;
     timeout_done = false;
@@ -89,11 +54,20 @@ Audex::Audex(QWidget *parent, ProfileModel *profile_model, CDDAModel *cdda_model
 
 Audex::~Audex()
 {
-    delete encoder_wrapper;
-    delete cdda_extract_thread;
-    delete wave_file_writer;
-    delete jobs;
-    delete tmp_dir;
+    if (timer_encode)
+        delete timer_encode;
+    if (timer_extract)
+        delete timer_extract;
+    if (jobs)
+        delete jobs;
+    if (cdda_extract_thread)
+        delete cdda_extract_thread;
+    if (encoder_wrapper)
+        delete encoder_wrapper;
+    if (wave_file_writer)
+        delete wave_file_writer;
+    if (tmp_dir)
+        delete tmp_dir;
 }
 
 bool Audex::prepare()
@@ -105,10 +79,64 @@ bool Audex::prepare()
 
     qDebug() << "Using profile with index" << profile_model->currentProfileIndex();
 
+    // prepare temporary storage
+    if (tmp_dir)
+      delete tmp_dir;
+
     tmp_dir = new TmpDir(QGuiApplication::applicationName(), "work");
     tmp_path = tmp_dir->tmpPath();
-    if (tmp_dir->error())
+    if (tmp_dir->error()) {
+        slot_error(tr("Temporary folder \"%1\" error.").arg(tmp_path), tr("Please check."));
         return false;
+    }
+
+    // prepare file writer
+    if (wave_file_writer)
+        delete wave_file_writer;
+    wave_file_writer = new WaveFileWriter();
+
+    // prepare encoder wrapper
+    if (encoder_wrapper)
+        delete encoder_wrapper;
+    encoder_wrapper = new EncoderWrapper(this,
+                                         profile_model->getSelectedEncoderSchemeFromCurrentIndex(!(cdda_model->isCoverEmpty())),
+                                         profile_model->getSelectedEncoderNameAndVersion(),
+                                         profile_model->getSelectedEncoderFromCurrentIndex(),
+                                         Preferences::deletePartialFiles());
+    connect(encoder_wrapper, SIGNAL(progress(int)), this, SLOT(progress_encode(int)));
+    connect(encoder_wrapper, SIGNAL(finished()), this, SLOT(finish_encode()));
+    connect(encoder_wrapper, SIGNAL(info(const QString &)), this, SLOT(slot_info(const QString &)));
+    connect(encoder_wrapper, SIGNAL(warning(const QString &)), this, SLOT(slot_warning(const QString &)));
+    connect(encoder_wrapper, SIGNAL(error(const QString &, const QString &)), this, SLOT(slot_error(const QString &, const QString &)));
+
+    // prepare extract thread
+    if (cdda_extract_thread)
+        delete cdda_extract_thread;
+    cdda_extract_thread = new CDDAExtractThread(this, cdda_model->paranoia());
+    cdda_extract_thread->setSampleOffset(Preferences::sampleOffset());
+    connect(cdda_extract_thread, SIGNAL(progress(int, int, int)), this, SLOT(progress_extract(int, int, int)));
+    connect(cdda_extract_thread, SIGNAL(output(const QByteArray &)), this, SLOT(write_to_wave(const QByteArray &)));
+    connect(cdda_extract_thread, SIGNAL(finished()), this, SLOT(finish_extract()));
+    connect(cdda_extract_thread, SIGNAL(info(const QString &)), this, SLOT(slot_info(const QString &)));
+    connect(cdda_extract_thread, SIGNAL(warning(const QString &)), this, SLOT(slot_warning(const QString &)));
+    connect(cdda_extract_thread, SIGNAL(error(const QString &, const QString &)), this, SLOT(slot_error(const QString &, const QString &)));
+
+    if (jobs)
+        delete jobs;
+    jobs = new AudexJobs();
+    connect(jobs, SIGNAL(newJobAvailable()), this, SLOT(start_encode()));
+
+    if (timer_extract)
+        delete timer_extract;
+    timer_extract = new QTimer(this);
+    connect(timer_extract, SIGNAL(timeout()), this, SLOT(calculate_speed_extract()));
+    timer_extract->start(4000);
+
+    if (timer_encode)
+        delete timer_encode;
+    timer_encode = new QTimer(this);
+    connect(timer_encode, SIGNAL(timeout()), this, SLOT(calculate_speed_encode()));
+    timer_encode->start(2000);
 
     return true;
 }
@@ -128,14 +156,18 @@ void Audex::cancel()
     request_finish(false);
 }
 
-const QStringList &Audex::extractProtocol()
+const QStringList Audex::extractProtocol()
 {
-    return cdda_extract_thread->protocol();
+  if (cdda_extract_thread)
+      return cdda_extract_thread->protocol();
+  return QStringList();
 }
 
-const QStringList &Audex::encoderProtocol()
+const QStringList Audex::encoderProtocol()
 {
-    return encoder_wrapper->protocol();
+  if (encoder_wrapper)
+      return encoder_wrapper->protocol();
+  return QStringList();
 }
 
 void Audex::start_extract()
@@ -566,15 +598,6 @@ void Audex::slot_info(const QString &description)
     Q_EMIT info(description);
 }
 
-void Audex::check_if_thread_still_running()
-{
-    if (cdda_extract_thread->isRunning()) {
-        // this could happen if the thread is stuck in paranoia_read
-        // because of an unreadable cd
-        qWarning() << "The extracting thread is still running.";
-    }
-}
-
 bool Audex::construct_target_filename(QString &targetFilename,
                                       int trackno,
                                       int cdno,
@@ -721,11 +744,6 @@ bool Audex::construct_target_filename_for_singlefile(QString &targetFilename,
 
 bool Audex::check()
 {
-    if (tmp_dir->error()) {
-        slot_error(tr("Temporary folder \"%1\" error.").arg(tmp_dir->tmpPath()), tr("Please check."));
-        return false;
-    }
-
     quint64 free = tmp_dir->freeSpace() / 1024;
     if (free < 800 * 1024) {
         slot_warning(tr("Free space on temporary folder \"%1\" is less than 800 MiB.").arg(tmp_dir->tmpPathBase()));
@@ -733,6 +751,12 @@ bool Audex::check()
         slot_error(tr("Temporary folder \"%1\" needs at least 200 MiB of free space.").arg(tmp_dir->tmpPathBase()), tr("Please free space or set another path."));
         return false;
     }
+
+    Q_ASSERT(tmp_dir);
+    Q_ASSERT(wave_file_writer);
+    Q_ASSERT(encoder_wrapper);
+    Q_ASSERT(cdda_extract_thread);
+    Q_ASSERT(jobs);
 
     return true;
 }
@@ -747,9 +771,10 @@ void Audex::request_finish(bool successful)
     }
 
     if (process_counter > 0) {
-        encoder_wrapper->cancel();
-        cdda_extract_thread->cancel();
-        QTimer::singleShot(2000, this, SLOT(check_if_thread_still_running()));
+        if (encoder_wrapper)
+            encoder_wrapper->cancel();
+        if (cdda_extract_thread)
+            cdda_extract_thread->cancel();
 
     } else {
         execute_finish();

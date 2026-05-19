@@ -147,8 +147,8 @@ public Q_SLOTS:
     void start();
     void cancel();
 
-    const QStringList &extractProtocol();
-    const QStringList &encoderProtocol();
+    const QStringList extractProtocol();
+    const QStringList encoderProtocol();
 
 private Q_SLOTS:
     void start_extract();
@@ -167,8 +167,6 @@ private Q_SLOTS:
     void slot_error(const QString &message, const QString &details = QString());
     void slot_warning(const QString &message);
     void slot_info(const QString &message);
-
-    void check_if_thread_still_running();
 
 Q_SIGNALS:
     void changedExtractTrack(int no, int total, const QString &artist, const QString &title);
