@@ -153,14 +153,17 @@ void ExtractingProgressDialog::cancel()
                 QMessageBox::StandardButton::No,
                 QMessageBox::StandardButton::Yes)
             == QMessageBox::StandardButton::Yes) {
-            audex->cancel();
-            canceled = true;
 
             lock.lock(); // prevent thread competition
             QPushButton* button = buttonBox->button(QDialogButtonBox::Cancel);
             if (button)
-                button->setText(tr("Stop"));
+                button->setEnabled(false);
             lock.unlock();
+
+            audex->cancel();
+            canceled = true;
+            // enable emergency stop after 5 seconds
+            QTimer::singleShot(5000, this, SLOT(activateEmergencyStop()));
         }
     }
 }
@@ -239,6 +242,17 @@ void ExtractingProgressDialog::show_speed_extract(double speed)
 {
     QString s = QString("%1").arg((double)speed, 0, 'f', 2);
     ui.label_speed_extracting->setText("<i>" + tr("Speed: %1x").arg(s) + "</i>");
+}
+
+void ExtractingProgressDialog::activateEmergencyStop()
+{
+    lock.lock(); // prevent thread competition
+    QPushButton* button = buttonBox->button(QDialogButtonBox::Cancel);
+    if (button) {
+        button->setText(tr("Stop"));
+        button->setEnabled(true);
+    }
+    lock.unlock();
 }
 
 void ExtractingProgressDialog::conclusion(bool successful)

@@ -57,6 +57,7 @@ private Q_SLOTS:
     void show_speed_encode(double speed);
     void show_speed_extract(double speed);
 
+    void activateEmergencyStop();
     void conclusion(bool successful);
 
     void show_info(const QString &message);
