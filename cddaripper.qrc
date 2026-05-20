@@ -38,6 +38,7 @@
         <file>i18n/cddaripper_en.qm</file>
         <file>i18n/cddaripper_fr.qm</file>
         <file>i18n/cddaripper_de.qm</file>
+        <file>icons/paranoia.png</file>
         <file>icons/musicbrainz.png</file>
         <file>icons/deezer.png</file>
         <file>icons/audio-x-unknown.png</file>
