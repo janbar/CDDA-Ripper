@@ -1,13 +1,13 @@
 name: appimage_amd64
 on:
   push:
-    branches: [ main ]
+    branches: [ wayland ]
   pull_request:
-    branches: [ main ]
+    branches: [ wayland ]
 
 jobs:
   build-appimage:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
 
@@ -37,7 +37,10 @@ jobs:
           chmod +x linuxdeploy
 
       - name: Build AppImage
-        run: ./linuxdeploy --appdir ./AppDir --plugin qt
+        run: |
+          export EXTRA_PLATFORM_PLUGINS=libqwayland-generic.so
+          export EXTRA_QT_MODULES="waylandcompositor"
+          ./linuxdeploy --appdir ./AppDir --plugin qt
       - name: Package AppImage
         run: ./appimagetool ./AppDir
 
