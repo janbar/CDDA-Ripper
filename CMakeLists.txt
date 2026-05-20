@@ -19,6 +19,8 @@ if(NOT QT_FOUND)
     message(FATAL_ERROR "Qt NOT found")
 endif()
 
+option(ENABLE_NATIVE_STYLE "enable use of native style")
+
 find_package(Qt${QT_VERSION_MAJOR} ${QT_VERSION} COMPONENTS
     Core Gui Widgets DBus Xml Network REQUIRED)
 
@@ -183,6 +185,10 @@ qt_wrap_ui(cddaripper_SRCS
 )
 
 qt_add_resources(cddaripper_SRCS cddaripper.qrc goodstyle.qrc)
+
+if (ENABLE_NATIVE_STYLE)
+    add_definitions("-DENABLE_NATIVE_STYLE")
+endif()
 
 add_subdirectory(cddb)
 add_subdirectory(thumbnailer)

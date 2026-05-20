@@ -41,14 +41,42 @@
 #define APP_DESKTOP_NAME  "io.github.janbar.cddaripper"
 #define APP_ORG_NAME      "janbar"
 
-void starter(int argc, char** argv);
 void prepareTranslator(QGuiApplication& app, const QString& translationPath, const QString& translationPrefix, const QLocale& locale);
 void setupApp(QGuiApplication& app);
 void stylePalette(QPalette& palette, const QString& style);
 
 int main(int argc, char* argv[])
 {
-  starter(argc, argv);
+  bool noStyle = false;
+#ifdef Q_OS_LINUX
+  if (!qEnvironmentVariableIsSet("QT_QPA_PLATFORM"))
+  {
+    // Enforce XCB on Linux/Gnome, if the user didn't override via QT_QPA_PLATFORM
+    // TODO: Reconsider when Qt/Wayland is reliably working on the supported distributions
+    const bool hasWaylandDisplay = qEnvironmentVariableIsSet("WAYLAND_DISPLAY");
+    const bool isWaylandSessionType = qgetenv("XDG_SESSION_TYPE") == "wayland";
+    const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP").toLower();
+    const QByteArray sessionDesktop = qgetenv("XDG_SESSION_DESKTOP").toLower();
+    const bool isKde = currentDesktop.contains("kde") || sessionDesktop.contains("kde");
+    const bool isGnome = currentDesktop.contains("gnome") || sessionDesktop.contains("gnome");
+    const bool isWayland = hasWaylandDisplay || isWaylandSessionType;
+    if (isGnome && isWayland)
+    {
+        qInfo() << "Warning: Ignoring WAYLAND_DISPLAY on Gnome."
+                << "Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.";
+        qputenv("QT_QPA_PLATFORM", "xcb");
+    }
+#ifdef ENABLE_NATIVE_STYLE
+    else if (isKde)
+    {
+      qInfo() << "Using native style on Kde.";
+      noStyle = true;
+    }
+#else
+    (void)isKde;
+#endif
+  }
+#endif
 
   QGuiApplication::setApplicationName(APP_DESKTOP_NAME);
   QGuiApplication::setDesktopFileName(APP_DESKTOP_NAME);
@@ -59,13 +87,16 @@ int main(int argc, char* argv[])
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
 #endif
-  QApplication::setStyle(new GoodStyle);
   setupApp(app);
 
-  QSettings settings;
-  QPalette palette = QGuiApplication::palette();
-  stylePalette(palette, settings.value("stylePalette", QString("light")).toString());
-  app.setPalette(palette);
+  if (!noStyle)
+  {
+    QApplication::setStyle(new GoodStyle);
+    QSettings settings;
+    QPalette palette = QGuiApplication::palette();
+    stylePalette(palette, settings.value("stylePalette", QString("light")).toString());
+    app.setPalette(palette);
+  }
 
   // init SSL configuration
   thumbnailer::NetManager::initSSLDefaultConfiguration();
@@ -133,29 +164,4 @@ void stylePalette(QPalette& palette, const QString& style)
     palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127,127,127));
     palette.setColor(QPalette::Disabled, QPalette::Text, QColor(127,127,127));
   }
-}
-
-void starter(int argc, char** argv)
-{
-
-#ifdef Q_OS_LINUX
-  if (!qEnvironmentVariableIsSet("QT_QPA_PLATFORM")) {
-    // Enforce XCB on Linux/Gnome, if the user didn't override via QT_QPA_PLATFORM
-    // TODO: Reconsider when Qt/Wayland is reliably working on the supported distributions
-    const bool hasWaylandDisplay = qEnvironmentVariableIsSet("WAYLAND_DISPLAY");
-    const bool isWaylandSessionType = qgetenv("XDG_SESSION_TYPE") == "wayland";
-    const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP").toLower();
-    const QByteArray sessionDesktop = qgetenv("XDG_SESSION_DESKTOP").toLower();
-    const bool isGnome = currentDesktop.contains("gnome") || sessionDesktop.contains("gnome");
-    const bool isWayland = hasWaylandDisplay || isWaylandSessionType;
-    if (isGnome && isWayland) {
-        qInfo() << "Warning: Ignoring WAYLAND_DISPLAY on Gnome."
-                << "Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.";
-        qputenv("QT_QPA_PLATFORM", "xcb");
-    }
-  }
-#endif
-
-  (void)argc;
-  (void)argv;
 }

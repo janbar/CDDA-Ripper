@@ -2,10 +2,16 @@
 #include "ui_aboutwidgetUI.h"
 #include "config.h"
 
+#include <QDialogButtonBox>
+
 AboutWidget::AboutWidget(QWidget *parent)
     : QDialog(parent)
 {
   ui.setupUi(this);
+
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+  ui.formLayout->addWidget(buttonBox);
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(close()));
 
   ui.label_icon1->setPixmap(QPixmap(":/icons/cddaripper-64x64.png").scaledToWidth(48, Qt::SmoothTransformation));
   ui.label_icon2->setPixmap(QPixmap(":/icons/musicbrainz.png").scaledToWidth(48, Qt::SmoothTransformation));
@@ -22,8 +28,6 @@ AboutWidget::AboutWidget(QWidget *parent)
           "<br>GoodStyle (Juergen Skrotzky)"
           "</html>")
           .arg(CDDARIPPER_VERSION));
-
-  connect(ui.buttonBox, SIGNAL(clicked(QAbstractButton*)), this, SLOT(close()));
 }
 
 AboutWidget::~AboutWidget()
