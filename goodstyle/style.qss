@@ -39,6 +39,7 @@ QMenuBar{
   background-color:transparent;
   spacing:0px;
   margin-left: 2px;
+  border-bottom:1px solid rgba(0,0,0,15%);
 }
 QMenuBar::item{
   spacing:2px;
@@ -102,22 +103,21 @@ QMenu::indicator:exclusive:unchecked{
   padding-left:2px;
 }
 
-QToolBar::top{
+QToolBar{
   background-color:palette(window);
-  border-top:1px solid rgba(200,200,200,50%);
-  border-bottom:1px solid rgba(200,200,200,50%);
+  border-style:none;
+}
+QToolBar::top{
+  border-bottom:1px solid rgba(0,0,0,15%);
 }
 QToolBar::bottom{
-  border-top:1px solid rgba(200,200,200,50%);
-  border-bottom:1px solid rgba(200,200,200,50%);
+  border-top:1px solid rgba(0,0,0,15%);
 }
 QToolBar::left{
-  border-top:1px solid rgba(200,200,200,50%);
-  border-bottom:1px solid rgba(200,200,200,50%);
+  border-right:1px solid rgba(0,0,0,15%);
 }
 QToolBar::right{
-  border-top:1px solid rgba(200,200,200,50%);
-  border-bottom:1px solid rgba(200,200,200,50%);
+  border-left:1px solid rgba(0,0,0,15%);
 }
 
 QMainWindow::separator{
@@ -300,13 +300,18 @@ QRadioButton::indicator:unchecked:disabled{
 }
 
 QTreeView, QTableView{
-  alternate-background-color:palette(window);
+  alternate-background-color:rgba(127,127,127,10%);
   background:palette(base);
+  border-style:none;
 }
 QTreeView QHeaderView::section, QTableView QHeaderView::section{
-  background-color:rgba(200,200,200,25%);
-  border-style:none;
+  background-color:palette(window);
+  border-top-style:none;
+  border-left-style:none;
+  border-right-style:none;
+  border-bottom:1px solid palette(base);
   padding:4px 4px;
+  color:palette(highlight)
 }
 QTreeView::item, QTableView::item{
   height:24px;
