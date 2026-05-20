@@ -12,9 +12,17 @@
         <translation type="vanished">&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
-        <translation>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MisicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
+        <translation type="vanished">&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MisicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+21"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MusicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
+        <translation>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MusicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -25,14 +33,12 @@
         <translation>About</translation>
     </message>
     <message>
-        <location line="+57"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+39"/>
         <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cover Arts are fetched from &lt;span style=&quot; font-weight:700;&quot;&gt;Deezer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -869,12 +875,12 @@ Information:</translation>
     </message>
     <message>
         <location line="+23"/>
-        <location line="+143"/>
+        <location line="+146"/>
         <source>Ripping whole CD as single track</source>
         <translation>Ripping whole CD as single track</translation>
     </message>
     <message>
-        <location line="-142"/>
+        <location line="-145"/>
         <source>Encoding</source>
         <translation>Encoding</translation>
     </message>
@@ -899,12 +905,12 @@ Information:</translation>
         <translation>Do you really want to cancel extraction?</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+100"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="-75"/>
         <source>Ripping Track</source>
         <translation>Ripping Track</translation>
     </message>
@@ -946,7 +952,7 @@ Information:</translation>
         <translation>Speed: %1x</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+28"/>
         <source>All jobs successfully done.</source>
         <translation>All jobs successfully done.</translation>
     </message>
@@ -1769,27 +1775,27 @@ Divider:</translation>
 <context>
     <name>ProfileDataWidgetUI</name>
     <message>
-        <location filename="../dialogs/profiledatawidgetUI.ui" line="+63"/>
+        <location filename="../dialogs/profiledatawidgetUI.ui" line="+60"/>
         <source>Encoder</source>
         <translation>Encoder</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+34"/>
         <source>Filenames</source>
         <translation>Filenames</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source>Scheme:</source>
         <translation>Scheme:</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>Create FAT32 compatible filenames</source>
         <translation>Create FAT32 compatible filenames</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Replace spaces with underscores</source>
         <translation>Replace spaces with underscores</translation>
     </message>
@@ -1804,42 +1810,42 @@ Divider:</translation>
         <translation>Set 2 digits track number (e.g. 01, 02, 03...)</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+21"/>
         <source>Extra</source>
         <translation>Extra</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <location line="+32"/>
-        <location line="+12"/>
-        <location line="+24"/>
-        <location line="+31"/>
-        <location line="+47"/>
+        <location line="+18"/>
+        <location line="+30"/>
+        <location line="+13"/>
+        <location line="+26"/>
+        <location line="+33"/>
+        <location line="+48"/>
         <source>Settings..</source>
         <translation>Settings..</translation>
     </message>
     <message>
-        <location line="-121"/>
+        <location line="-127"/>
         <source>Create info file</source>
         <translation>Create info file</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+33"/>
         <source>Create hashlist</source>
         <translation>Create hashlist</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+20"/>
         <source>Create cue sheet</source>
         <translation>Create cue sheet</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Store cover file</source>
         <translation>Store cover file</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+26"/>
         <source>Create playlist</source>
         <translation>Create playlist</translation>
     </message>

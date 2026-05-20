@@ -4,9 +4,13 @@
 <context>
     <name>AboutWidget</name>
     <message>
-        <location filename="../dialogs/aboutwidget.cpp" line="+14"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+21"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MusicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt. MusicBrainz und Deezer werden verwendet, um Metadaten und Coverbilder abzurufen. CDParanoia ist das Haupt-Backend zum Extrahieren von Audiotracks.&lt;br&gt;Bitte beachten Sie, dass Sie die von Ihnen gewählten Encoder separat installieren müssen. FLAC-, LAME-, FAAC-, OGG- und OPUS-Encoder werden derzeit unterstützt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -17,14 +21,12 @@
         <translation>Über</translation>
     </message>
     <message>
-        <location line="+57"/>
         <source>&lt;html&gt;Music data are fetched from &lt;b&gt;MusicBrainz&lt;/b&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Die Musikdaten werden von &lt;b&gt;MusicBrainz&lt;/b&gt; abgerufen.&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Die Musikdaten werden von &lt;b&gt;MusicBrainz&lt;/b&gt; abgerufen.&lt;/html&gt;</translation>
     </message>
     <message>
-        <location line="+39"/>
         <source>&lt;html&gt;Cover Arts are fetched from &lt;b&gt;Deezer&lt;/b&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Die Kunstwerke werden von &lt;b&gt;Deezer&lt;/b&gt; abgerufen.&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Die Kunstwerke werden von &lt;b&gt;Deezer&lt;/b&gt; abgerufen.&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -847,12 +849,12 @@ Information:</translation>
     </message>
     <message>
         <location line="+23"/>
-        <location line="+143"/>
+        <location line="+146"/>
         <source>Ripping whole CD as single track</source>
         <translation>Die gesamte CD als ein Stück auslesen</translation>
     </message>
     <message>
-        <location line="-142"/>
+        <location line="-145"/>
         <source>Encoding</source>
         <translation>Kodierung</translation>
     </message>
@@ -877,12 +879,12 @@ Information:</translation>
         <translation>Möchten Sie das Auslesen wirklich abbrechen?</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+100"/>
         <source>Stop</source>
         <translation>Stoppen</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="-75"/>
         <source>Ripping Track</source>
         <translation>Stück wird ausgelesen</translation>
     </message>
@@ -924,7 +926,7 @@ Information:</translation>
         <translation>Geschwindigkeit %1x</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+28"/>
         <source>All jobs successfully done.</source>
         <translation>Alle Aufträge erfolgreich beendet.</translation>
     </message>
@@ -1727,27 +1729,27 @@ Trennzeichen:</translation>
 <context>
     <name>ProfileDataWidgetUI</name>
     <message>
-        <location filename="../dialogs/profiledatawidgetUI.ui" line="+63"/>
+        <location filename="../dialogs/profiledatawidgetUI.ui" line="+60"/>
         <source>Encoder</source>
         <translation>Kodierer</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+34"/>
         <source>Filenames</source>
         <translation>Dateinamen</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source>Scheme:</source>
         <translation>Muster:</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+35"/>
         <source>Create FAT32 compatible filenames</source>
         <translation>FAT32-kompatible Dateinamen erstellen</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Replace spaces with underscores</source>
         <translation>Leerzeichen durch Unterstriche ersetzen</translation>
     </message>
@@ -1762,42 +1764,42 @@ Trennzeichen:</translation>
         <translation>Zweistellige Stücknummern (z. B. 01, 02, 03...) anzeigen</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+21"/>
         <source>Extra</source>
         <translation>Extra</translation>
     </message>
     <message>
-        <location line="+17"/>
-        <location line="+32"/>
-        <location line="+12"/>
-        <location line="+24"/>
-        <location line="+31"/>
-        <location line="+47"/>
+        <location line="+18"/>
+        <location line="+30"/>
+        <location line="+13"/>
+        <location line="+26"/>
+        <location line="+33"/>
+        <location line="+48"/>
         <source>Settings..</source>
         <translation>Einstellungen ...</translation>
     </message>
     <message>
-        <location line="-121"/>
+        <location line="-127"/>
         <source>Create info file</source>
         <translation>Informationsdatei erstellen</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+33"/>
         <source>Create hashlist</source>
         <translation>Hashliste erstellen</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+20"/>
         <source>Create cue sheet</source>
         <translation>Cue-Datei erstellen</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Store cover file</source>
         <translation>Cover-Datei speichern</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+26"/>
         <source>Create playlist</source>
         <translation>Wiedergabeliste erstellen</translation>
     </message>
