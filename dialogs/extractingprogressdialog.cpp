@@ -356,10 +356,19 @@ void ExtractingProgressDialog::ask_timeout()
 }
 
 void ExtractingProgressDialog::keyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Escape){
+    // catch the key ESC event
+    if (event->key() == Qt::Key_Escape) {
         event->accept();
-    }else
+    } else
        event->ignore();
+}
+
+void ExtractingProgressDialog::closeEvent(QCloseEvent *event){
+    // ignore the close event until finished
+    if(!event->spontaneous() && finished) {
+        event->accept();
+    } else
+        event->ignore();
 }
 
 void ExtractingProgressDialog::open_encoder_protocol_dialog()

@@ -67,6 +67,7 @@ private Q_SLOTS:
     void ask_timeout();
 
     void keyPressEvent(QKeyEvent *event) override;
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     QVBoxLayout *mainLayout;
