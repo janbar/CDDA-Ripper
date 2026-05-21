@@ -49,16 +49,17 @@ int main(int argc, char* argv[])
 {
   bool noStyle = false;
 #ifdef Q_OS_LINUX
+  const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP").toLower();
+  const QByteArray sessionDesktop = qgetenv("XDG_SESSION_DESKTOP").toLower();
+  const bool isKde = currentDesktop.contains("kde") || sessionDesktop.contains("kde");
+  const bool isGnome = currentDesktop.contains("gnome") || sessionDesktop.contains("gnome");
+
   if (!qEnvironmentVariableIsSet("QT_QPA_PLATFORM"))
   {
     // Enforce XCB on Linux/Gnome, if the user didn't override via QT_QPA_PLATFORM
     // TODO: Reconsider when Qt/Wayland is reliably working on the supported distributions
     const bool hasWaylandDisplay = qEnvironmentVariableIsSet("WAYLAND_DISPLAY");
     const bool isWaylandSessionType = qgetenv("XDG_SESSION_TYPE") == "wayland";
-    const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP").toLower();
-    const QByteArray sessionDesktop = qgetenv("XDG_SESSION_DESKTOP").toLower();
-    const bool isKde = currentDesktop.contains("kde") || sessionDesktop.contains("kde");
-    const bool isGnome = currentDesktop.contains("gnome") || sessionDesktop.contains("gnome");
     const bool isWayland = hasWaylandDisplay || isWaylandSessionType;
     if (isGnome && isWayland)
     {
@@ -66,14 +67,15 @@ int main(int argc, char* argv[])
                 << "Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.";
         qputenv("QT_QPA_PLATFORM", "xcb");
     }
-#ifdef ENABLE_NATIVE_STYLE
-    else if (isKde)
-    {
-      qInfo() << "Using native style on Kde.";
-      noStyle = true;
-    }
+  }
+
+  if (isKde)
+  {
+#ifndef ENABLE_NATIVE_STYLE
+    qInfo() << "Using native style has been disabled at compile time.";
 #else
-    (void)isKde;
+    qInfo() << "Using native style on Kde.";
+    noStyle = true;
 #endif
   }
 #endif
