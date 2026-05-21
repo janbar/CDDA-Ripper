@@ -42,11 +42,16 @@ sudo apt-get install cddaripper
 * FAAC (mp4/aac files)
 * eyeD3 (mp3 tagging)
 
+### Supported platforms
+
+CDDA-Ripper is supported only on Linux desktop. Using KDE the native style is enabled,
+else (i.e Gnome) the application uses its internal style (GoodStyle).
+
 ### Compile with Qt 6.9
 ```
 mkdir build
 cd build
-cmake -DQT_VERSION_PREFERRED=6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
+cmake -DQT_VERSION_PREFERRED=6 -DCMAKE_BUILD_TYPE=Release -DENABLE_NATIVE_STYLE=ON ..
 make
 (sudo) make install
 ```
@@ -55,7 +60,7 @@ make
 ```
 mkdir build
 cd build
-cmake -DQT_VERSION_PREFERRED=5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local ..
+cmake -DQT_VERSION_PREFERRED=5 -DCMAKE_BUILD_TYPE=Release -DENABLE_NATIVE_STYLE=ON ..
 make
 (sudo) make install
 ```
