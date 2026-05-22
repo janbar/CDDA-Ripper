@@ -160,6 +160,7 @@ void stylePalette(QPalette& palette, const QString& style)
     palette.setColor(QPalette::Window, QColor(69,69,69));
     palette.setColor(QPalette::WindowText, QColor(200,200,200));
     palette.setColor(QPalette::Base, QColor(48,48,48));
+    palette.setColor(QPalette::Dark, QColor(94, 94, 94));
     palette.setColor(QPalette::Shadow, QColor(255,255,255));
     palette.setColor(QPalette::AlternateBase, QColor(69,69,69));
     palette.setColor(QPalette::ToolTipBase, QColor(48,48,48));
@@ -173,5 +174,8 @@ void stylePalette(QPalette& palette, const QString& style)
     palette.setColor(QPalette::HighlightedText, Qt::black);
     palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127,127,127));
     palette.setColor(QPalette::Disabled, QPalette::Text, QColor(127,127,127));
+    palette.setColor(QPalette::Disabled, QPalette::WindowText, QColor(120, 120, 120));
+    palette.setColor(QPalette::Disabled, QPalette::Highlight, QColor(127, 127, 127));
+    palette.setColor(QPalette::Disabled, QPalette::HighlightedText, QColor(48, 48, 48));
   }
 }
