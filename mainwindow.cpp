@@ -531,6 +531,8 @@ void MainWindow::setupGUI()
   settings->addAction(action("preferences"));
 
   QToolBar * main_toolbar = addToolBar(tr("Tools"));
+  main_toolbar->setFloatable(false);
+  main_toolbar->setAllowedAreas(Qt::TopToolBarArea | Qt::BottomToolBarArea);
   main_toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
   main_toolbar->addAction(action("eject"));
   main_toolbar->addSeparator();
