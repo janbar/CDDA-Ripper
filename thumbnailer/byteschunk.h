@@ -9,8 +9,8 @@ namespace thumbnailer
 
 static bool explode_chunk_set(const QByteArray& data, QList<QByteArray>& chunks)
 {
-  int p = 0;
-  while (p + 4 < data.size())
+  quint32 p = 0;
+  while ((p + 4) < quint32(data.size()))
   {
     // read header
     quint32 sz =
@@ -19,7 +19,7 @@ static bool explode_chunk_set(const QByteArray& data, QList<QByteArray>& chunks)
             (data[p+2] & 0xff) << 8 |
             (data[p+3] & 0xff);
     p += 4;
-    if (data.size() < int(p + sz))
+    if (quint32(data.size()) < (p + sz))
       return false; // invalid chunk set
     // copy the chunk to follow
     chunks.push_back(data.mid(p, sz));
