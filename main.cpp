@@ -77,15 +77,13 @@ int main(int argc, char* argv[])
     }
   }
 
-  if (isKde && !noStyle)
+#ifdef ENABLE_NATIVE_STYLE
+  if (isKde)
   {
-#ifndef ENABLE_NATIVE_STYLE
-    qInfo() << "Using native style has been disabled at compile time.";
-#else
     qInfo() << "Using native style on Kde.";
     nativeStyle = true;
-#endif
   }
+#endif
 #endif
 
   QGuiApplication::setApplicationName(APP_DESKTOP_NAME);
@@ -99,7 +97,8 @@ int main(int argc, char* argv[])
 #endif
   setupApp(app);
 
-  if (!nativeStyle)
+  if (noStyle || !nativeStyle || !QApplication::style()
+      || QApplication::style()->objectName().toLower() == "fusion")
   {
     QApplication::setStyle(new GoodStyle);
     QSettings settings;
