@@ -1449,7 +1449,7 @@ Séparateur&#xa0;:</translation>
     <message>
         <location line="+6"/>
         <source>Settings</source>
-        <translation>Configuration</translation>
+        <translation type="unfinished">Paramètres</translation>
     </message>
     <message>
         <location line="+4"/>
