@@ -48,6 +48,14 @@ void stylePalette(QPalette& palette, const QString& style);
 int main(int argc, char* argv[])
 {
   bool noStyle = false;
+  bool nativeStyle = false;
+
+  for (int i = 0; i < argc; ++i)
+  {
+    if (strcmp(argv[i], "-nostyle") == 0)
+      noStyle = true;
+  }
+
 #ifdef Q_OS_LINUX
   const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP").toLower();
   const QByteArray sessionDesktop = qgetenv("XDG_SESSION_DESKTOP").toLower();
@@ -69,13 +77,13 @@ int main(int argc, char* argv[])
     }
   }
 
-  if (isKde)
+  if (isKde && !noStyle)
   {
 #ifndef ENABLE_NATIVE_STYLE
     qInfo() << "Using native style has been disabled at compile time.";
 #else
     qInfo() << "Using native style on Kde.";
-    noStyle = true;
+    nativeStyle = true;
 #endif
   }
 #endif
@@ -91,7 +99,7 @@ int main(int argc, char* argv[])
 #endif
   setupApp(app);
 
-  if (!noStyle)
+  if (!nativeStyle)
   {
     QApplication::setStyle(new GoodStyle);
     QSettings settings;
