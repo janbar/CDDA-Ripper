@@ -55,6 +55,7 @@ set(
     albuminfo.h
     abstractapi.h
     jsonparser.h
+    byteschunk.h
     lastfm/lastfm.h
     deezer/deezer.h
 )
