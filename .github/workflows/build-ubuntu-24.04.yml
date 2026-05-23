@@ -26,7 +26,7 @@ jobs:
         run: |
           sudo apt-get install -y flex bison \
               libmusicbrainz5-dev libcdparanoia-dev \
-              zlib1g-dev libssl-dev libdbus-1-dev libudev-dev \
+              zlib1g-dev libssl-dev libdbus-1-dev \
               qtbase5-dev qttools5-dev qttools5-dev-tools \
               libqt5dbus5 libqt5svg5
 
