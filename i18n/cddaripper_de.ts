@@ -8,9 +8,13 @@
         <translation type="vanished">&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/aboutwidget.cpp" line="+21"/>
         <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MusicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
-        <translation>&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt. MusicBrainz und Deezer werden verwendet, um Metadaten und Coverbilder abzurufen. CDParanoia ist das Haupt-Backend zum Extrahieren von Audiotracks.&lt;br&gt;Bitte beachten Sie, dass Sie die von Ihnen gewählten Encoder separat installieren müssen. FLAC-, LAME-, FAAC-, OGG- und OPUS-Encoder werden derzeit unterstützt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+        <translation type="vanished">&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt. MusicBrainz und Deezer werden verwendet, um Metadaten und Coverbilder abzurufen. CDParanoia ist das Haupt-Backend zum Extrahieren von Audiotracks.&lt;br&gt;Bitte beachten Sie, dass Sie die von Ihnen gewählten Encoder separat installieren müssen. FLAC-, LAME-, FAAC-, OGG- und OPUS-Encoder werden derzeit unterstützt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailler (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/aboutwidget.cpp" line="+21"/>
+        <source>&lt;html&gt;An easy to use audio CD ripping application.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper was forked from Audex-0.95, and reworked outside of the KDE frameworks. MusicBrainz and Deezer are used to fetch metadata and cover arts. CDParanoia is the main backend to extract audio track.&lt;br&gt;Note that you should install your chosen encoders separately. FLAC, LAME, FAAC, OGG, and OPUS encoders are currently supported.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailer (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</source>
+        <translation>&lt;html&gt;Eine benutzerfreundliche Anwendung zum Rippen von Audio-CDs.&lt;br&gt;&lt;br&gt;&lt;b&gt;Version %1&lt;/b&gt;, (c) Jean-Luc Barrière&lt;br&gt;&lt;br&gt;CDDA-Ripper basiert auf Audex-0.95 und wurde außerhalb der KDE-Frameworks neu entwickelt. MusicBrainz und Deezer werden verwendet, um Metadaten und Coverbilder abzurufen. CDParanoia ist das Haupt-Backend zum Extrahieren von Audiotracks.&lt;br&gt;Bitte beachten Sie, dass Sie die von Ihnen gewählten Encoder separat installieren müssen. FLAC-, LAME-, FAAC-, OGG- und OPUS-Encoder werden derzeit unterstützt.&lt;br&gt;&lt;br&gt;&lt;b&gt;Credits&amp;thinsp;:&lt;/b&gt;&lt;br&gt;Audex-0.95 (Marco Nelles)&lt;br&gt;Solid (kde.org)&lt;br&gt;Kcddb (kde.org)&lt;br&gt;Thumbnailer (Jean-Luc Barrière)&lt;br&gt;GoodStyle (Juergen Skrotzky)&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -978,7 +982,7 @@ In einigen Fällen kann es sich um ein Laufwerk-spezifisches Problem handeln. Vi
 Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+28"/>
         <source>Encoding protocol</source>
         <translation>Kodierungs-Protokoll</translation>
     </message>
@@ -1229,7 +1233,7 @@ Möchten Sie mit dem Auslesen dennoch fortfahren?</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="+41"/>
+        <location filename="../mainwindow.cpp" line="+44"/>
         <source>Unable to create ProfileModel object.</source>
         <translation>Profilmodell-Objekt kann nicht erstellt werden.</translation>
     </message>
@@ -1503,7 +1507,7 @@ Trennzeichen:</translation>
 <context>
     <name>Preferences</name>
     <message>
-        <location filename="../preferences.cpp" line="+137"/>
+        <location filename="../preferences.cpp" line="+139"/>
         <source>General Settings</source>
         <translation>Allgemeine Einstellungen</translation>
     </message>

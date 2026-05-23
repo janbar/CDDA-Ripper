@@ -29,7 +29,7 @@ AboutWidget::AboutWidget(QWidget *parent)
           "<br>Audex-0.95 (Marco Nelles)"
           "<br>Solid (kde.org)"
           "<br>Kcddb (kde.org)"
-          "<br>Thumbnailler (Jean-Luc Barrière)"
+          "<br>Thumbnailer (Jean-Luc Barrière)"
           "<br>GoodStyle (Juergen Skrotzky)"
           "</html>")
           .arg(CDDARIPPER_VERSION));
