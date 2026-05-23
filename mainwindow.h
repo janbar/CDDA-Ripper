@@ -30,20 +30,13 @@
 #include <cddb/client.h>
 #include <cddb/kcddb.h>
 
-#include "utils/cuesheetwriter.h"
-#include "utils/error.h"
-
 #include "models/cddamodel.h"
 #include "models/profilemodel.h"
 
-#include "preferences.h"
 #include "widgets/cddaheaderwidget.h"
 #include "widgets/waitingspinnerwidget.h"
 
 #include "dialogs/errordialog.h"
-#include "dialogs/extractingprogressdialog.h"
-
-#include "utils/encoderassistant.h"
 
 class MainWindow : public QMainWindow
 {
@@ -52,6 +45,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
+
+    // if true the widgets style or palette shouldn't be modified
+    static bool native_style;
 
 private:
     bool firstRun();

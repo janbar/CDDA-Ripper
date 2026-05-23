@@ -6,8 +6,9 @@
  */
 
 #include "mainwindow.h"
-#include "cddb/kcmcddb.h"
-
+#include "utils/error.h"
+#include "preferences.h"
+#include "dialogs/extractingprogressdialog.h"
 #include "dialogs/aboutwidget.h"
 
 #include <QMenu>
@@ -30,6 +31,8 @@ protected:
         }
     }
 };
+
+bool MainWindow::native_style = false;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

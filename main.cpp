@@ -48,7 +48,6 @@ void stylePalette(QPalette& palette, const QString& style);
 int main(int argc, char* argv[])
 {
   bool noStyle = false;
-  bool nativeStyle = false;
 
   for (int i = 0; i < argc; ++i)
   {
@@ -79,10 +78,7 @@ int main(int argc, char* argv[])
 
 #ifdef ENABLE_NATIVE_STYLE
   if (isKde)
-  {
-    qInfo() << "Using native style on Kde.";
-    nativeStyle = true;
-  }
+    MainWindow::native_style = true;
 #endif
 #endif
 
@@ -97,14 +93,23 @@ int main(int argc, char* argv[])
 #endif
   setupApp(app);
 
-  if (noStyle || !nativeStyle || !QApplication::style()
+  // force the internal style when the conditions are not right:
+  // - the argument -nostyle is passed to the program
+  // - the desktop does not provide a suitable style
+  // - no style or the default fusion is in use
+  if (noStyle || !MainWindow::native_style || !QApplication::style()
       || QApplication::style()->objectName().toLower() == "fusion")
   {
+    MainWindow::native_style = false;
     QApplication::setStyle(new GoodStyle);
     QSettings settings;
     QPalette palette = QGuiApplication::palette();
     stylePalette(palette, settings.value("stylePalette", QString("light")).toString());
     app.setPalette(palette);
+  }
+  else
+  {
+    qInfo() << "Using native style" << QApplication::style()->objectName().toLower();
   }
 
   // init SSL configuration

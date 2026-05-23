@@ -9,6 +9,7 @@
 #include <QDialog>
 #include <QDialogButtonBox>
 
+#include "mainwindow.h"
 #include "widgets/devicewidget.h"
 #include "widgets/generalsettingswidget.h"
 #include "widgets/profilewidget.h"
@@ -134,6 +135,7 @@ void Preferences::showDialog(QWidget* parent, ProfileModel* profileModel)
     page_gen->kcfg_fetchCount->setRange(1, 99);
     page_gen->kcfg_fetchCount->setValue(fetchCount());
     page_gen->kcfg_overwriteExistingFiles->setChecked(overwriteExistingFiles());
+    page_gen->theme_box->setVisible(!MainWindow::native_style);
     tab->addTab(page_gen, tr("General Settings"));
 
     deviceWidget * page_dev = new deviceWidget();
