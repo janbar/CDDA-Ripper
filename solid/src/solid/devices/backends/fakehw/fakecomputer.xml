@@ -3,24 +3,24 @@
 
 <machine>
     <!-- This is a computer -->
-    <device udi="/org/kde/solid/fakehw/computer">
+    <device udi="/io/github/janbar/solid/fakehw/computer">
         <property key="name">Computer</property>
         <property key="vendor">Solid</property>
     </device>
 
 
         <!-- A system with its own AC adapter and a battery (like a laptop) -->
-        <device udi="/org/kde/solid/fakehw/acpi_AC">
+        <device udi="/io/github/janbar/solid/fakehw/acpi_AC">
             <property key="name">AC Adapter</property>
             <property key="interfaces">AcAdapter</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
             <property key="isPlugged">false</property>
         </device>
-        <device udi="/org/kde/solid/fakehw/acpi_BAT0">
+        <device udi="/io/github/janbar/solid/fakehw/acpi_BAT0">
             <property key="name">Battery Bay</property>
             <property key="vendor">Acme Corporation</property>
             <property key="interfaces">Battery</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
             <property key="isPresent">true</property>
             <property key="batteryType">primary</property>
             <property key="chargeLevelUnit">mWh</property>
@@ -36,11 +36,11 @@
             <property key="chargeState">discharging</property>
             <property key="remainingTime">1000.5</property>
         </device>
-        <device udi="/org/kde/solid/fakehw/acpi_BAT1">
+        <device udi="/io/github/janbar/solid/fakehw/acpi_BAT1">
             <property key="name">Miraculous Mouse</property>
             <property key="vendor">Orange Inc.</property>
             <property key="interfaces">Battery</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
             <property key="isPresent">false</property>
             <property key="batteryType">mouse</property>
             <!-- Battery properties beyond charge percentage are only reported by UPower
@@ -57,21 +57,21 @@
 
 
         <!-- Two CPUs -->
-        <device udi="/org/kde/solid/fakehw/acpi_CPU0">
+        <device udi="/io/github/janbar/solid/fakehw/acpi_CPU0">
             <property key="name">Solid Processor #0</property>
             <property key="interfaces">Processor</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
             <property key="number">0</property>
             <property key="maxSpeed">3200</property>
             <property key="canChangeFrequency">true</property>
             <property key="instructionSets">mmx,sse</property>
         </device>
-        <device udi="/org/kde/solid/fakehw/acpi_CPU1">
+        <device udi="/io/github/janbar/solid/fakehw/acpi_CPU1">
             <property key="name">Solid Processor #1</property>
             <property key="interfaces">Processor</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
             <property key="number">1</property>
             <property key="maxSpeed">3200</property>
             <property key="canChangeFrequency">true</property>
@@ -80,32 +80,30 @@
 
 
         <!-- Platform Device for a floppy drive -->
-        <device udi="/org/kde/solid/fakehw/platform_floppy_0">
+        <device udi="/io/github/janbar/solid/fakehw/platform_floppy_0">
             <property key="name">Platform Device (floppy)</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
             <!-- The actual floppy device -->
-            <device udi="/org/kde/solid/fakehw/platform_floppy_0_storage">
+            <device udi="/io/github/janbar/solid/fakehw/platform_floppy_0_storage">
                 <property key="name">PC Floppy Drive</property>
                 <property key="interfaces">StorageDrive,Block</property>
-                <property key="parent">/org/kde/solid/fakehw/platform_floppy_0</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/platform_floppy_0</property>
 
                 <property key="minor">0</property>
                 <property key="major">2</property>
                 <property key="device">/dev/fd0</property>
 
-                <property key="bus">platform</property>
                 <property key="driveType">floppy</property>
                 <property key="isRemovable">true</property>
                 <property key="isEjectRequired">false</property>
-                <property key="isHotpluggable">false</property>
                 <property key="isMediaCheckEnabled">false</property>
             </device>
                 <!-- A (generally) virtual volume tracking the floppy drive state -->
-                <device udi="/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume">
+                <device udi="/io/github/janbar/solid/fakehw/platform_floppy_0_storage_virt_volume">
                     <property key="name">Floppy Disk</property>
                     <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                    <property key="parent">/org/kde/solid/fakehw/platform_floppy_0_storage</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/platform_floppy_0_storage</property>
 
                     <property key="minor">0</property>
                     <property key="major">2</property>
@@ -120,33 +118,31 @@
 
 
         <!-- Primary IDE controller -->
-        <device udi="/org/kde/solid/fakehw/pci_001">
+        <device udi="/io/github/janbar/solid/fakehw/pci_001">
             <property key="name">99021 IDE Controller #1</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
 
             <!-- Master device... -->
-            <device udi="/org/kde/solid/fakehw/pci_001_ide_0_0">
+            <device udi="/io/github/janbar/solid/fakehw/pci_001_ide_0_0">
                 <property key="name">IDE device (master)</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_001</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_001</property>
             </device>
                 <!-- ... is a 250GB disk... -->
-                <device udi="/org/kde/solid/fakehw/storage_serial_HD56890I">
+                <device udi="/io/github/janbar/solid/fakehw/storage_serial_HD56890I">
                     <property key="name">HD250GB</property>
                     <property key="vendor">Acme Corporation</property>
                     <property key="interfaces">StorageDrive,Block</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_001_ide_0_0</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/pci_001_ide_0_0</property>
 
                     <property key="minor">0</property>
                     <property key="major">3</property>
                     <property key="device">/dev/hda</property>
 
-                    <property key="bus">scsi</property>
                     <property key="driveType">disk</property>
                     <property key="isRemovable">false</property>
                     <property key="isEjectRequired">false</property>
-                    <property key="isHotpluggable">false</property>
                     <property key="isMediaCheckEnabled">false</property>
                     <property key="product">HD250GBSATA</property>
                 </device>
@@ -157,10 +153,10 @@
                                   - /home volume (xfs, 208GB)
                                   - /foreign volume (ntfs, 20GB)
                     -->
-                    <device udi="/org/kde/solid/fakehw/volume_uuid_feedface">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_uuid_feedface">
                         <property key="name">/</property>
                         <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_serial_HD56890I</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_serial_HD56890I</property>
 
                         <property key="minor">1</property>
                         <property key="major">3</property>
@@ -175,10 +171,10 @@
                         <property key="uuid">feedface</property>
                         <property key="size">21474836480</property>
                     </device>
-                    <device udi="/org/kde/solid/fakehw/volume_uuid_c0ffee">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_uuid_c0ffee">
                         <property key="name">/home</property>
                         <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_serial_HD56890I</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_serial_HD56890I</property>
 
                         <property key="minor">6</property>
                         <property key="major">3</property>
@@ -193,10 +189,10 @@
                         <property key="uuid">c0ffee</property>
                         <property key="size">223338299392</property>
                     </device>
-                    <device udi="/org/kde/solid/fakehw/volume_uuid_f00ba7">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_uuid_f00ba7">
                         <property key="name">/foreign</property>
                         <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_serial_HD56890I</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_serial_HD56890I</property>
 
                         <property key="minor">7</property>
                         <property key="major">3</property>
@@ -211,10 +207,10 @@
                         <property key="uuid">f00ba7</property>
                         <property key="size">21474836480</property>
                     </device>
-                    <device udi="/org/kde/solid/fakehw/volume_part2_size_1024">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_part2_size_1024">
                         <property key="name">StorageVolume</property>
                         <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_serial_HD56890I</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_serial_HD56890I</property>
 
                         <property key="minor">2</property>
                         <property key="major">3</property>
@@ -225,10 +221,10 @@
                         <property key="usage">other</property>
                         <property key="size">1024</property>
                     </device>
-                    <device udi="/org/kde/solid/fakehw/volume_part5_size_1048576">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_part5_size_1048576">
                         <property key="name">StorageVolume (swap)</property>
                         <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_serial_HD56890I</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_serial_HD56890I</property>
 
                         <property key="minor">5</property>
                         <property key="major">3</property>
@@ -243,33 +239,31 @@
 
 
         <!-- Secondary IDE controller -->
-        <device udi="/org/kde/solid/fakehw/pci_002">
+        <device udi="/io/github/janbar/solid/fakehw/pci_002">
             <property key="name">99021 IDE Controller #2</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
 
             <!-- Master device... -->
-            <device udi="/org/kde/solid/fakehw/pci_002_ide_1_0">
+            <device udi="/io/github/janbar/solid/fakehw/pci_002_ide_1_0">
                 <property key="name">IDE device (master)</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_002</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_002</property>
             </device>
                 <!-- ... is a DVD writer... -->
-                <device udi="/org/kde/solid/fakehw/storage_model_solid_writer">
+                <device udi="/io/github/janbar/solid/fakehw/storage_model_solid_writer">
                     <property key="name">Solid IDE DVD Writer</property>
                     <property key="vendor">Acme Corporation</property>
                     <property key="interfaces">Block,StorageDrive,OpticalDrive</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_002_ide_1_0</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/pci_002_ide_1_0</property>
 
                     <property key="minor">0</property>
                     <property key="major">22</property>
                     <property key="device">/dev/hdc</property>
 
-                    <property key="bus">ide</property>
                     <property key="driveType">cdrom</property>
                     <property key="isRemovable">true</property>
                     <property key="isEjectRequired">true</property>
-                    <property key="isHotpluggable">false</property>
                     <property key="isMediaCheckEnabled">true</property>
                     <property key="product">Solid DVD Writer</property>
 
@@ -279,13 +273,12 @@
                     <property key="writeSpeeds">4234,2822,2117,1411,706</property>
                 </device>
                     <!-- ... with a cd-r in it -->
-                    <device udi="/org/kde/solid/fakehw/volume_uuid_5011">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_uuid_5011">
                         <property key="name">FooDistro i386</property>
                         <property key="interfaces">Block,StorageVolume,OpticalDisc,StorageAccess</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_model_solid_writer</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_model_solid_writer</property>
 
                         <property key="discType">cd_rw</property>
-                        <property key="isAppendable">false</property>
                         <property key="isRewritable">true</property>
                         <property key="isBlank">false</property>
                         <property key="availableContent">data</property>
@@ -297,26 +290,24 @@
                     </device>
 
             <!-- Slave device... -->
-            <device udi="/org/kde/solid/fakehw/pci_002_ide_1_1">
+            <device udi="/io/github/janbar/solid/fakehw/pci_002_ide_1_1">
                 <property key="name">IDE device (slave)</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_002</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_002</property>
             </device>
                 <!-- ... is a DVD reader... -->
-                <device udi="/org/kde/solid/fakehw/storage_model_solid_reader">
+                <device udi="/io/github/janbar/solid/fakehw/storage_model_solid_reader">
                     <property key="name">Solid IDE DVD Reader</property>
                     <property key="vendor">Acme Corporation</property>
                     <property key="interfaces">Block,StorageDrive,OpticalDrive</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_002_ide_1_1</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/pci_002_ide_1_1</property>
 
                     <property key="minor">0</property>
                     <property key="major">22</property>
                     <property key="device">/dev/hdc</property>
 
-                    <property key="bus">ide</property>
                     <property key="driveType">cdrom</property>
                     <property key="isRemovable">true</property>
                     <property key="isEjectRequired">true</property>
-                    <property key="isHotpluggable">false</property>
                     <property key="isMediaCheckEnabled">true</property>
                     <property key="product">Solid DVD Reader</property>
 
@@ -324,13 +315,12 @@
                     <property key="readSpeed">4234</property>
                 </device>
                     <!-- ... with a DVD Video in it -->
-                    <device udi="/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS">
+                    <device udi="/io/github/janbar/solid/fakehw/volume_label_SOLIDMAN_BEGINS">
                         <property key="name">SolidMan Begins</property>
                         <property key="interfaces">Block,StorageVolume,OpticalDisc</property>
-                        <property key="parent">/org/kde/solid/fakehw/storage_model_solid_reader</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/storage_model_solid_reader</property>
 
                         <property key="discType">dvd_rom</property>
-                        <property key="isAppendable">false</property>
                         <property key="isRewritable">false</property>
                         <property key="isBlank">false</property>
                         <property key="availableContent">dvdvideo</property>
@@ -343,53 +333,51 @@
 
 
         <!-- First USB Controller -->
-        <device udi="/org/kde/solid/fakehw/pci_8086_265c">
+        <device udi="/io/github/janbar/solid/fakehw/pci_8086_265c">
             <property key="name">99021 USB2 EHCI Controller #1</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
             <!-- Host Controller -->
-            <device udi="/org/kde/solid/fakehw/usb_device_0_0_1d_7">
+            <device udi="/io/github/janbar/solid/fakehw/usb_device_0_0_1d_7">
                 <property key="name">EHCI Host Controller</property>
                 <property key="vendor">Kernel ehci_hcd</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_265c</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_8086_265c</property>
             </device>
                 <!-- USB Device -->
-                <device udi="/org/kde/solid/fakehw/usb_device_4e8_5041">
+                <device udi="/io/github/janbar/solid/fakehw/usb_device_4e8_5041">
                     <property key="name">Acme XO-Y4</property>
-                    <property key="parent">/org/kde/solid/fakehw/usb_device_0_0_1d_7</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/usb_device_0_0_1d_7</property>
                 </device>
                     <!-- Mass Storage Interface -->
-                    <device udi="/org/kde/solid/fakehw/usb_device_4e8_5041_if0">
+                    <device udi="/io/github/janbar/solid/fakehw/usb_device_4e8_5041_if0">
                         <property key="name">USB Mass Storage Interface</property>
-                        <property key="parent">/org/kde/solid/fakehw/usb_device_4e8_5041</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4e8_5041</property>
                     </device>
                         <!-- SCSI Adapter -->
-                        <device udi="/org/kde/solid/fakehw/usb_device_4e8_5041_if0_scsi_host">
+                        <device udi="/io/github/janbar/solid/fakehw/usb_device_4e8_5041_if0_scsi_host">
                             <property key="name">SCSI Host Adapter</property>
-                            <property key="parent">/org/kde/solid/fakehw/usb_device_4e8_5041_if0</property>
+                            <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4e8_5041_if0</property>
                         </device>
                         <!-- SCSI Device -->
-                            <device udi="/org/kde/solid/fakehw/usb_device_4e8_5041_if0_scsi_host_scsi_device_lun0">
+                            <device udi="/io/github/janbar/solid/fakehw/usb_device_4e8_5041_if0_scsi_host_scsi_device_lun0">
                                 <property key="name">SCSI Device</property>
-                                <property key="parent">/org/kde/solid/fakehw/usb_device_4e8_5041_if0_scsi_host</property>
+                                <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4e8_5041_if0_scsi_host</property>
                             </device>
                                 <!-- We finally find the storage device, which is a portable media player... -->
-                                <device udi="/org/kde/solid/fakehw/storage_serial_XOY4_5206">
+                                <device udi="/io/github/janbar/solid/fakehw/storage_serial_XOY4_5206">
                                     <property key="name">XO-Y4</property>
                                     <property key="vendor">Acme Electronics</property>
                                     <property key="interfaces">StorageDrive,Block,PortableMediaPlayer</property>
-                                    <property key="parent">/org/kde/solid/fakehw/usb_device_4e8_5041_if0_scsi_host_scsi_device_lun0</property>
+                                    <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4e8_5041_if0_scsi_host_scsi_device_lun0</property>
 
                                     <property key="minor">0</property>
                                     <property key="major">8</property>
                                     <property key="device">/dev/sda</property>
 
-                                    <property key="bus">usb</property>
                                     <property key="driveType">disk</property>
                                     <property key="isRemovable">true</property>
                                     <property key="isEjectRequired">true</property>
-                                    <property key="isHotpluggable">true</property>
                                     <property key="isMediaCheckEnabled">true</property>
                                     <property key="product">XO-Y4</property>
 
@@ -399,10 +387,10 @@
                                     <property key="playlistFormats">audio/x-mpegurl</property>
                                 </device>
                                     <!-- ... with a partition since it's a USB Mass Storage device -->
-                                    <device udi="/org/kde/solid/fakehw/volume_part1_size_993284096">
+                                    <device udi="/io/github/janbar/solid/fakehw/volume_part1_size_993284096">
                                         <property key="name">StorageVolume (vfat)</property>
                                         <property key="interfaces">Block,StorageVolume,StorageAccess</property>
-                                        <property key="parent">/org/kde/solid/fakehw/storage_serial_XOY4_5206</property>
+                                        <property key="parent">/io/github/janbar/solid/fakehw/storage_serial_XOY4_5206</property>
 
                                         <property key="minor">1</property>
                                         <property key="major">8</property>
@@ -419,38 +407,38 @@
 
 
         <!-- Second USB Controller -->
-        <device udi="/org/kde/solid/fakehw/pci_8086_265d">
+        <device udi="/io/github/janbar/solid/fakehw/pci_8086_265d">
             <property key="name">99021 USB UHCI #1</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
             <!-- Host Controller -->
-            <device udi="/org/kde/solid/fakehw/usb_device_0_0_1d_2">
+            <device udi="/io/github/janbar/solid/fakehw/usb_device_0_0_1d_2">
                 <property key="name">UHCI Host Controller</property>
                 <property key="vendor">Kernel uhci_hcd</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_265d</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_8086_265d</property>
             </device>
 
                 <!-- USB Device #1 -->
-                <device udi="/org/kde/solid/fakehw/usb_device_4a9_30b9_noserial">
+                <device udi="/io/github/janbar/solid/fakehw/usb_device_4a9_30b9_noserial">
                     <property key="name">PowerBullet A35</property>
                     <property key="vendor">Firearm Inc.</property>
-                    <property key="parent">/org/kde/solid/fakehw/usb_device_0_0_1d_2</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/usb_device_0_0_1d_2</property>
                 </device>
                     <!-- We finally find the camera interface -->
-                    <device udi="/org/kde/solid/fakehw/usb_device_4a9_30b9_noserial_if0">
+                    <device udi="/io/github/janbar/solid/fakehw/usb_device_4a9_30b9_noserial_if0">
                         <property key="name">USB Imaging Interface</property>
                         <property key="interfaces">Camera</property>
-                        <property key="parent">/org/kde/solid/fakehw/usb_device_4a9_30b9_noserial</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4a9_30b9_noserial</property>
                         <property key="accessMethod">ptp</property>
                         <property key="gphotoSupport">true</property>
                     </device>
 
                 <!-- USB Device #2 containing a battery -->
-                <device udi="/org/kde/solid/fakehw/usb_device_1267_210_noserial">
+                <device udi="/io/github/janbar/solid/fakehw/usb_device_1267_210_noserial">
                     <property key="name">ZX Cordless Mouse</property>
                     <property key="vendor">Logi4 Inc.</property>
-                    <property key="parent">/org/kde/solid/fakehw/usb_device_0_0_1d_2</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/usb_device_0_0_1d_2</property>
                     <property key="interfaces">Battery</property>
 
                     <property key="isPresent">true</property>
@@ -468,84 +456,84 @@
                     <property key="chargeState">charging</property>
                 </device>
                     <!-- HID Interface -->
-                    <device udi="/org/kde/solid/fakehw/usb_device_1267_210_noserial_if0">
+                    <device udi="/io/github/janbar/solid/fakehw/usb_device_1267_210_noserial_if0">
                         <property key="name">USB HID Interface</property>
-                        <property key="parent">/org/kde/solid/fakehw/usb_device_1267_210_noserial</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/usb_device_1267_210_noserial</property>
                     </device>
                         <!-- We finally find the mouse device -->
-                        <device udi="/org/kde/solid/fakehw/usb_device_1267_210_noserial_if0_logical_dev_input">
+                        <device udi="/io/github/janbar/solid/fakehw/usb_device_1267_210_noserial_if0_logical_dev_input">
                             <property key="name">Logi4 Receiver</property>
-                            <property key="parent">/org/kde/solid/fakehw/usb_device_1267_210_noserial_if0</property>
+                            <property key="parent">/io/github/janbar/solid/fakehw/usb_device_1267_210_noserial_if0</property>
                             <!-- TODO: Complete this if we get input (mouse and keyb) related interfaces -->
                         </device>
 
                 <!-- USB Device #3 -->
-                <device udi="/org/kde/solid/fakehw/usb_device_4f1_5d33_HF8459">
+                <device udi="/io/github/janbar/solid/fakehw/usb_device_4f1_5d33_HF8459">
                     <property key="name">ORB 2400 series</property>
                     <property key="vendor">Acme Corporation</property>
-                    <property key="parent">/org/kde/solid/fakehw/usb_device_0_0_1d_2</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/usb_device_0_0_1d_2</property>
                 </device>
                     <!-- USB Printer Interface -->
-                    <device udi="/org/kde/solid/fakehw/usb_device_4f1_5d33_HF8459_if0">
+                    <device udi="/io/github/janbar/solid/fakehw/usb_device_4f1_5d33_HF8459_if0">
                         <property key="name">USB Printer Interface</property>
-                        <property key="parent">/org/kde/solid/fakehw/usb_device_4f1_5d33_HF8459</property>
+                        <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4f1_5d33_HF8459</property>
                     </device>
                         <!-- We finally find the printer device -->
-                        <device udi="/org/kde/solid/fakehw/usb_device_4f1_5d33_HF8459_if0_printer">
+                        <device udi="/io/github/janbar/solid/fakehw/usb_device_4f1_5d33_HF8459_if0_printer">
                             <property key="name">ORB 2400 series</property>
                             <property key="vendor">Acme</property>
-                            <property key="parent">/org/kde/solid/fakehw/usb_device_4f1_5d33_HF8459_if0</property>
+                            <property key="parent">/io/github/janbar/solid/fakehw/usb_device_4f1_5d33_HF8459_if0</property>
                             <!-- TODO: Complete this if we get printer related interfaces -->
                         </device>
 
 
 
         <!-- PCI Bridge -->
-        <device udi="/org/kde/solid/fakehw/pci_8086_2448">
+        <device udi="/io/github/janbar/solid/fakehw/pci_8086_2448">
             <property key="name">99021 PCI Bridge</property>
             <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
 
             <!-- PCI device #1 -->
-            <device udi="/org/kde/solid/fakehw/pci_3452_7890">
+            <device udi="/io/github/janbar/solid/fakehw/pci_3452_7890">
                 <property key="name">Wireless 1144AH</property>
                 <property key="vendor">Acme Corporation</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_8086_2448</property>
             </device>
 
             <!-- PCI device #2 -->
-            <device udi="/org/kde/solid/fakehw/pci_8904_5e21">
+            <device udi="/io/github/janbar/solid/fakehw/pci_8904_5e21">
                 <property key="name">RC-1893</property>
                 <property key="vendor">ReallyChip Corporation</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_8086_2448</property>
             </device>
 
             <!-- PCI device #3 -->
-            <device udi="/org/kde/solid/fakehw/pci_8843_6a11">
+            <device udi="/io/github/janbar/solid/fakehw/pci_8843_6a11">
                 <property key="name">VisioTNT</property>
                 <property key="vendor">DigitalVid Ltd</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
+                <property key="parent">/io/github/janbar/solid/fakehw/pci_8086_2448</property>
             </device>
                 <!-- Digital video broadcasting interface -->
-                <device udi="/org/kde/solid/fakehw/pci_8843_6a11_dvb1">
+                <device udi="/io/github/janbar/solid/fakehw/pci_8843_6a11_dvb1">
                     <property key="name">DVB Interface</property>
                     <property key="interfaces">DvbInterface</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_8843_6a11</property>
+                    <property key="parent">/io/github/janbar/solid/fakehw/pci_8843_6a11</property>
                     <property key="device">/dev/broadcast0/demux</property>
                     <property key="deviceAdapter">2</property>
                     <property key="deviceType">demux</property>
                     <property key="deviceIndex">1</property>
                 </device>
 
-        <device udi="/org/kde/solid/fakehw/fstab">
+        <device udi="/io/github/janbar/solid/fakehw/fstab">
             <property key="name">Network Shares</property>
             <property key="product">Network Shares</property>
             <property key="vendor">KDE</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
+            <property key="parent">/io/github/janbar/solid/fakehw/computer</property>
         </device>
-            <device udi="/org/kde/solid/fakehw/fstab/thehost/solidpath">
-                <property key="parent">/org/kde/solid/fstab</property>
+            <device udi="/io/github/janbar/solid/fakehw/fstab/thehost/solidpath">
+                <property key="parent">/io/github/janbar/solid/fstab</property>
                 <property key="interfaces">NetworkShare,StorageAccess</property>
                 <property key="vendor">/solidpath</property>
                 <property key="product">thehost</property>

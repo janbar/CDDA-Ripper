@@ -7,6 +7,5 @@ set(backend_sources
     fakemanager.cpp
     fakeopticaldisc.cpp
     fakestorage.cpp
-    fakestorageaccess.cpp
     fakevolume.cpp
 )

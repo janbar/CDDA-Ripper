@@ -12,7 +12,6 @@ Build-Depends: cmake, git, flex, bison,
                zlib1g-dev,
                libssl-dev,
                libdbus-1-dev,
-               libudev-dev,
                libmusicbrainz5-dev,
                libcdparanoia-dev
 Standards-Version: 3.9.6

@@ -30,7 +30,6 @@ sudo apt-get install cddaripper
 
 * cdparanoia
 * MusicBrainz library version 5.x
-* udev
 * udisk2
 
 ### Prerequisites (optional)

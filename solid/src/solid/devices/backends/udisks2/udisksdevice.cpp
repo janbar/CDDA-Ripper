@@ -12,7 +12,6 @@
 #include "udisksgenericinterface.h"
 #include "udisksopticaldisc.h"
 #include "udisksopticaldrive.h"
-#include "udisksstorageaccess.h"
 #include "udisksstoragevolume.h"
 
 #include <solid/device.h>
@@ -66,22 +65,14 @@ static QString formatByteSize(double size)
     return s;
 }
 
-static QString concatBlockDeviceDescription(const QString &name, qulonglong size, bool isExternal)
+static QString concatBlockDeviceDescription(const QString &name, qulonglong size)
 {
     QString description;
     if (size > 0) {
         const QString sizeStr = formatByteSize(size);
-        if (isExternal) {
-            description = QObject::tr("%1 External Drive (%2)", "%1 is the size, %2 is the block device name e.g. sda, sda1").arg(sizeStr, name);
-        } else {
-            description = QObject::tr("%1 Internal Drive (%2)", "%1 is the size, %2 is the block device name e.g. sda, sda1").arg(sizeStr, name);
-        }
+        description = QObject::tr("%1 Drive (%2)", "%1 is the size, %2 is the block device name e.g. sda, sda1").arg(sizeStr, name);
     } else {
-        if (isExternal) {
-            description = QObject::tr("External Drive (%1)", "%1 is the block device name e.g. sda, sda1").arg(name);
-        } else {
-            description = QObject::tr("Internal Drive (%1)", "%1 is the block device name e.g. sda, sda1").arg(name);
-        }
+        description = QObject::tr("Drive (%1)", "%1 is the block device name e.g. sda, sda1").arg(name);
     }
 
     return description;
@@ -178,9 +169,6 @@ QObject *Device::createDeviceInterface(const Solid::DeviceInterface::Type &type)
     case Solid::DeviceInterface::Block:
         iface = new Block(this);
         break;
-    case Solid::DeviceInterface::StorageAccess:
-        iface = new StorageAccess(this);
-        break;
     case Solid::DeviceInterface::StorageDrive:
         iface = new StorageDrive(this);
         break;
@@ -208,8 +196,6 @@ bool Device::queryDeviceInterface(const Solid::DeviceInterface::Type &type) cons
         return isBlock() || isDrive();
     case Solid::DeviceInterface::StorageVolume:
         return isStorageVolume();
-    case Solid::DeviceInterface::StorageAccess:
-        return isStorageAccess();
     case Solid::DeviceInterface::StorageDrive:
         return isDrive();
     case Solid::DeviceInterface::OpticalDrive:
@@ -224,22 +210,6 @@ bool Device::queryDeviceInterface(const Solid::DeviceInterface::Type &type) cons
 QStringList Device::emblems() const
 {
     QStringList res;
-
-    if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
-        const UDisks2::StorageAccess accessIface(const_cast<Device *>(this));
-        if (accessIface.isAccessible()) {
-            if (isEncryptedContainer()) {
-                res << "emblem-encrypted-unlocked";
-            }
-        } else {
-            if (isEncryptedContainer()) {
-                res << "emblem-encrypted-locked";
-            } else {
-                res << "emblem-unmounted";
-            }
-        }
-    }
-
     return res;
 }
 
@@ -283,7 +253,6 @@ QString Device::storageDescription() const
     QString description;
     const UDisks2::StorageDrive storageDrive(const_cast<Device *>(this));
     Solid::StorageDrive::DriveType drive_type = storageDrive.driveType();
-    const bool drive_is_hotpluggable = storageDrive.isHotpluggable();
 
     if (drive_type == Solid::StorageDrive::CdromDrive) {
         const UDisks2::OpticalDrive opticalDrive(const_cast<Device *>(this));
@@ -350,22 +319,13 @@ QString Device::storageDescription() const
             second = tr("/HD DVD-RW", "Second item of %1%2 Drive sentence");
         }
 
-        if (drive_is_hotpluggable) {
-            description = tr("External %1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first, second);
-        } else {
-            description = tr("%1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first, second);
-        }
+        description = tr("%1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first, second);
 
         return description;
     }
 
     if (drive_type == Solid::StorageDrive::Floppy) {
-        if (drive_is_hotpluggable) {
-            description = tr("External Floppy Drive");
-        } else {
-            description = tr("Floppy Drive");
-        }
-
+        description = tr("Floppy Drive");
         return description;
     }
 
@@ -374,7 +334,7 @@ QString Device::storageDescription() const
     if (drive_type == Solid::StorageDrive::HardDisk && !drive_is_removable) {
         QString devName = storageDrive.device();
         devName.remove(QLatin1String("/dev/"));
-        description = concatBlockDeviceDescription(devName, storageDrive.size(), drive_is_hotpluggable);
+        description = concatBlockDeviceDescription(devName, storageDrive.size());
 
         return description;
     }
@@ -571,7 +531,7 @@ QString Device::volumeDescription() const
             description = tr("Encrypted Drive");
         }
     } else if (drive_type == Solid::StorageDrive::HardDisk && !drive_is_removable) {
-        description = concatBlockDeviceDescription(volumeName, storageVolume.size(), storageDrive.isHotpluggable());
+        description = concatBlockDeviceDescription(volumeName, storageVolume.size());
     } else if (drive_type == Solid::StorageDrive::Floppy) {
         description = tr("Floppy Disk");
     } else {
@@ -862,10 +822,6 @@ bool Device::isEncryptedCleartext() const
 
 bool Device::isRoot() const
 {
-    if (isStorageAccess()) {
-        const UDisks2::StorageAccess accessIface(const_cast<Device *>(this));
-        return accessIface.filePath() == QLatin1String("/");
-    }
     return false;
 }
 

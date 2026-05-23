@@ -80,6 +80,6 @@ protected:
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::GenericInterface, "org.kde.Solid.Ifaces.GenericInterface/0.1")
+Q_DECLARE_INTERFACE(Solid::Ifaces::GenericInterface, "io.github.janbar.Solid.Ifaces.GenericInterface/0.1")
 
 #endif

@@ -10,7 +10,6 @@
 
 #include <ifaces/storagedrive.h>
 
-#include "../shared/udevqt.h"
 #include <config-solid.h>
 
 #include "udisksblock.h"
@@ -31,15 +30,8 @@ public:
     ~StorageDrive() override;
 
     qulonglong size() const override;
-    bool isHotpluggable() const override;
     bool isRemovable() const override;
     Solid::StorageDrive::DriveType driveType() const override;
-    Solid::StorageDrive::Bus bus() const override;
-
-private:
-#if UDEV_FOUND
-    UdevQt::Device m_udevDevice;
-#endif
 };
 
 }

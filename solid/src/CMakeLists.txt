@@ -33,8 +33,6 @@ file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Solid/Predicate
     CONTENT "#include \"solid/predicate.h\"" )
 file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Solid/SolidNamespace
     CONTENT "#include \"solid/solidnamespace.h\"" )
-file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Solid/StorageAccess
-    CONTENT "#include \"solid/storageaccess.h\"" )
 file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Solid/StorageDrive
     CONTENT "#include \"solid/storagedrive.h\"" )
 file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Solid/StorageVolume

@@ -31,12 +31,6 @@ Solid::OpticalDisc::DiscType Solid::OpticalDisc::discType() const
     return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), UnknownDiscType, discType());
 }
 
-bool Solid::OpticalDisc::isAppendable() const
-{
-    Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), false, isAppendable());
-}
-
 bool Solid::OpticalDisc::isBlank() const
 {
     Q_D(const OpticalDisc);

@@ -48,7 +48,6 @@ public:
         GenericInterface = 1,
 
         Block = 3,
-        StorageAccess = 4,
         StorageDrive = 5,
         OpticalDrive = 6,
         StorageVolume = 7,

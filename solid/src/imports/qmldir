@@ -1,2 +1,2 @@
-module org.kde.solid
+module io.github.janbar.solid
 plugin solidextensionplugin

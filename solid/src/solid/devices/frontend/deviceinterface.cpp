@@ -55,8 +55,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Generic Interface", "Generic Interface device type");
     case Block:
         return tr("Block", "Block device type");
-    case StorageAccess:
-        return tr("Storage Access", "Storage Access device type");
     case StorageDrive:
         return tr("Storage Drive", "Storage Drive device type");
     case OpticalDrive:

@@ -26,7 +26,6 @@ Manager::Manager(QObject *parent)
     m_supportedInterfaces = {
         Solid::DeviceInterface::GenericInterface,
         Solid::DeviceInterface::Block,
-        Solid::DeviceInterface::StorageAccess,
         Solid::DeviceInterface::StorageDrive,
         Solid::DeviceInterface::OpticalDrive,
         Solid::DeviceInterface::OpticalDisc,

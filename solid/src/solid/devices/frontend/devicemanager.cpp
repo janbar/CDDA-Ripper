@@ -10,7 +10,6 @@
 #include "device.h"
 #include "device_p.h"
 #include "predicate.h"
-#include "storageaccess.h"
 #include "storagevolume.h"
 
 #include "ifaces/device.h"
@@ -164,45 +163,6 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, co
     }
 
     return list;
-}
-
-Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
-{
-    if (!QFileInfo::exists(path)) {
-        qWarning().nospace() << "Couldn't get StorageAccess for \"" << path << "\" - File doesn't exist";
-        return Device();
-    }
-    // We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
-    QString trailing_path(path);
-    if (!trailing_path.endsWith(QDir::separator())) {
-        trailing_path.append(QDir::separator());
-    }
-
-    const QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
-    Device match;
-    int match_length = 0;
-    for (const Device &device : list) {
-        auto storageVolume = device.as<StorageVolume>();
-        if (storageVolume && storageVolume->usage() != StorageVolume::UsageType::FileSystem) {
-            continue;
-        }
-
-        auto storageAccess = device.as<StorageAccess>();
-
-        if (!storageAccess) {
-            continue;
-        }
-
-        QString mountPath = storageAccess->filePath();
-        if (!mountPath.endsWith(QDir::separator())) {
-            mountPath.append(QDir::separator());
-        }
-        if (mountPath.size() > match_length && trailing_path.startsWith(mountPath)) {
-            match_length = mountPath.size();
-            match = device;
-        }
-    }
-    return match;
 }
 
 Solid::DeviceNotifier *Solid::DeviceNotifier::instance()

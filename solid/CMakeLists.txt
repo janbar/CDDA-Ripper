@@ -39,11 +39,6 @@ include(SolidBackendsMacros)
 add_device_backends_begin()
 add_device_backend(fakehw)
 if (CMAKE_SYSTEM_NAME MATCHES Linux)
-
-    #find_package(UDev REQUIRED)
-    set(UDEV_FOUND TRUE) # for config-solid.h
-    add_device_backend(udev)
-
     #find_package(LibMount QUIET)
     #set(HAVE_LIBMOUNT ${LibMount_FOUND}) # for config-solid.h
     add_device_backend(udisks2)

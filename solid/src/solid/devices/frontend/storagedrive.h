@@ -27,29 +27,14 @@ class Device;
 class SOLID_EXPORT StorageDrive : public DeviceInterface
 {
     Q_OBJECT
-    Q_PROPERTY(Bus bus READ bus)
     Q_PROPERTY(DriveType driveType READ driveType)
     Q_PROPERTY(bool removable READ isRemovable)
-    Q_PROPERTY(bool hotpluggable READ isHotpluggable)
     Q_PROPERTY(bool inUse READ isInUse)
     Q_PROPERTY(qulonglong size READ size)
     Q_DECLARE_PRIVATE(StorageDrive)
     friend class Device;
 
 public:
-    /**
-     * This enum type defines the type of bus a storage device is attached to.
-     *
-     * - Ide : An Integrated Drive Electronics (IDE) bus, also known as ATA
-     * - Usb : An Universal Serial Bus (USB)
-     * - Ieee1394 : An Ieee1394 bus, also known as Firewire
-     * - Scsi : A Small Computer System Interface bus
-     * - Sata : A Serial Advanced Technology Attachment (SATA) bus
-     * - Platform : A legacy bus that is part of the underlying platform
-     */
-    enum Bus { Ide, Usb, Ieee1394, Scsi, Sata, Platform };
-    Q_ENUM(Bus)
-
     /**
      * This enum type defines the type of drive a storage device can be.
      *
@@ -95,15 +80,6 @@ public:
     }
 
     /**
-     * Retrieves the type of physical interface this storage device is
-     * connected to.
-     *
-     * @return the bus type
-     * @see Solid::StorageDrive::Bus
-     */
-    Bus bus() const;
-
-    /**
      * Retrieves the type of this storage drive.
      *
      * @return the drive type
@@ -120,14 +96,6 @@ public:
      * @return true if media can be removed, false otherwise.
      */
     bool isRemovable() const;
-
-    /**
-     * Indicates if this storage device can be plugged or unplugged while
-     * the computer is running.
-     *
-     * @return true if this storage supports hotplug, false otherwise
-     */
-    bool isHotpluggable() const;
 
     /**
      * Retrieves this drives size in bytes.

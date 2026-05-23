@@ -12,7 +12,6 @@
 #include "fakegenericinterface.h"
 #include "fakeopticaldisc.h"
 #include "fakestorage.h"
-#include "fakestorageaccess.h"
 #include "fakevolume.h"
 
 #include <QStringList>
@@ -103,15 +102,7 @@ QString FakeDevice::icon() const
 QStringList FakeDevice::emblems() const
 {
     QStringList res;
-
-    if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
-        if (property("isMounted").toBool()) {
-            res << "emblem-mounted";
-        } else {
-            res << "emblem-unmounted";
-        }
-    }
-
+    res << "emblem-mounted";
     return res;
 }
 
@@ -254,9 +245,6 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     case Solid::DeviceInterface::OpticalDisc:
         iface = new FakeOpticalDisc(this);
-        break;
-    case Solid::DeviceInterface::StorageAccess:
-        iface = new FakeStorageAccess(this);
         break;
     case Solid::DeviceInterface::Unknown:
         break;

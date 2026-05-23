@@ -19,13 +19,11 @@
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/devices/ifaces/opticaldisc.h>
 #include <solid/devices/ifaces/opticaldrive.h>
-#include <solid/devices/ifaces/storageaccess.h>
 #include <solid/devices/ifaces/storagedrive.h>
 #include <solid/devices/ifaces/storagevolume.h>
 #include <solid/genericinterface.h>
 #include <solid/opticaldisc.h>
 #include <solid/opticaldrive.h>
-#include <solid/storageaccess.h>
 #include <solid/storagedrive.h>
 #include <solid/storagevolume.h>
 
@@ -139,9 +137,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::Block:
                 iface = deviceinterface_cast(Ifaces::Block, Block, dev_iface);
-                break;
-            case DeviceInterface::StorageAccess:
-                iface = deviceinterface_cast(Ifaces::StorageAccess, StorageAccess, dev_iface);
                 break;
             case DeviceInterface::StorageDrive:
                 iface = deviceinterface_cast(Ifaces::StorageDrive, StorageDrive, dev_iface);

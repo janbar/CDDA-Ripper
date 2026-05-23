@@ -84,11 +84,6 @@ Solid::OpticalDisc::DiscType FakeOpticalDisc::discType() const
     }
 }
 
-bool FakeOpticalDisc::isAppendable() const
-{
-    return fakeDevice()->property("isAppendable").toBool();
-}
-
 bool FakeOpticalDisc::isBlank() const
 {
     return fakeDevice()->property("isBlank").toBool();

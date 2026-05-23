@@ -20,7 +20,7 @@ void SolidExtensionPlugin::registerTypes(const char *uri)
 {
     using namespace Solid;
 
-    Q_ASSERT(QLatin1String(uri) == QLatin1String("org.kde.solid"));
+    Q_ASSERT(QLatin1String(uri) == QLatin1String("io.github.janbar.solid"));
 
     qmlRegisterType<Devices>(uri, 1, 0, "Devices");
 }

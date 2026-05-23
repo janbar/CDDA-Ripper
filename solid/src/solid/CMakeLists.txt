@@ -30,8 +30,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/devices/frontend/predicate.h
     ${CMAKE_CURRENT_BINARY_DIR}/predicate.h COPYONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/devices/frontend/solidnamespace.h
     ${CMAKE_CURRENT_BINARY_DIR}/solidnamespace.h COPYONLY)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/devices/frontend/storageaccess.h
-    ${CMAKE_CURRENT_BINARY_DIR}/storageaccess.h COPYONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/devices/frontend/storagedrive.h
     ${CMAKE_CURRENT_BINARY_DIR}/storagedrive.h COPYONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/devices/frontend/storagevolume.h

@@ -14,11 +14,6 @@ using namespace Solid::Backends::UDisks2;
 StorageDrive::StorageDrive(Device *dev)
     : Block(dev)
 {
-#if UDEV_FOUND
-    UdevQt::Client client(this);
-    m_udevDevice = client.deviceByDeviceFile(device());
-    m_udevDevice.deviceProperties();
-#endif
 }
 
 StorageDrive::~StorageDrive()
@@ -28,23 +23,6 @@ StorageDrive::~StorageDrive()
 qulonglong StorageDrive::size() const
 {
     return m_device->prop("Size").toULongLong();
-}
-
-bool StorageDrive::isHotpluggable() const
-{
-#if UDEV_FOUND
-    const Solid::StorageDrive::Bus _bus = bus();
-    /* clang-format off */
-    return _bus == Solid::StorageDrive::Usb
-        || _bus == Solid::StorageDrive::Ieee1394
-        || (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid()
-            && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
-    /* clang-format on */
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-    return m_device->prop("bsdisks_IsHotpluggable").toBool();
-#else
-#error Implement this or stub this out for your platform
-#endif
 }
 
 bool StorageDrive::isRemovable() const
@@ -85,55 +63,6 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
     // FIXME: udisks2 doesn't know about xD cards
     else {
         return Solid::StorageDrive::HardDisk;
-    }
-}
-
-Solid::StorageDrive::Bus StorageDrive::bus() const
-{
-    const QString bus = m_device->prop("ConnectionBus").toString();
-    const QString udevBus =
-#if UDEV_FOUND
-        m_udevDevice.deviceProperty("ID_BUS").toString();
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-        m_device->prop("bsdisks_ConnectionBus").toString();
-#else
-#error Implement this or stub this out for your platform
-#endif
-
-    // qDebug() << "bus:" << bus << "udev bus:" << udevBus;
-
-    if (udevBus == "ata") {
-#if UDEV_FOUND
-        if (m_udevDevice.deviceProperty("ID_ATA_SATA").toInt() == 1) { // serial ATA
-            return Solid::StorageDrive::Sata;
-        } else { // parallel (classical) ATA
-            return Solid::StorageDrive::Ide;
-        }
-#elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-        if (m_device->prop("bsdisks_AtaSata").toString() == "sata") { // serial ATA
-            return Solid::StorageDrive::Sata;
-        } else { // parallel (classical) ATA
-            return Solid::StorageDrive::Ide;
-        }
-#else
-#error Implement this or stub this out for your platform
-#endif
-    } else if (bus == "usb") {
-        return Solid::StorageDrive::Usb;
-    } else if (bus == "ieee1394") {
-        return Solid::StorageDrive::Ieee1394;
-    } else if (udevBus == "scsi") {
-        return Solid::StorageDrive::Scsi;
-    }
-#if 0 // TODO add these to Solid
-    else if (bus == "sdio") {
-        return Solid::StorageDrive::SDIO;
-    } else if (bus == "virtual") {
-        return Solid::StorageDrive::Virtual;
-    }
-#endif
-    else {
-        return Solid::StorageDrive::Platform;
     }
 }
 

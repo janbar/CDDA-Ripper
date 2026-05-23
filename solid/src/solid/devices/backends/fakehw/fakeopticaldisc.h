@@ -28,7 +28,6 @@ public:
 public Q_SLOTS:
     Solid::OpticalDisc::ContentTypes availableContent() const override;
     Solid::OpticalDisc::DiscType discType() const override;
-    bool isAppendable() const override;
     bool isBlank() const override;
     bool isRewritable() const override;
     qulonglong capacity() const override;

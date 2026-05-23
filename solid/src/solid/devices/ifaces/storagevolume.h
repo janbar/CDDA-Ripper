@@ -91,6 +91,6 @@ public:
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::StorageVolume, "org.kde.Solid.Ifaces.StorageVolume/0.1")
+Q_DECLARE_INTERFACE(Solid::Ifaces::StorageVolume, "io.github.janbar.Solid.Ifaces.StorageVolume/0.1")
 
 #endif // SOLID_IFACES_STORAGEVOLUME_H

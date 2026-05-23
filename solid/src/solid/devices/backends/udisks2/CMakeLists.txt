@@ -12,7 +12,6 @@ set(backend_sources
     udisksopticaldisc.cpp
     udisksopticaldrive.cpp
     udisksstoragedrive.cpp
-    udisksstorageaccess.cpp
     udisksgenericinterface.cpp
     dbus/manager.cpp
 )

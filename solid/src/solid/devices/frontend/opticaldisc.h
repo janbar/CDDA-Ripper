@@ -28,7 +28,6 @@ class SOLID_EXPORT OpticalDisc : public StorageVolume
     Q_OBJECT
     Q_PROPERTY(ContentTypes availableContent READ availableContent)
     Q_PROPERTY(DiscType discType READ discType)
-    Q_PROPERTY(bool appendable READ isAppendable)
     Q_PROPERTY(bool blank READ isBlank)
     Q_PROPERTY(bool rewritable READ isRewritable)
     Q_PROPERTY(qulonglong capacity READ capacity)
@@ -151,13 +150,6 @@ public:
      * @return the disc type
      */
     DiscType discType() const;
-
-    /**
-     * Indicates if it's possible to write additional data to the disc.
-     *
-     * @return true if the disc is appendable, false otherwise
-     */
-    bool isAppendable() const;
 
     /**
      * Indicates if the disc is blank.

@@ -53,7 +53,6 @@ set(solid_LIB_SRCS
     devices/frontend/opticaldrive.cpp
     devices/frontend/storagevolume.cpp
     devices/frontend/opticaldisc.cpp
-    devices/frontend/storageaccess.cpp
     devices/frontend/predicate.cpp
 
     devices/ifaces/block.cpp
@@ -65,7 +64,6 @@ set(solid_LIB_SRCS
     devices/ifaces/opticaldisc.cpp
     devices/ifaces/storagedrive.cpp
     devices/ifaces/storagevolume.cpp
-    devices/ifaces/storageaccess.cpp
 
     devices/backends/shared/rootdevice.cpp
 )

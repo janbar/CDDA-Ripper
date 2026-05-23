@@ -82,6 +82,6 @@ protected:
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::OpticalDrive, "org.kde.Solid.Ifaces.OpticalDrive/0.1")
+Q_DECLARE_INTERFACE(Solid::Ifaces::OpticalDrive, "io.github.janbar.Solid.Ifaces.OpticalDrive/0.1")
 
 #endif // SOLID_IFACE_OPTICALDRIVE_H

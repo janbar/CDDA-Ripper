@@ -18,25 +18,6 @@ FakeStorage::~FakeStorage()
 {
 }
 
-Solid::StorageDrive::Bus FakeStorage::bus() const
-{
-    QString bus = fakeDevice()->property("bus").toString();
-
-    if (bus == "ide") {
-        return Solid::StorageDrive::Ide;
-    } else if (bus == "usb") {
-        return Solid::StorageDrive::Usb;
-    } else if (bus == "ieee1394") {
-        return Solid::StorageDrive::Ieee1394;
-    } else if (bus == "scsi") {
-        return Solid::StorageDrive::Scsi;
-    } else if (bus == "sata") {
-        return Solid::StorageDrive::Sata;
-    } else {
-        return Solid::StorageDrive::Platform;
-    }
-}
-
 Solid::StorageDrive::DriveType FakeStorage::driveType() const
 {
     QString type = fakeDevice()->property("major").toString();
@@ -65,11 +46,6 @@ Solid::StorageDrive::DriveType FakeStorage::driveType() const
 bool FakeStorage::isRemovable() const
 {
     return fakeDevice()->property("isRemovable").toBool();
-}
-
-bool FakeStorage::isHotpluggable() const
-{
-    return fakeDevice()->property("isHotpluggable").toBool();
 }
 
 qulonglong FakeStorage::size() const

@@ -12,7 +12,7 @@
 class SolidExtensionPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.kde.solid")
+    Q_PLUGIN_METADATA(IID "io.github.janbar.solid")
 
 public:
     SolidExtensionPlugin(QObject *parent = nullptr);

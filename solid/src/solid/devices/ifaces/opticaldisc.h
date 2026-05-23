@@ -43,13 +43,6 @@ public:
     virtual Solid::OpticalDisc::DiscType discType() const = 0;
 
     /**
-     * Indicates if it's possible to write additional data to the disc.
-     *
-     * @return true if the disc is appendable, false otherwise
-     */
-    virtual bool isAppendable() const = 0;
-
-    /**
      * Indicates if the disc is blank.
      *
      * @return true if the disc is blank, false otherwise
@@ -76,6 +69,6 @@ public:
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::OpticalDisc, "org.kde.Solid.Ifaces.OpticalDisc/0.1")
+Q_DECLARE_INTERFACE(Solid::Ifaces::OpticalDisc, "io.github.janbar.Solid.Ifaces.OpticalDisc/0.1")
 
 #endif

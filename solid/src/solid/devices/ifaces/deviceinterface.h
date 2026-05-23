@@ -32,6 +32,6 @@ public:
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::DeviceInterface, "org.kde.Solid.Ifaces.DeviceInterface/0.1")
+Q_DECLARE_INTERFACE(Solid::Ifaces::DeviceInterface, "io.github.janbar.Solid.Ifaces.DeviceInterface/0.1")
 
 #endif

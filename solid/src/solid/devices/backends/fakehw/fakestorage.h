@@ -26,11 +26,9 @@ public:
     ~FakeStorage() override;
 
 public Q_SLOTS:
-    Solid::StorageDrive::Bus bus() const override;
     Solid::StorageDrive::DriveType driveType() const override;
 
     bool isRemovable() const override;
-    bool isHotpluggable() const override;
     qulonglong size() const override;
 };
 }

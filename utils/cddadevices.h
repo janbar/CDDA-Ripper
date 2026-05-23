@@ -23,7 +23,6 @@
 #include <Solid/GenericInterface>
 #include <Solid/OpticalDisc>
 #include <Solid/OpticalDrive>
-#include <Solid/StorageAccess>
 
 struct OpticalAudioDisc {
     QString name;

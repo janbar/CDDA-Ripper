@@ -56,6 +56,6 @@ public:
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::Block, "org.kde.Solid.Ifaces.Block/0.1")
+Q_DECLARE_INTERFACE(Solid::Ifaces::Block, "io.github.janbar.Solid.Ifaces.Block/0.1")
 
 #endif

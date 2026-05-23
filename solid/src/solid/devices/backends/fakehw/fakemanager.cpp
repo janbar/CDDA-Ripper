@@ -37,7 +37,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
     d->xmlFile = machineXmlFile;
 
 #ifdef QT_DBUS_LIB
-    QDBusConnection::sessionBus().registerObject("/org/kde/solid/fakehw", this, QDBusConnection::ExportNonScriptableSlots);
+    QDBusConnection::sessionBus().registerObject("/io/github/janbar/solid/fakehw", this, QDBusConnection::ExportNonScriptableSlots);
 #endif
 
     parseMachineFile();
@@ -45,7 +45,6 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
     // clang-format off
     d->supportedInterfaces << Solid::DeviceInterface::GenericInterface
                            << Solid::DeviceInterface::Block
-                           << Solid::DeviceInterface::StorageAccess
                            << Solid::DeviceInterface::StorageDrive
                            << Solid::DeviceInterface::OpticalDrive
                            << Solid::DeviceInterface::StorageVolume
@@ -56,7 +55,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
 FakeManager::~FakeManager()
 {
 #ifdef QT_DBUS_LIB
-    QDBusConnection::sessionBus().unregisterObject("/org/kde/solid/fakehw", QDBusConnection::UnregisterTree);
+    QDBusConnection::sessionBus().unregisterObject("/io/github/janbar/solid/fakehw", QDBusConnection::UnregisterTree);
 #endif
     qDeleteAll(d->loadedDevices);
     delete d;
@@ -64,7 +63,7 @@ FakeManager::~FakeManager()
 
 QString FakeManager::udiPrefix() const
 {
-    return "/org/kde/solid/fakehw";
+    return "/io/github/janbar/solid/fakehw";
 }
 
 QSet<Solid::DeviceInterface::Type> FakeManager::supportedInterfaces() const

@@ -10,7 +10,6 @@
 
 #include <solid/devices/ifaces/opticaldisc.h>
 
-#include "../shared/udevqt.h"
 #include <config-solid.h>
 
 #include "udisksdevice.h"
@@ -34,7 +33,6 @@ public:
     qulonglong capacity() const override;
     bool isRewritable() const override;
     bool isBlank() const override;
-    bool isAppendable() const override;
     Solid::OpticalDisc::DiscType discType() const override;
     Solid::OpticalDisc::ContentTypes availableContent() const override;
 
@@ -56,9 +54,6 @@ private:
     QString media() const;
     mutable Solid::OpticalDisc::ContentTypes m_cachedContent;
     Device *m_drive;
-#if UDEV_FOUND
-    UdevQt::Device m_udevDevice;
-#endif
 };
 
 }
