@@ -1,4 +1,8 @@
-cddaripper (1.3) UNRELEASED; urgency=low
+cddaripper (1.4) UNRELEASED; urgency=low
+
+  [ janbar ]
+  * Release 1.4.0
+  * Drop dependency with Udev
 
   [ janbar ]
   * Release 1.3.0
