@@ -1,6 +1,5 @@
 #include "kcmcddb.h"
 
-#include "libkcddb/lookup.h"
 #include "libkcddb/cache.h"
 
 #include <QCheckBox>

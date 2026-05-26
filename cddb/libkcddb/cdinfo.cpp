@@ -9,7 +9,6 @@
 
 #include "cdinfo.h"
 
-#include "client.h"
 #include "cddb.h"
 #include "logging.h"
 

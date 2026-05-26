@@ -8,7 +8,6 @@
 
 #include "lookup.h"
 
-
 namespace KCDDB
 {
   Lookup::Lookup()
