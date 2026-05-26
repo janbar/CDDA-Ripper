@@ -8,5 +8,3 @@
 #cmakedefine01 HAVE_SYS_PARAM_H
 #cmakedefine01 HAVE_SYS_MNTTAB_H
 #cmakedefine01 HAVE_SYS_MOUNT_H
-
-#cmakedefine01 HAVE_LIBMOUNT

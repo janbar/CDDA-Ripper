@@ -1,17 +1,25 @@
-if (LibMount_FOUND)
-    set(backend_libs libmount)
-endif()
-
 set(backend_sources
-    udisksmanager.cpp
-    udisksdevice.cpp
-    udisksdevicebackend.cpp
+    udisks2.h
     udisksblock.cpp
-    udisksstoragevolume.cpp
+    udisksblock.h
+    udisksdevice.cpp
+    udisksdevice.h
+    udisksdevicebackend.cpp
+    udisksdevicebackend.h
     udisksdeviceinterface.cpp
-    udisksopticaldisc.cpp
-    udisksopticaldrive.cpp
-    udisksstoragedrive.cpp
+    udisksdeviceinterface.h
     udisksgenericinterface.cpp
+    udisksgenericinterface.h
+    udisksmanager.cpp
+    udisksmanager.h
+    udisksopticaldisc.cpp
+    udisksopticaldisc.h
+    udisksopticaldrive.cpp
+    udisksopticaldrive.h
+    udisksstoragedrive.cpp
+    udisksstoragedrive.h
+    udisksstoragevolume.cpp
+    udisksstoragevolume.h
     dbus/manager.cpp
+    dbus/manager.h
 )

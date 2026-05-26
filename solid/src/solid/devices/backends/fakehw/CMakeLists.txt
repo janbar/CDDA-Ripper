@@ -1,11 +1,21 @@
 set(backend_sources
     fakeblock.cpp
+    fakeblock.h
     fakecdrom.cpp
+    fakecdrom.h
     fakedevice.cpp
+    fakedevice.h
+    fakedevice_p.h
     fakedeviceinterface.cpp
+    fakedeviceinterface.h
     fakegenericinterface.cpp
+    fakegenericinterface.h
     fakemanager.cpp
+    fakemanager.h
     fakeopticaldisc.cpp
+    fakeopticaldisc.h
     fakestorage.cpp
+    fakestorage.h
     fakevolume.cpp
+    fakevolume.h
 )
