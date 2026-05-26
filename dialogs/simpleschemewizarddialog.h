@@ -10,10 +10,7 @@
 
 #include <QWhatsThis>
 #include <QWidget>
-
 #include <QDialog>
-
-#include "utils/schemeparser.h"
 
 #include "ui_simpleschemewizardwidgetUI.h"
 

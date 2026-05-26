@@ -6,6 +6,7 @@
  */
 
 #include "extractingprogressdialog.h"
+#include "protocoldialog.h"
 
 ExtractingProgressDialog::ExtractingProgressDialog(ProfileModel *profile_model, CDDAModel *cdda_model, QWidget *parent)
     : QDialog(parent)

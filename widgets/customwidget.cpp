@@ -6,6 +6,8 @@
  */
 
 #include "customwidget.h"
+#include "dialogs/commandwizarddialog.h"
+#include "utils/encoderassistant.h"
 
 #include <QDebug>
 

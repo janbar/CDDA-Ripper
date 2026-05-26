@@ -11,11 +11,8 @@
 #include <QDir>
 #include <QWidget>
 
-#include "utils/encoderassistant.h"
 #include "utils/error.h"
 #include "utils/parameters.h"
-
-#include "dialogs/commandwizarddialog.h"
 
 #include "ui_customwidgetUI.h"
 

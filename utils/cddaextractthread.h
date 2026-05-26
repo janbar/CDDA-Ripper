@@ -11,7 +11,7 @@
 #include <QString>
 #include <QThread>
 
-#include "cddaparanoia.h"
+#include "utils/cddaparanoia.h"
 
 class CDDAExtractThread : public QThread
 {

@@ -14,8 +14,6 @@
 #include <QDialog>
 #include <QPushButton>
 
-#include "utils/schemeparser.h"
-
 #include "ui_schemewizardwidgetUI.h"
 
 class SchemeWizardDialog : public QDialog

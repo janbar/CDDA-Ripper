@@ -6,6 +6,7 @@
  */
 
 #include "schemeparser.h"
+#include "config.h"
 
 #include <QDebug>
 #include <QStandardPaths>

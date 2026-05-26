@@ -6,6 +6,7 @@
  */
 
 #include "cuesheetwriter.h"
+#include "config.h"
 
 CueSheetWriter::CueSheetWriter(CDDAModel *model)
 {

@@ -8,14 +8,13 @@
 #ifndef PROFILEMODEL_HEADER
 #define PROFILEMODEL_HEADER
 
-#include <climits>
-
 #include <QAbstractTableModel>
 #include <QString>
 #include <QVariant>
 
 #include <QSettings>
 
+#include "utils/schemeparser.h"
 #include "utils/encoderassistant.h"
 #include "utils/error.h"
 

@@ -13,8 +13,6 @@
 #include <QDialog>
 #include <QPushButton>
 
-#include "simpleschemewizarddialog.h"
-
 #include "ui_profiledatahashlistwidgetUI.h"
 
 class ProfileDataHashlistDialog : public QDialog

@@ -6,6 +6,7 @@
  */
 
 #include "tmpdir.h"
+#include "utils/pid.h"
 
 #include <QDebug>
 #include <QStandardPaths>

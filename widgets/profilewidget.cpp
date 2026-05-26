@@ -6,6 +6,7 @@
  */
 
 #include "profilewidget.h"
+#include "dialogs/profiledatadialog.h"
 
 #include <QDebug>
 #include <QFileDialog>

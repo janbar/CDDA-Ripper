@@ -6,6 +6,7 @@
  */
 
 #include "coverbrowserdialog.h"
+#include "preferences.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>

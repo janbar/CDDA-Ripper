@@ -6,6 +6,12 @@
  */
 
 #include "audex.h"
+#include "utils/cuesheetwriter.h"
+#include "utils/discidcalculator.h"
+#include "utils/hashlist.h"
+#include "utils/schemeparser.h"
+#include "utils/playlist.h"
+#include "preferences.h"
 
 #include <QGuiApplication>
 

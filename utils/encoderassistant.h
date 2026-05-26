@@ -15,7 +15,6 @@
 #include <QProcess>
 
 #include "utils/parameters.h"
-#include "utils/schemeparser.h"
 
 #define ENCODER_LAME_SUFFIX_KEY "suffix"
 #define ENCODER_LAME_PRESET_KEY "preset"

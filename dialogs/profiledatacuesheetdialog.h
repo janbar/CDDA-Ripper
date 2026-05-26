@@ -13,8 +13,6 @@
 #include <QDialog>
 #include <QPushButton>
 
-#include "simpleschemewizarddialog.h"
-
 #include "ui_profiledatacuesheetwidgetUI.h"
 
 class ProfileDataCueSheetDialog : public QDialog

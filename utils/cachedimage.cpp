@@ -6,7 +6,7 @@
  */
 
 #include "cachedimage.h"
-#include "3rdparty/crc32.h"
+#include "utils/3rdparty/crc32.h"
 
 #include <QDebug>
 #include <QMimeDatabase>

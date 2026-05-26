@@ -15,8 +15,6 @@
 #include <QTextBrowser>
 #include <QVBoxLayout>
 
-#include "simpleschemewizarddialog.h"
-
 #include "ui_profiledatainfowidgetUI.h"
 
 class ProfileDataInfoDialog : public QDialog

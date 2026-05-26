@@ -15,8 +15,6 @@
 
 #include "models/cddamodel.h"
 
-#include "utils/discidcalculator.h"
-
 #include "ui_cddaheaderdatawidgetUI.h"
 
 class CDDAHeaderDataDialog : public QDialog

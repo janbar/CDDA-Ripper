@@ -16,17 +16,9 @@
 #include "models/cddamodel.h"
 #include "models/profilemodel.h"
 #include "utils/cddaextractthread.h"
-#include "utils/cuesheetwriter.h"
-#include "utils/discidcalculator.h"
 #include "utils/encoderwrapper.h"
-#include "utils/hashlist.h"
-#include "utils/parameters.h"
-#include "utils/schemeparser.h"
-#include "utils/playlist.h"
 #include "utils/tmpdir.h"
 #include "utils/wavefilewriter.h"
-
-#include "preferences.h"
 
 class AudexJob : public QObject
 {

@@ -6,6 +6,7 @@
  */
 
 #include "profiledatasinglefiledialog.h"
+#include "simpleschemewizarddialog.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>

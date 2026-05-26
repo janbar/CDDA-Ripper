@@ -16,7 +16,6 @@
 #include <QDebug>
 #include <QSize>
 #include <QTimer>
-#include <algorithm>
 
 CoverFetcher::CoverFetcher(thumbnailer::Thumbnailer& tbn, QObject *parent)
     : QObject(parent), _status(NOS), _tbn(tbn)

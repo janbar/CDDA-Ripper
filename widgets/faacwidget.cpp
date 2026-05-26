@@ -6,6 +6,7 @@
  */
 
 #include "faacwidget.h"
+#include "utils/encoderassistant.h"
 
 #include <QDebug>
 

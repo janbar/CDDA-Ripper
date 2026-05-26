@@ -6,6 +6,7 @@
  */
 
 #include "hashlist.h"
+#include "utils/3rdparty/crc32.h"
 
 Hashlist::Hashlist()
 {

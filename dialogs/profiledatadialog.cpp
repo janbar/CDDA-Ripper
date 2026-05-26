@@ -6,6 +6,13 @@
  */
 
 #include "profiledatadialog.h"
+#include "dialogs/schemewizarddialog.h"
+#include "dialogs/profiledatacoverdialog.h"
+#include "dialogs/profiledatacuesheetdialog.h"
+#include "dialogs/profiledatahashlistdialog.h"
+#include "dialogs/profiledatainfodialog.h"
+#include "dialogs/profiledataplaylistdialog.h"
+#include "dialogs/profiledatasinglefiledialog.h"
 
 #include <QDebug>
 #include <QDialogButtonBox>

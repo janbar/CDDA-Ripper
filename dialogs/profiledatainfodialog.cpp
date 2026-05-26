@@ -6,9 +6,11 @@
  */
 
 #include "profiledatainfodialog.h"
+#include "simpleschemewizarddialog.h"
 
 #include <QDialogButtonBox>
 #include <QFileDialog>
+#include <QTextStream>
 
 ProfileDataInfoDialog::ProfileDataInfoDialog(const QStringList &text, const QString &scheme, const QString &suffix, QWidget *parent)
     : QDialog(parent)

@@ -15,8 +15,6 @@
 #include <QDialog>
 #include <QPushButton>
 
-#include "preferences.h"
-
 #include "dialogs/errordialog.h"
 #include "utils/coverfetcher.h"
 

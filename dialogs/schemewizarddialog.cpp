@@ -6,6 +6,7 @@
  */
 
 #include "schemewizarddialog.h"
+#include "utils/schemeparser.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>

@@ -12,7 +12,6 @@
 #include <QWidget>
 #include <QMessageBox>
 
-#include "dialogs/profiledatadialog.h"
 #include "models/profilemodel.h"
 
 #include "ui_profilewidgetUI.h"

@@ -6,6 +6,7 @@
  */
 
 #include "encoderwrapper.h"
+#include "utils/schemeparser.h"
 
 #include <QDebug>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)

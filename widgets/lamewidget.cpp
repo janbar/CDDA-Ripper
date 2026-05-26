@@ -6,6 +6,7 @@
  */
 
 #include "lamewidget.h"
+#include "utils/encoderassistant.h"
 
 #include <QDebug>
 

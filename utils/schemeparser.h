@@ -17,7 +17,6 @@
 #include <QMetaType>
 #include <QObject>
 
-#include "config.h"
 #include "utils/parameters.h"
 #include "utils/cachedimage.h"
 

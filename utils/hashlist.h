@@ -19,8 +19,6 @@
 #include <QFileInfo>
 #include <QStringList>
 
-#include "3rdparty/crc32.h"
-
 class Hashlist
 {
 public:

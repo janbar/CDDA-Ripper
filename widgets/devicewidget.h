@@ -12,8 +12,6 @@
 
 #include <QLineEdit>
 
-#include "preferences.h"
-
 #include "ui_devicewidgetUI.h"
 
 class deviceWidgetUI : public QWidget, public Ui::DeviceWidgetUI

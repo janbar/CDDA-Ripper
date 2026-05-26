@@ -6,6 +6,7 @@
  */
 
 #include "cddaheaderdatadialog.h"
+#include "utils/discidcalculator.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>

@@ -16,8 +16,6 @@
 #include <QStorageInfo>
 #include <QSharedPointer>
 
-#include "utils/pid.h"
-
 class TmpDir : public QObject
 {
     Q_OBJECT

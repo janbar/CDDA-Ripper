@@ -11,7 +11,6 @@
 #include <QList>
 #include <QWidget>
 
-#include "utils/encoderassistant.h"
 #include "utils/error.h"
 #include "utils/parameters.h"
 

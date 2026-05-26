@@ -12,8 +12,6 @@
 
 #include <QLineEdit>
 
-#include "preferences.h"
-
 #include "ui_generalsettingswidgetUI.h"
 
 class generalSettingsWidgetUI : public QWidget, public Ui::GeneralSettingsWidgetUI

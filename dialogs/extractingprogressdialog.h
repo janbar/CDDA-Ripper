@@ -22,8 +22,6 @@
 #include "models/cddamodel.h"
 #include "models/profilemodel.h"
 
-#include "protocoldialog.h"
-
 #include "ui_extractingprogresswidgetUI.h"
 
 class ExtractingProgressDialog : public QDialog

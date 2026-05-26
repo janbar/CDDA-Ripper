@@ -12,8 +12,7 @@
 #include <QString>
 #include <QStringList>
 
-#include "../models/cddamodel.h"
-#include "config.h"
+#include "models/cddamodel.h"
 
 #define FRAMES2SEC(frames) ((frames) / 75)
 

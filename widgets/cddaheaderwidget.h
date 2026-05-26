@@ -8,8 +8,6 @@
 #ifndef CDDAHEADERWIDGET_H
 #define CDDAHEADERWIDGET_H
 
-#include <cmath>
-
 #include <QApplication>
 #include <QDesktopServices>
 #include <QFont>
@@ -24,9 +22,6 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 
-#include "preferences.h"
-
-#include "dialogs/cddaheaderdatadialog.h"
 #include "dialogs/coverbrowserdialog.h"
 #include "dialogs/errordialog.h"
 #include "models/cddamodel.h"

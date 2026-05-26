@@ -6,6 +6,7 @@
  */
 
 #include "encoderassistant.h"
+#include "utils/schemeparser.h"
 
 long makeVersionNumber(int major, int minor, int patch)
 {

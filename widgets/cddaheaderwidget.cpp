@@ -6,6 +6,7 @@
  */
 
 #include "cddaheaderwidget.h"
+#include "dialogs/cddaheaderdatadialog.h"
 
 #include <QDebug>
 #include <QFileDialog>

@@ -14,7 +14,6 @@
 #include <QProcess>
 
 #include "utils/cachedimage.h"
-#include "utils/schemeparser.h"
 #include "utils/encoderassistant.h"
 
 class EncoderWrapper : public QObject
